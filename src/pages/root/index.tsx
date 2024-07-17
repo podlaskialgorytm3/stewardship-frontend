@@ -3,7 +3,7 @@ import { Menu } from "../../features/menu/components/menu";
 
 const Root: React.FC = () => {
     return (
-        <div className="">
+        <div>
             <Menu />
             <Outlet />
         </div>

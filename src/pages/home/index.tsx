@@ -1,7 +1,9 @@
+import { HomePage } from '../../features/home/components/home';
+
 const Home: React.FC = () => {
     return (
         <div>
-            <h1>Stewardship</h1>
+            <HomePage />
         </div>
     );
 }
