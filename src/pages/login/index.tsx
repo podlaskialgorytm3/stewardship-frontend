@@ -1,7 +1,9 @@
+import { SignIn } from '../../features/login/components/login';
+
 const Login: React.FC = () => {
     return (
         <div>
-            <h1>Login</h1>
+            <SignIn />
         </div>
     );
 }
