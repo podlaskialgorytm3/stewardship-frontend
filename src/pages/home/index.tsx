@@ -1,6 +1,6 @@
 const Home: React.FC = () => {
     return (
-        <div className="bg-red-50">
+        <div>
             <h1>Stewardship</h1>
         </div>
     );

@@ -1,27 +1,18 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLinkComponent } from './nav-link';
 
 export const Menu = () => {
-    const navigate = useNavigate();
 
     return (
-        <div className="bg-white">
+        <div>
             <nav className='text-purple-800 flex justify-center h-[100px]'>
                 <ul className='flex justify-between w-[1000px] items-center'>
                     <li>
-                        <h1 className='text-2xl'>stewardship</h1>
+                        <h1 className='text-3xl'>stewardship</h1>
                     </li>
-                    <li>
-                        <NavLink to="/">Home</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/about">About</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/contact">Contact</NavLink>
-                    </li>
-                    <li>
-                        <button onClick={() => navigate('/login')}>Login</button>
-                    </li>
+                    <NavLinkComponent path="/" name="Home"/>
+                    <NavLinkComponent path="/about" name="About"/>
+                    <NavLinkComponent path="/contact" name="Contact"/>
+                    <NavLinkComponent path="/login" name="Login"/>
                 </ul>
             </nav>
         </div>
