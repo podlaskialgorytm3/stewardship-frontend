@@ -43,6 +43,7 @@ export const useLogin = () => {
                 title: 'Success',
                 text: 'Login successful'
             })
+            localStorage.setItem('token', data.token);
             navigate('/');
         }
     });
