@@ -1,9 +1,11 @@
-const Register: React.FC = () => {
+import { Register } from "../../features/login/components/register"
+
+const RegisterPage: React.FC = () => {
     return (
         <div>
-            <h1>Register</h1>
+            <Register />
         </div>
     );
 }
 
-export default Register;
+export default RegisterPage;
