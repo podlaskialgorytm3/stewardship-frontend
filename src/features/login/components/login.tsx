@@ -4,6 +4,7 @@ import { DEFAULT_LOGIN_STATE } from '../constants/constants';
 import { LoginForm } from '../types/types';
 import { loginFormSchema } from '../utils/utils';
 import { fromZodError } from 'zod-validation-error';
+import { useLogin } from '../api/use-login';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -19,10 +20,10 @@ import { defaultTheme } from '../../../shared/themes/themes';
 
 export const Login: React.FC = () => {
   const [ formErrors, setFormErrors ] = useState<LoginForm>(DEFAULT_LOGIN_STATE);
+  const { mutate, isPending, isError, error } = useLogin();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Kliknięto przycisk logowania");
     const data = new FormData(event.currentTarget);
     const formData = {
       email: data.get('email') as string,
@@ -32,7 +33,7 @@ export const Login: React.FC = () => {
     try{
       const user = loginFormSchema.parse(formData);
       setFormErrors(DEFAULT_LOGIN_STATE);
-      console.log(user);
+      mutate(user);
 
     }
     catch(error: any){
@@ -50,7 +51,6 @@ export const Login: React.FC = () => {
   };
 
   const handleChange = (name: string) => {
-    console.log(formErrors);
     setFormErrors((prevState) => (
       {
         ...prevState,
