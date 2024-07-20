@@ -1,4 +1,10 @@
-import * as React from 'react';
+import { useState } from 'react';
+
+import { DEFAULT_LOGIN_STATE } from '../constants/constants';
+import { LoginForm } from '../types/types';
+import { loginFormSchema } from '../utils/utils';
+import { fromZodError } from 'zod-validation-error';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -11,15 +17,47 @@ import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
-export const SignIn: React.FC = () => {
+export const Login: React.FC = () => {
+  const [ formErrors, setFormErrors ] = useState<LoginForm>(DEFAULT_LOGIN_STATE);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("Kliknięto przycisk logowania");
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const formData = {
+      email: data.get('email') as string,
+      password: data.get('password') as string
+    }
+
+    try{
+      const user = loginFormSchema.parse(formData);
+      setFormErrors(DEFAULT_LOGIN_STATE);
+      console.log(user);
+
+    }
+    catch(error: any){
+      const validationError = fromZodError(error);
+      validationError.details.forEach((detail) => {
+        setFormErrors((prevState) => (
+          {
+            ...prevState,
+            [detail.path[0]]: detail.message
+          }
+        ))
+      })
+    }
+
   };
+
+  const handleChange = (name: string) => {
+    console.log(formErrors);
+    setFormErrors((prevState) => (
+      {
+        ...prevState,
+        [name]: ''
+      }
+    ))
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -48,6 +86,9 @@ export const SignIn: React.FC = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={() => handleChange('email')}
+              helperText={formErrors.email}
+              error={Boolean(formErrors.email)}
             />
             <TextField
               margin="normal"
@@ -57,7 +98,10 @@ export const SignIn: React.FC = () => {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="password"
+              onChange={() => handleChange('password')}
+              helperText={formErrors.password}
+              error={Boolean(formErrors.password)}
             />
             <Button
               type="submit"

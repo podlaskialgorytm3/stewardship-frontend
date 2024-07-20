@@ -1,11 +1,11 @@
-import { SignIn } from '../../features/login/components/login';
+import { Login } from '../../features/login/components/login';
 
-const Login: React.FC = () => {
+const LoginPage: React.FC = () => {
     return (
         <div>
-            <SignIn />
+            <Login />
         </div>
     );
 }
 
-export default Login;
+export default LoginPage;
