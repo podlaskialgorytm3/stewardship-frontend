@@ -15,7 +15,7 @@ export const registerFormSchema = object({
   }).email({
     message: "Write correct email!"
   }),
-  password: string().min(6).max(20),
+  password: string().min(6).max(20).regex(/^(?=.*[a-zA-Z])(?=.*\d).*$/, "Password must contain at least one letter and one digit"),
   name: string().min(2),
   img: string().url({
     message: "Write correct url!"
