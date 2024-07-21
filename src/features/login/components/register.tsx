@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { DEFAULT_REGISTER_STATE } from '../constants/constants';
 import { RegisterForm } from '../types/types';
@@ -19,6 +19,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
 import Loading from '../../../shared/components/loading';
+import Swal from 'sweetalert2';
 
 export const Register: React.FC = () => {
   const [ formErrors, setFormErrors ] = useState<RegisterForm>(DEFAULT_REGISTER_STATE);
@@ -61,6 +62,16 @@ export const Register: React.FC = () => {
       }
     ))
   }
+
+  useEffect(() => {
+    if(isError){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error?.message
+      })
+    }
+  },[isError, error])
 
   return (
     <ThemeProvider theme={defaultTheme}>

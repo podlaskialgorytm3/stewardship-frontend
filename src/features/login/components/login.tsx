@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { DEFAULT_LOGIN_STATE } from '../constants/constants';
 import { LoginForm } from '../types/types';
@@ -19,6 +19,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
 import Loading from '../../../shared/components/loading';
+import Swal from 'sweetalert2';
 
 export const Login: React.FC = () => {
   const [ formErrors, setFormErrors ] = useState<LoginForm>(DEFAULT_LOGIN_STATE);
@@ -60,6 +61,16 @@ export const Login: React.FC = () => {
       }
     ))
   }
+
+  useEffect(() => {
+    if(isError){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error?.message
+      })
+    }
+  },[isError, error])
 
   return (
     <ThemeProvider theme={defaultTheme}>
