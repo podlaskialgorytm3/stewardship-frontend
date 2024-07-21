@@ -4,6 +4,7 @@ import { DEFAULT_REGISTER_STATE } from '../constants/constants';
 import { RegisterForm } from '../types/types';
 import { registerFormSchema } from '../utils/utils';
 import { fromZodError } from 'zod-validation-error';
+import  useRegister  from '../api/use-register';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -19,6 +20,7 @@ import { defaultTheme } from '../../../shared/themes/themes';
 
 export const Register: React.FC = () => {
   const [ formErrors, setFormErrors ] = useState<RegisterForm>(DEFAULT_REGISTER_STATE);
+  const { mutate, isPending, isError, error } = useRegister();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,6 +35,7 @@ export const Register: React.FC = () => {
     try{
       const user = registerFormSchema.parse(formData);
       setFormErrors(DEFAULT_REGISTER_STATE);
+      mutate(user)
     }
     catch(error: any){
       const validationError = fromZodError(error);
@@ -108,7 +111,7 @@ export const Register: React.FC = () => {
               id="email"
               label="Email Address"
               name="email"
-              autoComplete="email"
+              autoComplete="email-register"
               autoFocus
               onChange={() => handleChange('email')}
               helperText={formErrors.email}
@@ -122,7 +125,7 @@ export const Register: React.FC = () => {
               label="Password"
               type="password"
               id="password"
-              autoComplete="password"
+              autoComplete="password-register"
               onChange={() => handleChange('password')}
               helperText={formErrors.password}
               error={Boolean(formErrors.password)}
