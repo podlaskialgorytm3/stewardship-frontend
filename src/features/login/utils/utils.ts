@@ -29,3 +29,7 @@ export const emailFormSchema = object({
     message: "Write correct email!"
   }),
 });
+
+export const passwordFormSchema = object({
+  password: string().min(6).max(20).regex(/^(?=.*[a-zA-Z])(?=.*\d).*$/, "Password must contain at least one letter and one digit"),
+})
