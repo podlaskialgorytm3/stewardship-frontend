@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import { DEFAULT_LOGIN_STATE } from '../constants/constants';
-import { LoginForm } from '../types/types';
 import { emailFormSchema } from '../utils/utils';
 import { fromZodError } from 'zod-validation-error';
 import useSendEmail  from '../api/use-send-email';
@@ -20,7 +18,7 @@ import Loading from '../../../shared/components/loading';
 import Swal from 'sweetalert2';
 
 export const ForgotPassword: React.FC = () => {
-  const [ formErrors, setFormErrors ] = useState<LoginForm>(DEFAULT_LOGIN_STATE);
+  const [ formErrors, setFormErrors ] = useState<{email: string}>({email: ''});
   const {mutate, isPending, isError, error} = useSendEmail();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +30,7 @@ export const ForgotPassword: React.FC = () => {
 
     try{
       const user = emailFormSchema.parse(formData);
-      setFormErrors(DEFAULT_LOGIN_STATE);
+      setFormErrors({email: ''});
       mutate(user.email);
     }
     catch(error: any){

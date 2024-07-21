@@ -6,8 +6,9 @@ import Swal from 'sweetalert2'
 
 
 const sendEmail = async (email: string) => {
-    const response = await fetch(`${API_URL}/auth/forgot-password`, {
+    const response = await fetch(`${API_URL}/stewardship/user/password/reset`, {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -22,7 +23,10 @@ const sendEmail = async (email: string) => {
         })
     }
 
-    return response.json()
+    const data = await response.json();
+
+    console.log(data)
+    return data;
 }
 
 const useSendEmail = () => (
