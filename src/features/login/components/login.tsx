@@ -18,6 +18,8 @@ import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
+import Loading from '../../../shared/components/loading';
+
 export const Login: React.FC = () => {
   const [ formErrors, setFormErrors ] = useState<LoginForm>(DEFAULT_LOGIN_STATE);
   const { mutate, isPending, isError, error } = useLogin();
@@ -61,7 +63,17 @@ export const Login: React.FC = () => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+      {isPending ? 
+      <>
+        <Loading size={100} />
+      </>
+      :
         <Box
           sx={{
             marginTop: 8,
@@ -125,7 +137,8 @@ export const Login: React.FC = () => {
             </Grid>
           </Box>
         </Box>
-      </Container>
+        }
+      </Container>  
     </ThemeProvider>
   );
 }

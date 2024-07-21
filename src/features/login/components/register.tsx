@@ -18,6 +18,8 @@ import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
+import Loading from '../../../shared/components/loading';
+
 export const Register: React.FC = () => {
   const [ formErrors, setFormErrors ] = useState<RegisterForm>(DEFAULT_REGISTER_STATE);
   const { mutate, isPending, isError, error } = useRegister();
@@ -62,8 +64,15 @@ export const Register: React.FC = () => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
-        <Box
+      <Container component="main" maxWidth="xs" sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        {
+          isPending ? <Loading size={100} /> : (
+            <Box
           sx={{
             marginTop: 8,
             display: 'flex',
@@ -152,6 +161,8 @@ export const Register: React.FC = () => {
             </Grid>
           </Box>
         </Box>
+          )
+        }
       </Container>
     </ThemeProvider>
   );
