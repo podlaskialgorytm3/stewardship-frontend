@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 import { LoginForm } from '../types/types';
 
 const login = async (formData: LoginForm) => {
-    console.log(formData)
     const response = await fetch('http://localhost:3002/stewardship/user/login', {
         method: 'POST',
         mode: 'cors',
@@ -39,9 +38,9 @@ export const useLogin = () => {
         onSuccess: (data) => {
             queryClient.invalidateQueries({queryKey: ['user']});
             Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'Login successful'
+                icon: data.type,
+                title: data.type.charAt(0).toUpperCase() + data.type.slice(1),
+                text: data.message
             })
             localStorage.setItem('token', data.token);
             navigate('/');

@@ -1,7 +1,9 @@
 import { NavLinkComponent } from './nav-link';
 import { Logo } from '../../../shared/components/logo';
+import useAuth from '../../../api/hooks/use-auth';
 
 export const Menu = () => {
+    const { data, isLoading } = useAuth();
 
     return (
         <div>
@@ -9,8 +11,17 @@ export const Menu = () => {
                 <ul className='flex justify-between w-[700px] items-center'>
                     <Logo isImage={false}/>
                     <NavLinkComponent path="/" name="Home"/>
-                    <NavLinkComponent path="/login" name="Login"/>
-                    <NavLinkComponent path="/register" name="Register"/>
+                    {(data && !isLoading) ? 
+                    <>
+                        <NavLinkComponent path="/profile" name="Profile"/>
+                        <NavLinkComponent path="/logout" name="Logout"/> 
+                    </>  
+                    :
+                    <>
+                        <NavLinkComponent path="/login" name="Login"/>
+                        <NavLinkComponent path="/register" name="Register"/>
+                    </>
+                    }
                 </ul>
             </nav>
         </div>
