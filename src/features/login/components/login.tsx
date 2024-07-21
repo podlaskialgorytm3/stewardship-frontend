@@ -9,7 +9,6 @@ import { useLogin } from '../api/use-login';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -17,6 +16,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
+import { NavLink } from 'react-router-dom';
 
 import Loading from '../../../shared/components/loading';
 import Swal from 'sweetalert2';
@@ -136,14 +136,14 @@ export const Login: React.FC = () => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
+              <NavLink to="/forgot-password" className="text-sm hover:underline">
+                  {"Forgot password?"}
+                </NavLink>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <NavLink to="/register" className="text-sm hover:underline">
+                  {"Don't you have account? Sign Up"}
+                </NavLink>
               </Grid>
             </Grid>
           </Box>
