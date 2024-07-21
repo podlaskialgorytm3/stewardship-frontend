@@ -3,9 +3,10 @@ import { UserData } from '../types/types';
 import Swal from 'sweetalert2';
 import { useMutation } from '@tanstack/react-query';
 import { queryClient } from '../../../api/utils/query-client';
+import { API_URL } from '../../../shared/constants/constants';
 
 const logout = async (email: string, token: string) => {
-    const response = await fetch('http://localhost:3002/stewardship/user/logout', {
+    const response = await fetch(`${API_URL}/stewardship/user/logout`, {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify(email),

@@ -3,10 +3,12 @@ import { queryClient } from '../../../api/utils/query-client';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+
+import { API_URL } from '../../../shared/constants/constants';
 import { LoginForm } from '../types/types';
 
 const login = async (formData: LoginForm) => {
-    const response = await fetch('http://localhost:3002/stewardship/user/login', {
+    const response = await fetch(`${API_URL}/stewardship/user/login`, {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify(formData),
