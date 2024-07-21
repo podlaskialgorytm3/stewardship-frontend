@@ -21,3 +21,11 @@ export const registerFormSchema = object({
     message: "Write correct url!"
   })
 });
+
+export const emailFormSchema = object({
+  email: string({
+    message: "E-mail is required!"
+  }).email({
+    message: "Write correct email!"
+  }),
+});
