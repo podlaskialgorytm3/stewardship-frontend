@@ -8,3 +8,9 @@ export interface RegisterForm {
     name: string;
     img: string;
 }
+export interface UserData {
+    id: number,
+    email: string,
+    img: string,
+    name: string
+}

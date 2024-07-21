@@ -1,6 +1,7 @@
 import { NavLinkComponent } from './nav-link';
 import { Logo } from '../../../shared/components/logo';
 import useAuth from '../../../api/hooks/use-auth';
+import { LogoutButton } from './logout-button';
 
 export const Menu = () => {
     const { data, isLoading } = useAuth();
@@ -11,10 +12,10 @@ export const Menu = () => {
                 <ul className='flex justify-between w-[700px] items-center'>
                     <Logo isImage={false}/>
                     <NavLinkComponent path="/" name="Home"/>
-                    {(data && !isLoading) ? 
+                    {(data?.authenticated && !isLoading) ? 
                     <>
                         <NavLinkComponent path="/profile" name="Profile"/>
-                        <NavLinkComponent path="/logout" name="Logout"/> 
+                        <LogoutButton>Logout</LogoutButton>
                     </>  
                     :
                     <>

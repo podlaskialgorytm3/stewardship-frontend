@@ -42,8 +42,10 @@ export const useLogin = () => {
                 title: data.type.charAt(0).toUpperCase() + data.type.slice(1),
                 text: data.message
             })
+            localStorage.setItem('user', JSON.stringify(data.user));
             localStorage.setItem('token', data.token);
             navigate('/');
+            window.location.reload();
         }
     });
     
