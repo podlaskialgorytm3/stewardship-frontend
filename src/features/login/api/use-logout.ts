@@ -39,8 +39,10 @@ const useLogout =  () => {
             })
             localStorage.removeItem('user');
             localStorage.removeItem('token');
-            window.location.reload();
-            navigate('/login');
+            setTimeout(() => {
+                window.location.reload();
+                navigate('/login');
+            }, 1000)
         }
     });
     

@@ -44,8 +44,10 @@ export const useLogin = () => {
             })
             localStorage.setItem('user', JSON.stringify(data.user));
             localStorage.setItem('token', data.token);
-            navigate('/');
-            window.location.reload();
+            setTimeout(() => {
+                navigate('/');
+                window.location.reload();
+            },1000)
         }
     });
     
