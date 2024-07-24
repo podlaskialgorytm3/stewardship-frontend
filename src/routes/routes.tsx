@@ -5,7 +5,7 @@ import RootPage from "../pages/root/index";
 import LoginPage from "../pages/login/index";
 import RegisterPage from "../pages/register/index";
 import ForgorPasswordPage from "../pages/forgot-password";
-import ResetPasswordPage from "../pages/reset-pasword";
+import ResetPasswordPage from "../pages/reset-password";
 
 export const routes = createBrowserRouter([
     {
