@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-
 import { DEFAULT_LOGIN_STATE } from '../constants/constants';
-import { LoginForm } from '../types/types';
 import { loginFormSchema } from '../utils/utils';
-import { fromZodError } from 'zod-validation-error';
+import Loading from '../../../shared/components/loading';
 import { useLogin } from '../api/use-login';
+import useMutateData from '../../../shared/hooks/use-mutate-data';
+import useErrorMessage from '../../../shared/hooks/use-error-message';
+
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -18,59 +18,17 @@ import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 import { NavLink } from 'react-router-dom';
 
-import Loading from '../../../shared/components/loading';
-import Swal from 'sweetalert2';
+
 
 export const Login: React.FC = () => {
-  const [ formErrors, setFormErrors ] = useState<LoginForm>(DEFAULT_LOGIN_STATE);
   const { mutate, isPending, isError, error } = useLogin();
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const formData = {
-      email: data.get('email') as string,
-      password: data.get('password') as string
-    }
-
-    try{
-      const user = loginFormSchema.parse(formData);
-      setFormErrors(DEFAULT_LOGIN_STATE);
-      mutate(user);
-
-    }
-    catch(error: any){
-      const validationError = fromZodError(error);
-      validationError.details.forEach((detail) => {
-        setFormErrors((prevState) => (
-          {
-            ...prevState,
-            [detail.path[0]]: detail.message
-          }
-        ))
-      })
-    }
-
-  };
-
-  const handleChange = (name: string) => {
-    setFormErrors((prevState) => (
-      {
-        ...prevState,
-        [name]: ''
-      }
-    ))
-  }
-
-  useEffect(() => {
-    if(isError){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error?.message
-      })
-    }
-  },[isError, error])
+  const { formErrors, handleSubmit, handleChange } = useMutateData({
+    data: ['email', 'password'],
+    schema: loginFormSchema,
+    mutate: mutate,
+    DEFAULT_STATE: DEFAULT_LOGIN_STATE,
+  });
+  useErrorMessage({ error: error || { message: '' }, isError });
 
   return (
     <ThemeProvider theme={defaultTheme}>

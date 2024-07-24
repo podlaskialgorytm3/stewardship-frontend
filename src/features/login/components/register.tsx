@@ -1,5 +1,9 @@
 import { DEFAULT_REGISTER_STATE } from '../constants/constants';
 import { registerFormSchema } from '../utils/utils';
+import Loading from '../../../shared/components/loading';
+import { NavLink } from 'react-router-dom';
+import useMutateData from '../../../shared/hooks/use-mutate-data';
+import useErrorMessage from '../../../shared/hooks/use-error-message';
 import  useRegister  from '../api/use-register';
 
 import Avatar from '@mui/material/Avatar';
@@ -13,11 +17,7 @@ import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
-import Loading from '../../../shared/components/loading';
-import { NavLink } from 'react-router-dom';
 
-import useMutateData from '../../../shared/hooks/use-mutate-data';
-import useErrorMessage from '../../../shared/hooks/use-error-message';
 
 export const Register: React.FC = () => {
   const { mutate, isPending, isError, error } = useRegister();

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-
 import { emailFormSchema } from '../utils/utils';
-import { fromZodError } from 'zod-validation-error';
+import Loading from '../../../shared/components/loading';
 import useSendEmail  from '../api/use-send-email';
+import useMutateData from '../../../shared/hooks/use-mutate-data';
+import useErrorMessage from '../../../shared/hooks/use-error-message';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -14,57 +14,15 @@ import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
-import Loading from '../../../shared/components/loading';
-import Swal from 'sweetalert2';
-
 export const ForgotPassword: React.FC = () => {
-  const [ formErrors, setFormErrors ] = useState<{email: string}>({email: ''});
-  const {mutate, isPending, isError, error} = useSendEmail();
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const formData = {
-      email: data.get('email') as string,
-    }
-
-    try{
-      const user = emailFormSchema.parse(formData);
-      setFormErrors({email: ''});
-      mutate(user.email);
-    }
-    catch(error: any){
-      const validationError = fromZodError(error);
-      validationError.details.forEach((detail) => {
-        setFormErrors((prevState) => (
-          {
-            ...prevState,
-            [detail.path[0]]: detail.message
-          }
-        ))
-      })
-    }
-
-  };
-
-  const handleChange = (name: string) => {
-    setFormErrors((prevState) => (
-      {
-        ...prevState,
-        [name]: ''
-      }
-    ))
-  }
-
-  useEffect(() => {
-    if(isError){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error?.message
-      })
-    }
-  },[isError, error])
+  const { mutate, isPending, isError, error} = useSendEmail();
+  const { formErrors, handleSubmit, handleChange } = useMutateData({
+    data: ['email'],
+    schema: emailFormSchema,
+    mutate: mutate,
+    DEFAULT_STATE: { email: '' },
+  });
+  useErrorMessage({ error: error || { message: '' }, isError });
 
   return (
     <ThemeProvider theme={defaultTheme}>
