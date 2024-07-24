@@ -6,6 +6,7 @@ import LoginPage from "../pages/login/index";
 import RegisterPage from "../pages/register/index";
 import ForgorPasswordPage from "../pages/forgot-password";
 import ResetPasswordPage from "../pages/reset-password";
+import ProfilePage from "../pages/profile";
 
 export const routes = createBrowserRouter([
     {
@@ -16,7 +17,8 @@ export const routes = createBrowserRouter([
             {path: "/login", element: <LoginPage />},
             {path: "/register", element: <RegisterPage />},
             {path: "/forgot-password", element: <ForgorPasswordPage />},
-            {path: "/reset-password/:token", element: <ResetPasswordPage />}
+            {path: "/reset-password/:token", element: <ResetPasswordPage />},
+            {path: "/profile", element: <ProfilePage />}
         ]
     }
 ])
