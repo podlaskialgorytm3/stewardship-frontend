@@ -1,6 +1,6 @@
 import { Profile } from '../../features/user/profile';
 import  useAuth  from '../../api/hooks/use-auth';
-import { ErrorInfo } from '../../features/login/components/error';
+import { AuthError } from '../../shared/components/auth-error';
 
 const ProfilePage: React.FC = () => {
     const { data, isLoading } = useAuth();
@@ -8,9 +8,9 @@ const ProfilePage: React.FC = () => {
     return (
         <div> 
             {(!data?.authenticated && !isLoading) ? 
-                    <ErrorInfo>
+                    <AuthError>
                         You are not logged in!
-                    </ErrorInfo>
+                    </AuthError>
                     :
                     <>
                         <Profile />

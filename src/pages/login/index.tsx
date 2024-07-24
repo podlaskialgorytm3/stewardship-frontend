@@ -1,6 +1,6 @@
 import { Login } from '../../features/login/components/login';
 import  useAuth  from '../../api/hooks/use-auth';
-import { ErrorInfo } from '../../features/login/components/error';
+import { AuthError } from '../../shared/components/auth-error';
 
 const LoginPage: React.FC = () => {
     const { data, isLoading } = useAuth();
@@ -8,9 +8,9 @@ const LoginPage: React.FC = () => {
     return (
         <div> 
             {(data?.authenticated && !isLoading) ? 
-                    <ErrorInfo>
+                    <AuthError>
                         You are  logged in!
-                    </ErrorInfo>
+                    </AuthError>
                     :
                     <>
                         <Login />

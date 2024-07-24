@@ -1,15 +1,15 @@
 import { Register } from "../../features/login/components/register"
 import  useAuth  from '../../api/hooks/use-auth';
-import { ErrorInfo } from '../../features/login/components/error';
+import { AuthError } from '../../shared/components/auth-error';
 
 const RegisterPage: React.FC = () => {
     const { data, isLoading } = useAuth();
     return (
         <div> 
             {(data?.authenticated && !isLoading) ? 
-                    <ErrorInfo>
+                    <AuthError>
                         You are  logged in!
-                    </ErrorInfo>
+                    </AuthError>
                     :
                     <>
                         <Register />

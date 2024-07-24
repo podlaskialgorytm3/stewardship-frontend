@@ -1,5 +1,5 @@
 import useAuth from "../../api/hooks/use-auth";
-import { ErrorInfo } from "../../features/login/components/error";
+import { AuthError } from "../../shared/components/auth-error";
 import { ResetPassword } from "../../features/login/components/reset-password";
 
 const ResetPasswordPage = () => {
@@ -7,9 +7,9 @@ const ResetPasswordPage = () => {
     return (
         <div>
             {(!isLoading && data.authenticated )? (
-                <ErrorInfo>
+                <AuthError>
                     You are logged in!
-                </ErrorInfo>
+                </AuthError>
             ) : (
                 <ResetPassword />
             )}
