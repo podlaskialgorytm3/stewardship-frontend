@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { fromZodError } from 'zod-validation-error';
 
-export const useCheckData = ({
+export const useMutateData = ({
     data,
     schema,
     mutate,
@@ -57,4 +57,4 @@ export const useCheckData = ({
     }
 }
 
-export default useCheckData;
+export default useMutateData;

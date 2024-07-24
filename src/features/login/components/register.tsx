@@ -19,11 +19,11 @@ import Loading from '../../../shared/components/loading';
 import Swal from 'sweetalert2';
 import { NavLink } from 'react-router-dom';
 
-import useCheckData from '../hooks/use-check-data';
+import useMutateData from '../../../shared/hooks/use-mutate-data';
 
 export const Register: React.FC = () => {
   const { mutate, isPending, isError, error } = useRegister();
-  const { formErrors, handleSubmit, handleChange } = useCheckData({
+  const { formErrors, handleSubmit, handleChange } = useMutateData({
     data: ['name', 'img', 'email', 'password'],
     schema: registerFormSchema,
     mutate: mutate,
