@@ -22,12 +22,11 @@ export const ResetPassword: React.FC = () => {
     data: ['password','token'],
     schema: passwordFormSchema,
     mutate: mutate,
-    DEFAULT_STATE: { password: '' },
+    DEFAULT_STATE: { password: '' , token: ''},
   });
   const { token } = useParams<{token: string}>();
 
-
- useErrorMessage({ error: error || { message: '' }, isError });
+  useErrorMessage({ error: error || { message: '' }, isError });
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -72,11 +71,10 @@ export const ResetPassword: React.FC = () => {
             />
             <TextField 
               value={token}
-              type="hidden"
               required
-              fullWidth
               id="token"
               name="token"
+              sx={{ display: 'none' }}
             />
             <Button
               type="submit"

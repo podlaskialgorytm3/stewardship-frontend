@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
 
-const resetPassword = async ({newPassword, token} : {newPassword: string, token: string}) => {
+const resetPassword = async ({password: newPassword, token} : {password: string, token: string}) => {
     const response = await fetch(`${API_URL}/stewardship/user/password/reset`,{
         method: 'PUT',
         headers: {
