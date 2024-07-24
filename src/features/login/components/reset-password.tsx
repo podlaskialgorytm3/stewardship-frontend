@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import { passwordFormSchema } from '../utils/utils';
-import { fromZodError } from 'zod-validation-error';
+import useErrorMessage from '../../../shared/hooks/use-error-message';
+import useMutateData from '../../../shared/hooks/use-mutate-data';
 import useResetPassword  from '../api/use-reset-password';
 
 import Avatar from '@mui/material/Avatar';
@@ -16,57 +15,19 @@ import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
 import Loading from '../../../shared/components/loading';
-import Swal from 'sweetalert2';
 
 export const ResetPassword: React.FC = () => {
-  const [ formErrors, setFormErrors ] = useState<{password: string}>({password: ''});
   const {mutate, isPending, isError, error} = useResetPassword();
+  const { formErrors, handleSubmit, handleChange } = useMutateData({
+    data: ['password','token'],
+    schema: passwordFormSchema,
+    mutate: mutate,
+    DEFAULT_STATE: { password: '' },
+  });
   const { token } = useParams<{token: string}>();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const formData = {
-      password: data.get('password') as string,
-    }
 
-    try{
-      const user = passwordFormSchema.parse(formData);
-      setFormErrors({password: ''});
-      mutate({newPassword: user.password, token} as {newPassword: string, token: string});
-    }
-    catch(error: any){
-      const validationError = fromZodError(error);
-      validationError.details.forEach((detail) => {
-        setFormErrors((prevState) => (
-          {
-            ...prevState,
-            [detail.path[0]]: detail.message
-          }
-        ))
-      })
-    }
-
-  };
-
-  const handleChange = (name: string) => {
-    setFormErrors((prevState) => (
-      {
-        ...prevState,
-        [name]: ''
-      }
-    ))
-  }
-
-  useEffect(() => {
-    if(isError){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error?.message
-      })
-    }
-  },[isError, error])
+ useErrorMessage({ error: error || { message: '' }, isError });
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -108,6 +69,14 @@ export const ResetPassword: React.FC = () => {
               onChange={() => handleChange('password')}
               helperText={formErrors.password}
               error={Boolean(formErrors.password)}
+            />
+            <TextField 
+              value={token}
+              type="hidden"
+              required
+              fullWidth
+              id="token"
+              name="token"
             />
             <Button
               type="submit"

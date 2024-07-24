@@ -15,7 +15,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
 export const ForgotPassword: React.FC = () => {
-  const { mutate, isPending, isError, error} = useSendEmail();
+  const {mutate, isPending, isError, error} = useSendEmail();
   const { formErrors, handleSubmit, handleChange } = useMutateData({
     data: ['email'],
     schema: emailFormSchema,

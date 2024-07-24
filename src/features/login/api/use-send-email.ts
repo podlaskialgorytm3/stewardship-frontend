@@ -5,7 +5,7 @@ import { API_URL } from '../../../shared/constants/constants'
 import Swal from 'sweetalert2'
 
 
-const sendEmail = async (email: string) => {
+const sendEmail = async ({email}: {email: string}) => {
     const response = await fetch(`${API_URL}/stewardship/user/password/reset`, {
         method: 'POST',
         mode: 'cors',
