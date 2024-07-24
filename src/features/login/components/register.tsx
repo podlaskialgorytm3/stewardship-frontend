@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { DEFAULT_REGISTER_STATE } from '../constants/constants';
-import { RegisterForm } from '../types/types';
 import { registerFormSchema } from '../utils/utils';
-import { fromZodError } from 'zod-validation-error';
 import  useRegister  from '../api/use-register';
 
 import Avatar from '@mui/material/Avatar';
@@ -21,47 +19,17 @@ import Loading from '../../../shared/components/loading';
 import Swal from 'sweetalert2';
 import { NavLink } from 'react-router-dom';
 
+import useCheckData from '../hooks/use-check-data';
+
 export const Register: React.FC = () => {
-  const [ formErrors, setFormErrors ] = useState<RegisterForm>(DEFAULT_REGISTER_STATE);
   const { mutate, isPending, isError, error } = useRegister();
+  const { formErrors, handleSubmit, handleChange } = useCheckData({
+    data: ['name', 'img', 'email', 'password'],
+    schema: registerFormSchema,
+    mutate: mutate,
+    DEFAULT_STATE: DEFAULT_REGISTER_STATE,
+  });
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const formData = {
-            email: data.get('email') as string,
-            password: data.get('password') as string,
-            name: data.get('name') as string,
-            img: data.get('img') as string
-    }
-
-    try{
-      const user = registerFormSchema.parse(formData);
-      setFormErrors(DEFAULT_REGISTER_STATE);
-      mutate(user)
-    }
-    catch(error: any){
-      const validationError = fromZodError(error);
-      validationError.details.forEach((detail) => {
-        setFormErrors((prevState) => (
-          {
-            ...prevState,
-            [detail.path[0]]: detail.message
-          }
-        ))
-      })
-    }
-
-  };
-
-  const handleChange = (name: string) => {
-    setFormErrors((prevState) => (
-      {
-        ...prevState,
-        [name]: ''
-      }
-    ))
-  }
 
   useEffect(() => {
     if(isError){
