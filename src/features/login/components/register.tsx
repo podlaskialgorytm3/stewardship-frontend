@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import { DEFAULT_REGISTER_STATE } from '../constants/constants';
 import { registerFormSchema } from '../utils/utils';
 import  useRegister  from '../api/use-register';
@@ -16,10 +14,10 @@ import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 
 import Loading from '../../../shared/components/loading';
-import Swal from 'sweetalert2';
 import { NavLink } from 'react-router-dom';
 
 import useMutateData from '../../../shared/hooks/use-mutate-data';
+import useErrorMessage from '../../../shared/hooks/use-error-message';
 
 export const Register: React.FC = () => {
   const { mutate, isPending, isError, error } = useRegister();
@@ -29,17 +27,7 @@ export const Register: React.FC = () => {
     mutate: mutate,
     DEFAULT_STATE: DEFAULT_REGISTER_STATE,
   });
-
-
-  useEffect(() => {
-    if(isError){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error?.message
-      })
-    }
-  },[isError, error])
+  useErrorMessage({ error: error || { message: '' }, isError });
 
   return (
     <ThemeProvider theme={defaultTheme}>
