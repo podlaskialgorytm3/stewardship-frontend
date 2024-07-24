@@ -1,8 +1,8 @@
-import { Profile } from '../../features/user/components/profile';
+import { Dashboard } from '@mui/icons-material';
 import  useAuth  from '../../api/hooks/use-auth';
 import { AuthError } from '../../shared/components/auth-error';
 
-const ProfilePage: React.FC = () => {
+const DashboardPage: React.FC = () => {
     const { data, isLoading } = useAuth();
 
     return (
@@ -13,11 +13,11 @@ const ProfilePage: React.FC = () => {
                     </AuthError>
                     :
                     <>
-                        <Profile />
+                        <Dashboard />
                     </>
                     }
         </div>
     );
 }
 
-export default ProfilePage;
+export default DashboardPage;
