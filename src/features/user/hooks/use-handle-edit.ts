@@ -3,12 +3,14 @@ import { User } from "../types/types";
 
 import useUpdateImg from "../api/use-update-img";
 import useUpdateName from "../api/use-update-name";
+import useUpdateEmail from "../api/use-update-email";
 
 import useErrorMessage from "../../../shared/hooks/use-error-message";
 
 const useHandleEdit = ({data} : {data: User}) => {
     const {mutate: mutateImg,  isError: isErrorImg, error: errorImg} = useUpdateImg();
     const {mutate: mutateName, isError: isErrorName, error: errorName} = useUpdateName();
+    const {mutate: mutateEmail, isError: isErrorEmail, error: errorEmail} = useUpdateEmail()
 
     const handleImageClick = () => {
         Swal.fire({
@@ -81,7 +83,7 @@ const useHandleEdit = ({data} : {data: User}) => {
                 if (emailValue.isConfirmed) {
                     const email = emailValue.value;
                     const password = passwordValue.value;
-                    console.log(email, password);
+                    mutateEmail({email, password})
                 }
             })
         })
@@ -89,6 +91,7 @@ const useHandleEdit = ({data} : {data: User}) => {
 
     useErrorMessage({isError: isErrorImg, error: errorImg} as {isError: boolean, error: Error});
     useErrorMessage({isError: isErrorName, error: errorName} as {isError: boolean, error: Error});
+    useErrorMessage({isError: isErrorEmail, error: errorEmail} as {isError: boolean, error: Error});
 
     return { handleImageClick, handleNameClick, handleEmailClick }
 }
