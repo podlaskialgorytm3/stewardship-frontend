@@ -17,7 +17,7 @@ export const Profile: React.FC = () => {
                     <img 
                         src={data?.img} 
                         alt={data?.name} 
-                        className="w-[150px] h-[150px] rounded-[50%] mt-10" 
+                        className="w-[150px] h-[150px] rounded-[50%] mt-10 bg-center" 
                         onClick={() => handleImageClick()}
                     />
                     <p 

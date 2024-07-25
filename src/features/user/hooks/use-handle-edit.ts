@@ -1,6 +1,11 @@
 import Swal from "sweetalert2";
+import { User } from "../types/types";
 
-const useHandleEdit = ({data} : {data: any}) => {
+import useUpdateImg from "../api/use-update-img";
+
+const useHandleEdit = ({data} : {data: User}) => {
+    const {mutate: mutateImg, isPending: isPendingImg, isError: isErrorImg, error: errorImg} = useUpdateImg();
+
     const handleImageClick = () => {
         Swal.fire({
             title: "Profile Picture",
@@ -20,7 +25,7 @@ const useHandleEdit = ({data} : {data: any}) => {
         }).then((result) => {
             if (result.isConfirmed) {
             const inputValue = result.value;
-            Swal.fire(`Profile picture: ${inputValue}`);
+            mutateImg(inputValue)
             }
         });
     }
