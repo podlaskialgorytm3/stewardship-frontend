@@ -24,11 +24,11 @@ export const Profile: React.FC = () => {
                     <p 
                         className="text-3xl mt-10 font-bold"
                         onClick={() => handleNameClick()}
-                    >{data?.name}</p>
+                        >{data?.name}</p>
                     <p 
                         className="text-2xl mt-10"
                         onClick={() => handleEmailClick()}
-                    >{data?.email}</p>
+                        >{data?.email}</p>
                 </div>
             </div>
         </div>

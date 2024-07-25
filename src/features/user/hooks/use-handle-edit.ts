@@ -52,11 +52,38 @@ const useHandleEdit = ({data} : {data: User}) => {
     const handleEmailClick = () => {
         Swal.fire({
             title: "Email",
-            text: "Change email",
-            input: "email",
+            text: "Please your password first",
+            input: "password",
             inputAttributes: {
                 autocapitalize: "off",
             },
+            preConfirm: (passwordValue) => {
+                if (!passwordValue) {
+                    Swal.showValidationMessage("Password is required");
+                }
+                const redex = /^[a-zA-Z0-9]{8,}$/;
+                if (!redex.test(passwordValue)) {
+                    Swal.showValidationMessage("Password must be at least 8 characters long and contain only letters and numbers");
+                }
+            }
+        }).then((passwordValue) => {
+            Swal.fire({
+                title: "Email",
+                text: "Change email",
+                input: "email",
+                inputValue: data?.email,
+                preConfirm: (inputValue) => {
+                    if (!inputValue) {
+                        Swal.showValidationMessage("Email is required");
+                    }
+                }
+            }).then((emailValue) => {
+                if (emailValue.isConfirmed) {
+                    const email = emailValue.value;
+                    const password = passwordValue.value;
+                    console.log(email, password);
+                }
+            })
         })
     }
 
