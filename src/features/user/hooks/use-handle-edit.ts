@@ -63,10 +63,6 @@ const useHandleEdit = ({data} : {data: User}) => {
                 if (!passwordValue) {
                     Swal.showValidationMessage("Password is required");
                 }
-                const redex = /^[a-zA-Z0-9]{8,}$/;
-                if (!redex.test(passwordValue)) {
-                    Swal.showValidationMessage("Password must be at least 8 characters long and contain only letters and numbers");
-                }
             }
         }).then((passwordValue) => {
             Swal.fire({
@@ -89,11 +85,72 @@ const useHandleEdit = ({data} : {data: User}) => {
         })
     }
 
+    const handlePasswordClick = () => {
+        Swal.fire({
+            title: "Password",
+            text: "Type your old password.",
+            input: "password",
+            inputAttributes: {
+                autocapitalize: "off",
+            },
+            preConfirm: (passwordValue) => {
+                if (!passwordValue) {
+                    Swal.showValidationMessage("Password is required");
+                }
+            }
+        }).then((passwordValue) => {
+            if (passwordValue.isConfirmed) {
+                Swal.fire({
+                    title: "New Password",
+                    text: "Enter new password",
+                    input: "password",
+                    inputAttributes: {
+                        autocapitalize: "off",
+                    },
+                    preConfirm: (newPasswordValue) => {
+                        const redex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+                        if (!newPasswordValue) {
+                            Swal.showValidationMessage("New password is required");
+                        }
+                        if (!redex.test(newPasswordValue)) {
+                            Swal.showValidationMessage("Password must contain at least 8 characters, including uppercase, lowercase letters and numbers");
+                        }
+                    }
+                }).then((newPasswordValue) => {
+                    if (newPasswordValue.isConfirmed) {
+                        const oldPassword = passwordValue.value;
+                        const newPassword = newPasswordValue.value;
+                        Swal.fire({
+                            title: "Confirm Password",
+                            text: "Confirm new password",
+                            input: "password",
+                            inputAttributes: {
+                                autocapitalize: "off",
+                            },
+                            preConfirm: (confirmPasswordValue) => {
+                                if (!confirmPasswordValue) {
+                                    Swal.showValidationMessage("Confirm password is required");
+                                }
+                                if (confirmPasswordValue !== newPassword) {
+                                    Swal.showValidationMessage("Passwords do not match");
+                                }
+                            }
+                        }).then((confirmPasswordValue) => {
+                            if (confirmPasswordValue.isConfirmed) {
+                                // call api to update password
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
+
     useErrorMessage({isError: isErrorImg, error: errorImg} as {isError: boolean, error: Error});
     useErrorMessage({isError: isErrorName, error: errorName} as {isError: boolean, error: Error});
     useErrorMessage({isError: isErrorEmail, error: errorEmail} as {isError: boolean, error: Error});
 
-    return { handleImageClick, handleNameClick, handleEmailClick }
+    return { handleImageClick, handleNameClick, handleEmailClick, handlePasswordClick }
 }
 
 export default useHandleEdit;

@@ -5,7 +5,7 @@ import useHandleEdit from "../hooks/use-handle-edit";
 
 export const Profile: React.FC = () => {
     const { data, isLoading } = useFetchUser();
-    const { handleImageClick, handleNameClick, handleEmailClick } = useHandleEdit({data});
+    const { handleImageClick, handleNameClick, handleEmailClick, handlePasswordClick } = useHandleEdit({data});
 
     return(
         <div className="min-h-[50vh] flex justify-center items-center flex-col">
@@ -24,11 +24,18 @@ export const Profile: React.FC = () => {
                     <p 
                         className="text-3xl mt-10 font-bold"
                         onClick={() => handleNameClick()}
-                        >{data?.name}</p>
+                        >{data?.name}
+                    </p>
                     <p 
                         className="text-2xl mt-10"
                         onClick={() => handleEmailClick()}
-                        >{data?.email}</p>
+                        >{data?.email}
+                    </p>
+                    <p 
+                        className="text-xl mt-10 hover:font-bold"
+                        onClick={() => handlePasswordClick()}
+                        >Change Password
+                    </p>
                 </div>
             </div>
         </div>
