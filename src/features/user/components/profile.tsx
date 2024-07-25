@@ -1,43 +1,11 @@
 import { useFetchUser } from "../api/use-fetch-user";
 import Loading from "../../../shared/components/loading";
-import Swal from "sweetalert2";
+import useHandleEdit from "../hooks/use-handle-edit";
+
 
 export const Profile: React.FC = () => {
     const { data, isLoading } = useFetchUser();
-
-    const handleImageClick = () => {
-        Swal.fire({
-            title: "Profile Picture",
-            text: "Change profile picture",
-            input: "text",
-            inputAttributes: {
-                autocapitalize: "off",
-                type: "url"
-            },
-        })
-    }
-
-    const handleNameClick = () => {
-        Swal.fire({
-            title: "Name",
-            text: "Change name",
-            input: "text",
-            inputAttributes: {
-                autocapitalize: "off",
-            },
-        })
-    }
-
-    const handleEmailClick = () => {
-        Swal.fire({
-            title: "Email",
-            text: "Change email",
-            input: "email",
-            inputAttributes: {
-                autocapitalize: "off",
-            },
-        })
-    }
+    const { handleImageClick, handleNameClick, handleEmailClick } = useHandleEdit({data});
 
 
     return(
