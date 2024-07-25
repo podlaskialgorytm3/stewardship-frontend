@@ -2,9 +2,13 @@ import Swal from "sweetalert2";
 import { User } from "../types/types";
 
 import useUpdateImg from "../api/use-update-img";
+import useUpdateName from "../api/use-update-name";
+
+import useErrorMessage from "../../../shared/hooks/use-error-message";
 
 const useHandleEdit = ({data} : {data: User}) => {
-    const {mutate: mutateImg, isPending: isPendingImg, isError: isErrorImg, error: errorImg} = useUpdateImg();
+    const {mutate: mutateImg,  isError: isErrorImg, error: errorImg} = useUpdateImg();
+    const {mutate: mutateName, isError: isErrorName, error: errorName} = useUpdateName();
 
     const handleImageClick = () => {
         Swal.fire({
@@ -12,10 +16,6 @@ const useHandleEdit = ({data} : {data: User}) => {
             text: "Change profile picture",
             input: "text",
             inputValue: data?.img,
-            inputAttributes: {
-            autocapitalize: "off",
-            type: "url"
-            },
             preConfirm: (inputValue) => {
             const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
             if (!urlRegex.test(inputValue)) {
@@ -35,9 +35,17 @@ const useHandleEdit = ({data} : {data: User}) => {
             title: "Name",
             text: "Change name",
             input: "text",
-            inputAttributes: {
-                autocapitalize: "off",
-            },
+            inputValue: data?.name,
+            preConfirm: (inputValue) => {
+                if (!inputValue) {
+                    Swal.showValidationMessage("Name is required");
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const inputValue = result.value;
+                mutateName(inputValue)
+            }
         })
     }
 
@@ -51,6 +59,9 @@ const useHandleEdit = ({data} : {data: User}) => {
             },
         })
     }
+
+    useErrorMessage({isError: isErrorImg, error: errorImg} as {isError: boolean, error: Error});
+    useErrorMessage({isError: isErrorName, error: errorName} as {isError: boolean, error: Error});
 
     return { handleImageClick, handleNameClick, handleEmailClick }
 }
