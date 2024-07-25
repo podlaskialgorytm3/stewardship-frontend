@@ -1,4 +1,4 @@
-import { Dashboard } from '@mui/icons-material';
+import { Dashboard } from '../../features/dashboard/components/dashboard';
 import  useAuth  from '../../api/hooks/use-auth';
 import { AuthError } from '../../shared/components/auth-error';
 
