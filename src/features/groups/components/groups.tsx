@@ -19,7 +19,7 @@ export const Groups: React.FC = () => {
                 <div className="w-full flex flex-wrap justify-center">
                     {data && data.data.length > 0 ? (
                         data.data.map((group: GroupResponse) => (
-                            <GroupCard key={group.id} name={group.name} category={group.category} />
+                            <GroupCard key={group.id} group={group} />
                         ))
                     ) : (
                         <p>No groups found</p>

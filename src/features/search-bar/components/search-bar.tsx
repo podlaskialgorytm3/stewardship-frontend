@@ -13,7 +13,7 @@ export const SearchBar: React.FC<{placeholder: string, search: string, setSearch
                 type="search"
                 value={search}
                 onChange={handleChange}
-                className="mb-4 p-2 border border-gray-300 rounded w-full pl-10"
+                className="mb-4 p-2 border border-gray-300 rounded-2xl w-full pl-10"
                 placeholder={placeholder}
             />
         <FontAwesomeIcon icon={faSearch} className="absolute left-3 top-3 text-black" />
