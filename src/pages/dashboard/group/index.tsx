@@ -4,7 +4,6 @@ import { SingleGroupPage } from '../../../features/groups/components/single-grou
 
 const GroupPage: React.FC = () => {
     const { data, isLoading } = useAuth();
-
     return (
         <div> 
             {(!data?.authenticated && !isLoading) ? 
