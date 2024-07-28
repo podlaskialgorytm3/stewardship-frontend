@@ -15,3 +15,7 @@ export const MEMBERSHIPMENT = [
         text: "Join Group"
     }
 ]
+export const DEFAULT_GROUP_STATE = {
+    name: "",
+    category: ""
+}
