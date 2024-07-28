@@ -8,7 +8,8 @@ import ForgorPasswordPage from "../pages/forgot-password";
 import ResetPasswordPage from "../pages/reset-password";
 import ProfilePage from "../pages/profile";
 import DashboardPage from "../pages/dashboard";
-import GroupPage from "../pages/dashboard/groups/index"
+import GroupsPage from "../pages/dashboard/groups/index"
+import GroupPage from "../pages/dashboard/group/index"
 
 export const routes = createBrowserRouter([
     {
@@ -22,7 +23,8 @@ export const routes = createBrowserRouter([
             {path: "/reset-password/:token", element: <ResetPasswordPage />},
             {path: "/profile", element: <ProfilePage />},
             {path: "/dashboard", element: <DashboardPage />, children: [
-                {path: "/dashboard/groups", element: <GroupPage />}
+                {path: "/dashboard/groups", element: <GroupsPage />},
+                {path: "/dashboard/groups/:id", element: <GroupPage />}
             ]}
         ]
     }

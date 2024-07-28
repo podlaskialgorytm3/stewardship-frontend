@@ -1,8 +1,8 @@
-import { Groups } from '../../../features/groups/components/groups';
 import  useAuth  from '../../../api/hooks/use-auth';
 import { AuthError } from '../../../shared/components/auth-error';
+import { SingleGroupPage } from '../../../features/groups/components/single-group-page';
 
-const GroupsPage: React.FC = () => {
+const GroupPage: React.FC = () => {
     const { data, isLoading } = useAuth();
 
     return (
@@ -13,11 +13,11 @@ const GroupsPage: React.FC = () => {
                     </AuthError>
                     :
                     <>
-                        <Groups />
+                        <SingleGroupPage />
                     </>
                     }
         </div>
     );
 }
 
-export default GroupsPage;
+export default GroupPage;
