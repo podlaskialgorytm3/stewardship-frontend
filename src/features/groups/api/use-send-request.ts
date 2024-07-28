@@ -5,7 +5,7 @@ import { API_URL } from "../../../shared/constants/constants";
 import Swal from "sweetalert2";
 
 const sendRequest = async (groupId: number) => {
-    const response = await fetch(`${API_URL}/group-user-request`, {
+    const response = await fetch(`${API_URL}/stewardship/group-user-request`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

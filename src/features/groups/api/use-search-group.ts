@@ -26,7 +26,7 @@ const searchGroup = async (name: string) => {
 
 const useSearchGroup = (name: string) => (
     useQuery({
-        queryKey: ['group', name],
+        queryKey: ['groups', name],
         queryFn: () => searchGroup(name)
     })
 )
