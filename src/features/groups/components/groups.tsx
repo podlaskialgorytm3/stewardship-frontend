@@ -4,8 +4,11 @@ import { GroupCard } from "./group-card";
 import { GroupResponse } from "../types/types";
 import Loading from "../../../shared/components/loading";
 import { SearchBar } from "../../search-bar/components/search-bar";
+import { useNavigate } from "react-router-dom";
 
 export const Groups: React.FC = () => {
+    const navigate = useNavigate(); 
+    
     const [search, setSearch] = useState<string>('');
     const { data, isLoading } = useSearchGroup(search);
 
@@ -13,6 +16,11 @@ export const Groups: React.FC = () => {
         <div className="flex items-center flex-col min-h-[50vh] mt-10">
             <h1 className="text-2xl font-bold">Groups</h1>
             <SearchBar placeholder="Search group" search={search} setSearch={setSearch}/>
+            <button 
+                className="bg-[#7e007e] hover:bg-[#b331b3] text-white font-bold py-2 px-4 rounded mt-2"
+                onClick={() => navigate('/dashboard/create-group')}
+                >Create Group
+            </button>
             {isLoading ? (
                 <Loading size={150} />
             ) : (
