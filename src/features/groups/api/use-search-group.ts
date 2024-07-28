@@ -3,7 +3,7 @@ import { API_URL } from "../../../shared/constants/constants";
 import Swal from "sweetalert2";
 
 const searchGroup = async (name: string) => {
-    const response = await fetch(`${API_URL}/stewardship/group/${name}`,{
+    const response = await fetch(`${API_URL}/stewardship/group/search/${name}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

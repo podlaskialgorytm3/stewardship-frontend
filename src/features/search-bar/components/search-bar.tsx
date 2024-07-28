@@ -1,40 +1,22 @@
-import ReactSearchBox from "react-search-box";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const data = [
-    {
-      key: "john",
-      value: "John Doe",
-    },
-    {
-      key: "jane",
-      value: "Jane Doe",
-    },
-    {
-      key: "mary",
-      value: "Mary Phillips",
-    },
-    {
-      key: "robert",
-      value: "Robert",
-    },
-    {
-      key: "karius",
-      value: "Karius",
-    },
-  ];
 
-export const SearchBar: React.FC = () => {
+export const SearchBar: React.FC<{placeholder: string, search: string, setSearch: React.Dispatch<React.SetStateAction<string>>}> = ({placeholder, search, setSearch}) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(event.target.value);
+    }
+
     return (
-        <div className="400px mt-4">
-            <ReactSearchBox
-                    placeholder="Search for groups"
-                    inputFontSize="16px"
-                    inputHeight="35px"
-                    data={data}
-                    onSelect={(record) => console.log(record)}
-                    onChange={(value) => console.log(value)}
-                    leftIcon="🔍"
-                />
-        </div>
+        <div className="relative w-[400px] mt-4">
+            <input
+                type="search"
+                value={search}
+                onChange={handleChange}
+                className="mb-4 p-2 border border-gray-300 rounded w-full pl-10"
+                placeholder={placeholder}
+            />
+        <FontAwesomeIcon icon={faSearch} className="absolute left-3 top-3 text-black" />
+    </div>
     )
 }
