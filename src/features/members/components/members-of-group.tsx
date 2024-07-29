@@ -16,7 +16,7 @@ export const MembersOfGroup: React.FC<{groupId: string | undefined}> = ({groupId
                 <SearchBar placeholder="Search members" search={search} setSearch={setSearch} />
                 {!isLoading && data.data && data.data.map((member: Member) => {
                     return (
-                        <MemberCard member={member} />
+                        <MemberCard member={member} groupId={groupId} />
                     )
                 })}
         </div>
