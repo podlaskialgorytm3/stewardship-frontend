@@ -20,12 +20,7 @@ const useHandleMember = ({isAdmin, isLoading, member} : {
                 cancelButtonColor: "#7e007e"
             }).then((result) => {
                 if(result.isConfirmed){
-                    Swal.fire({
-                        title: "Removed",
-                        text: `${member.name} has been removed from the group`,
-                        icon: "success",
-                        confirmButtonColor: "#7e007e"
-                    })
+                    // delete member
                 }
             });
         }
