@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { AuthError } from "../../../shared/components/auth-error";
 import useBelongGroup from "../api/use-belong-group";
 
-import { MembersOfGroup } from "./members-of-group";
+import { MembersOfGroup } from "../../members/components/members-of-group";
 
 export const SingleGroupPage = () => {
     const { id } = useParams<{ id: string }>();
