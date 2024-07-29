@@ -8,7 +8,7 @@ export const SearchBar: React.FC<{placeholder: string, search: string, setSearch
     }
 
     return (
-        <div className="relative w-[400px] mt-4">
+        <div className="relative w-[300px] mt-4">
             <input
                 type="search"
                 value={search}

@@ -17,7 +17,7 @@ export const SingleGroupPage = () => {
                     <div className="w-[70%]">
                         Page with managmenting group
                     </div>
-                    <MembersOfGroup />
+                    <MembersOfGroup groupId={id} />
                 </div>
             ):(
                 <AuthError>You are not belong to group!</AuthError>
