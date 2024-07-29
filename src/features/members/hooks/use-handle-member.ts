@@ -1,11 +1,16 @@
 import Swal from "sweetalert2";
 import { Member } from "../types/types";
 
-const useHandleMember = ({isAdmin, isLoading, member} : {
+import useDeleteMember from "../api/use-delete-member";
+
+const useHandleMember = ({isAdmin, isLoading, member, groupId} : {
     isAdmin: boolean,
     isLoading: boolean,
-    member: Member
+    member: Member,
+    groupId: string | undefined
 }) => {
+    const { mutate: deleteMember } = useDeleteMember();
+
     const handleDelete = () => {
         if(!isLoading && isAdmin){
             Swal.fire("")
@@ -20,7 +25,7 @@ const useHandleMember = ({isAdmin, isLoading, member} : {
                 cancelButtonColor: "#7e007e"
             }).then((result) => {
                 if(result.isConfirmed){
-                    // delete member
+                    deleteMember({memberId: member.id, groupId: groupId as string});
                 }
             });
         }

@@ -4,7 +4,7 @@ import useHandleMember from "../hooks/use-handle-member";
 
 export const MemberCard = ({member,groupId} : {member: Member,groupId: string | undefined}) => {
     const { data: isAdmin, isLoading} = useCheckRole(groupId as string);
-    const { handleDelete, handleChangeRole } = useHandleMember({isAdmin: isAdmin as boolean, isLoading, member});
+    const { handleDelete, handleChangeRole } = useHandleMember({isAdmin: isAdmin as boolean, isLoading, member, groupId});
 
     return(
         <div 

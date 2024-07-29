@@ -8,7 +8,11 @@ const deleteMember = async ({memberId, groupId} : {
     memberId: number,
     groupId: string
 }) => {
-    const response = await fetch(`${API_URL}/stewardship/group-user?=groupId=${groupId}&memberId=${memberId}`, {
+    console.log({
+        memberId,
+        groupId
+    })
+    const response = await fetch(`${API_URL}/stewardship/group-user?groupId=${groupId}&memberId=${memberId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -35,9 +39,9 @@ const useDeleteMember = () => (
         onSuccess: (data) => {
             queryClient.invalidateQueries({queryKey: ["groups"]})
             Swal.fire({
-                title: "Removed",
-                text: `Member has been removed from the group`,
-                icon: "success",
+                title: data.type,
+                text: data.message,
+                icon: data.type,
                 confirmButtonColor: "#7e007e"
             })
         }
