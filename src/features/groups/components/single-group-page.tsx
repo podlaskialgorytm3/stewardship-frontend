@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { AuthError } from "../../../shared/components/auth-error";
 import useBelongGroup from "../api/use-belong-group";
 
+import { MembersOfGroup } from "./members-of-group";
+
 export const SingleGroupPage = () => {
     const { id } = useParams<{ id: string }>();
     const { data: isBelongGroup, isLoading: isLoadingBelongGroup } = useBelongGroup(id as string);
@@ -11,8 +13,11 @@ export const SingleGroupPage = () => {
     return (
         <div> 
             {(isBelongGroup && !isLoadingBelongGroup )? (
-                <div>
-                    <h1>Group</h1>
+                <div className="flex justify-center items-center w-[1200px] mt-10">
+                    <div className="w-[70%]">
+                        Page with managmenting group
+                    </div>
+                    <MembersOfGroup />
                 </div>
             ):(
                 <AuthError>You are not belong to group!</AuthError>
