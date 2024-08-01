@@ -2,7 +2,9 @@ import { Member } from "../types/types";
 import useCheckRole from "../../../api/hooks/use-check-role";
 import useHandleMember from "../hooks/use-handle-member";
 
-export const MemberCard = ({member,groupId} : {member: Member,groupId: string | undefined}) => {
+export const MemberCard: 
+    React.FC<{member: Member, groupId: string | undefined}> 
+    = ({member,groupId}) => {
     const { data: isAdmin, isLoading} = useCheckRole(groupId as string);
     const { handleDelete, handleChangeRole } = useHandleMember({isAdmin: isAdmin as boolean, isLoading, member, groupId});
     return(
