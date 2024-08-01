@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { AuthError } from "../../../shared/components/auth-error";
 import useBelongGroup from "../api/use-belong-group";
 
-import { MembersOfGroup } from "../../members/components/members-of-group";
+import { Members } from "../../members/components/members";
 
 export const SingleGroupPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -16,7 +16,7 @@ export const SingleGroupPage = () => {
                     <div className="w-[70%]">
                         Page with managmenting group
                     </div>
-                    <MembersOfGroup groupId={id} />
+                    <Members groupId={id} />
                 </div>
             ):(
                 <AuthError>You are not belong to group!</AuthError>
