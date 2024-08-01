@@ -1,5 +1,5 @@
 import { Member } from "../types/types";
-import useCheckRole from "../api/use-check-role";
+import useCheckRole from "../../../api/hooks/use-check-role";
 import useHandleMember from "../hooks/use-handle-member";
 
 export const MemberCard = ({member,groupId} : {member: Member,groupId: string | undefined}) => {

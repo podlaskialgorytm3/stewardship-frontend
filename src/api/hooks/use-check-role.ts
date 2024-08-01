@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { API_URL } from "../../../shared/constants/constants";
+import { API_URL } from "../../shared/constants/constants";
 
 import Swal from "sweetalert2";
 
@@ -20,7 +20,7 @@ const checkRole = async (groupId: string) => {
         })
     }
 
-    const data = await response.json(); // response true or false, true if user is admin
+    const data = await response.json(); // response true or false true if user is admin
 
     return data;
 }
