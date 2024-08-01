@@ -13,7 +13,6 @@ const useHandleMember = ({isAdmin, isLoading, member, groupId} : {
 
     const handleDelete = () => {
         if(!isLoading && isAdmin){
-            Swal.fire("")
             Swal.fire({
                 title: "Are you sure?",
                 text: `Do you want to remove ${member.name} from the group?`,
@@ -44,12 +43,7 @@ const useHandleMember = ({isAdmin, isLoading, member, groupId} : {
                 cancelButtonColor: "#7e007e"
             }).then((result) => {
                 if(result.isConfirmed){
-                    Swal.fire({
-                        title: "Changed",
-                        text: `Role of ${member.name} has been changed`,
-                        icon: "success",
-                        confirmButtonColor: "#7e007e"
-                    })
+                    
                 }
             });
         }
