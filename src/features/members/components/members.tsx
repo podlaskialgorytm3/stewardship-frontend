@@ -7,7 +7,9 @@ export const Members: React.FC<{ groupId: string | undefined}> = ({groupId}) => 
 
     return(
         <div className="w-[30%] border-[2px] h-[400px] overflow-y-scroll border-[#7e007e] rounded-xl flex flex-col items-center">
-                <Splide aria-label="My Favorite Images">
+                <Splide aria-label="My Favorite Images" className="cursor-grab" options={{
+                    pagination: false
+                }}>
                     <SplideSlide>
                         <MembersOfGroup groupId={groupId} />    
                     </SplideSlide>
