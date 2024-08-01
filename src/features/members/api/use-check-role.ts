@@ -20,7 +20,7 @@ const checkRole = async (groupId: string) => {
         })
     }
 
-    const data = await response.json(); // response true or false
+    const data = await response.json(); // response true or false, true if user is admin
 
     return data;
 }

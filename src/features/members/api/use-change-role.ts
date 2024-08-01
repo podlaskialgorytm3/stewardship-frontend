@@ -4,8 +4,8 @@ import { queryClient } from '../../../api/utils/query-client';
 
 import Swal from 'sweetalert2';
 
-const changeRole = async ({memberId, groupId}: {memberId: string, groupId: string}) => {
-    const response = await fetch(`${API_URL}/stewardship/group-user/change-role`, {
+const changeRole = async ({memberId, groupId}: {memberId: number, groupId: string}) => {
+    const response = await fetch(`${API_URL}/stewardship/group-user`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -30,8 +30,13 @@ const changeRole = async ({memberId, groupId}: {memberId: string, groupId: strin
 const useChangeRole = () => (
     useMutation({
         mutationFn: changeRole,
-        onSuccess: () => {
+        onSuccess: (data) => {
             queryClient.invalidateQueries({queryKey: ["groups"]});
+            Swal.fire({
+                icon: data.type,
+                title: data.type,
+                text: data.message
+            })
         }
     })
 )

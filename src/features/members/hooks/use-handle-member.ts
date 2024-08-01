@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import { Member } from "../types/types";
 
 import useDeleteMember from "../api/use-delete-member";
+import useChangeRole from "../api/use-change-role";
 
 const useHandleMember = ({isAdmin, isLoading, member, groupId} : {
     isAdmin: boolean,
@@ -10,6 +11,7 @@ const useHandleMember = ({isAdmin, isLoading, member, groupId} : {
     groupId: string | undefined
 }) => {
     const { mutate: deleteMember } = useDeleteMember();
+    const { mutate: changeRole } = useChangeRole();
 
     const handleDelete = () => {
         if(!isLoading && isAdmin){
@@ -43,7 +45,7 @@ const useHandleMember = ({isAdmin, isLoading, member, groupId} : {
                 cancelButtonColor: "#7e007e"
             }).then((result) => {
                 if(result.isConfirmed){
-                    
+                    changeRole({memberId: member.id, groupId: groupId as string});
                 }
             });
         }
