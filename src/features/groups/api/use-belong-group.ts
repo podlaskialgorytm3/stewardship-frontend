@@ -7,7 +7,7 @@ const belongGroup = async (groupId: string) => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            authorization: `Bearer ${localStorage.getItem('token')}`
+            'authorization': `Bearer ${localStorage.getItem('token')}`
         },
     });
 
@@ -26,7 +26,7 @@ const belongGroup = async (groupId: string) => {
 
 const useBelongGroup = (groupId: string) => {
     return useQuery({
-        queryKey: ['groups', groupId],
+        queryKey: ['groups'],
         queryFn: () => belongGroup(groupId)
     });
 }

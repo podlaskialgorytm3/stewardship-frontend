@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { API_URL } from "../../../shared/constants/constants";
-import { queryClient } from "../../../api/utils/query-client";
+//import { queryClient } from "../../../api/utils/query-client";
 
 import Swal from "sweetalert2";
 
@@ -9,7 +9,7 @@ const createGroup = async ({name, category} : {name: string, category: string}) 
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`
+            'Authorization': `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify({name, category})
     })
@@ -31,7 +31,7 @@ const useCreateGroup = () => (
     useMutation({
         mutationFn: createGroup,
         onSuccess: (data) => {
-            queryClient.invalidateQueries({queryKey: ["groups"]}),
+            //queryClient.invalidateQueries({queryKey: ["groups"]}),
             Swal.fire({
                 icon: data.type,
                 title: data.type,

@@ -45,7 +45,7 @@ const useHandleMember = ({isAdmin, isLoading, member, groupId} : {
                 cancelButtonColor: "#7e007e"
             }).then((result) => {
                 if(result.isConfirmed){
-                    changeRole({memberId: member.id, groupId: groupId as string});
+                    changeRole({memberId: member.userId, groupId: groupId as string});
                 }
             });
         }

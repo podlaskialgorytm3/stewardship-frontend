@@ -8,7 +8,6 @@ import { MembersOfGroup } from "../../members/components/members-of-group";
 export const SingleGroupPage = () => {
     const { id } = useParams<{ id: string }>();
     const { data: isBelongGroup, isLoading: isLoadingBelongGroup } = useBelongGroup(id as string);
-    
 
     return (
         <div> 
