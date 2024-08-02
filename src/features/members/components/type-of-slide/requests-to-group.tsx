@@ -17,7 +17,7 @@ const RequestsToGroup: React.FC<{groupId: string | undefined}> = ({groupId}) => 
             return (
                 <MemberCard member={member} groupId={groupId} key={member.id} type="waiting"/>
             )
-            })}        
+            })}  
         </div>
     )
 }

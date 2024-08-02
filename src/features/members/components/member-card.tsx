@@ -16,9 +16,9 @@ export const MemberCard:
             >
             <img src={member.img} alt={member.name} className="w-[50px] h-[50px] rounded-full object-cover border-[#7e007e] border-[1px]" />
             <p>{member.name}</p>
+            {type === "follower" && <p>{member.role}</p>}
             {!isLoading && isAdmin && type === "follower" && (
                 <>
-                    <p>{member.role}</p>
                     <div className="w-[50px] flex justify-between">
                         <p onClick={() => handleDelete()}>🗑️</p>
                         <p onClick={() => handleChangeRole()}>👨‍💼</p>
