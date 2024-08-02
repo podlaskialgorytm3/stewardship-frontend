@@ -1,12 +1,14 @@
 import { Member } from "../types/types";
 import useCheckRole from "../../../api/hooks/use-check-role";
 import useHandleMember from "../hooks/use-handle-member";
+import useHandleRequest from "../hooks/use-handle-request";
 
 export const MemberCard: 
     React.FC<{member: Member, groupId: string | undefined, type: string}> 
     = ({member,groupId, type}) => {
     const { data: isAdmin, isLoading} = useCheckRole(groupId as string);
     const { handleDelete, handleChangeRole } = useHandleMember({isAdmin: isAdmin as boolean, isLoading, member, groupId});
+    const { handleAccept, handleReject } = useHandleRequest({isAdmin: isAdmin as boolean, isLoading, member, groupId});
 
     return(
         <div 
@@ -25,8 +27,8 @@ export const MemberCard:
             )}
             {!isLoading && isAdmin && type === "waiting" && (
                 <div className="w-[50px] flex justify-between">
-                    <p>✅</p>
-                    <p>❌</p>
+                    <p onClick={() => handleAccept()}>✅</p>
+                    <p onClick={() => handleReject()}>❌</p>
                 </div>
             )}
         </div>

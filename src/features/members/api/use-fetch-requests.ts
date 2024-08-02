@@ -28,7 +28,7 @@ const fetchRequests = async ({groupId, username} : {groupId: string, username: s
 const useFetchRequests = ({groupId, username} : {groupId: string, username: string}) => (
     useQuery({
         queryFn: () => fetchRequests({groupId, username}),
-        queryKey: ["groups", groupId, username]
+        queryKey: ["groups",username]
     })
 )
 
