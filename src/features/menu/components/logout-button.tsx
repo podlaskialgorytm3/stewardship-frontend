@@ -1,9 +1,12 @@
 import  useLogout  from '../../../features/login/api/use-logout';
+import { useNavigate } from 'react-router-dom';
 
 export const LogoutButton: React.FC<{children: string}> = ({children}) => {
     const { mutate } = useLogout();
+    const  navigate  = useNavigate();
     const handleClick = () => {
         mutate();
+        navigate('/')
     }
     return (
         <li>
