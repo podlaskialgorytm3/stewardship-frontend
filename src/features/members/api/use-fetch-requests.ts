@@ -3,8 +3,8 @@ import { API_URL } from "../../../shared/constants/constants";
 
 import Swal from "sweetalert2";
 
-const fetchRequests = async (groupId: string) => {
-    const response = await fetch(`${API_URL}/stewardship/group-user-requests?groupId=${groupId}`, {
+const fetchRequests = async ({groupId, username} : {groupId: string, username: string}) => {
+    const response = await fetch(`${API_URL}/stewardship/group-user-request?groupId=${groupId}&username=${username}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -25,10 +25,10 @@ const fetchRequests = async (groupId: string) => {
     return data;
 }
 
-const useFetchRequests = ({groupId}: {groupId: string}) => (
+const useFetchRequests = ({groupId, username} : {groupId: string, username: string}) => (
     useQuery({
         queryKey: ['groups'],
-        queryFn: () => fetchRequests(groupId)
+        queryFn: () => fetchRequests({groupId, username})
     })
 )
 
