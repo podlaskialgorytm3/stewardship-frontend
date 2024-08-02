@@ -1,5 +1,6 @@
 import Swal from "sweetalert2"
 import { Member } from "../types/types";
+import useAddUser from "../api/use-add-user";
 
 const useHandleUsers = ({
     isAdmin,
@@ -12,6 +13,8 @@ const useHandleUsers = ({
     member: Member;
     groupId: string | undefined;
 }) => {
+    const { mutate } = useAddUser();
+    
     const handleAdd = () => {
         if(!isLoading && isAdmin){
             Swal.fire({
@@ -24,7 +27,7 @@ const useHandleUsers = ({
                 confirmButtonText: 'Yes, add it!'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    // add user to group
+                    mutate({groupId, userId: member.id})
                 }
             })
         }

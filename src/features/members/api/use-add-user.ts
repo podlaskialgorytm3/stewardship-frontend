@@ -3,7 +3,7 @@ import { API_URL } from '../../../shared/constants/constants'
 import { queryClient } from '../../../api/utils/query-client'
 import Swal from 'sweetalert2'
 
-const addUser = async ({groupId, userId}: {groupId: string | undefined; userId: string}) => {
+const addUser = async ({groupId, userId}: {groupId: string | undefined; userId: number}) => {
     const response = await fetch(`${API_URL}/stewardship/group-user/invite`, {
         method: 'POST',
         headers: {
@@ -33,7 +33,7 @@ const useAddUser = () => (
     useMutation({
         mutationFn: addUser,
         onSuccess: (data) => {
-            queryClient.invalidateQueries({queryKey: ['groups', 'users']})
+            queryClient.invalidateQueries({queryKey: ["groups"]})
             Swal.fire({
                 icon: data.type,
                 title: data.type,
