@@ -11,10 +11,10 @@ export const Members: React.FC<{ groupId: string | undefined}> = ({groupId}) => 
 
     return(
         <div className="w-[30%] border-[2px] h-[400px] overflow-y-scroll border-[#7e007e] rounded-xl flex flex-col items-center">
-                <Splide aria-label="My Favorite Images" className="cursor-grab w-[100%]"  options={{
+                <Splide aria-label="My Favorite Images" className="cursor-grab w-[100%] h-[400px]"  options={{
                     pagination: false
                 }}>
-                    <SplideSlide>
+                    <SplideSlide >
                         <MembersOfGroup groupId={groupId} />    
                     </SplideSlide>
                     {!isLoading && isAdmin && (

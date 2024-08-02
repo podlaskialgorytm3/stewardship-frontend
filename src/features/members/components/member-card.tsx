@@ -31,6 +31,11 @@ export const MemberCard:
                     <p onClick={() => handleReject()}>❌</p>
                 </div>
             )}
+            {!isLoading && isAdmin && type === "added" && (
+                <div className="w-[50px] flex justify-between">
+                    <p>➕</p>
+                </div>
+            )}
         </div>
     )
 }
