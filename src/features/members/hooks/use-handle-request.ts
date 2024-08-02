@@ -11,7 +11,7 @@ const useHandleRequest = ({isAdmin, isLoading, member, groupId} : {
     const handleAccept = () => {
         Swal.fire({
             title: 'Are you sure?',
-            text: "You want to accept this request",
+            text: `You want to accept ${member.name}'s request`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -27,7 +27,7 @@ const useHandleRequest = ({isAdmin, isLoading, member, groupId} : {
     const handleReject = () => {
         Swal.fire({
             title: 'Are you sure?',
-            text: "You want to reject this request",
+            text: `You want to reject ${member.name}'s request`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

@@ -5,4 +5,5 @@ export interface Member {
     role: string;
     img: string;
     groupId: number; 
+    requestId: number;
 }
