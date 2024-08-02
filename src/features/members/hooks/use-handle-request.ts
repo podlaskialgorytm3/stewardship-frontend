@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import { Member } from "../types/types";
+import useChangeStatus from "../api/use-change-status";
 
 const useHandleRequest = ({isAdmin, isLoading, member, groupId} : {
     isAdmin: boolean,
@@ -7,37 +8,44 @@ const useHandleRequest = ({isAdmin, isLoading, member, groupId} : {
     member: Member,
     groupId: string | undefined
 }) => {
+    const { mutate } = useChangeStatus();
+
+    console.log(member)
 
     const handleAccept = () => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: `You want to accept ${member.name}'s request`,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Accept'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // adding 
-            } 
-        })
+        if(!isLoading && isAdmin){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: `You want to accept ${member.name}'s request`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Accept'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    mutate({groupId: groupId as string, userId: member.id, status: "accepted"})
+                } 
+            })
+        }
     }
 
     const handleReject = () => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: `You want to reject ${member.name}'s request`,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Reject'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // reject 
-            } 
-        })
+        if(!isLoading && isAdmin){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: `You want to reject ${member.name}'s request`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Reject'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    mutate({groupId: groupId as string, userId: member.id, status: "rejected"}) 
+                } 
+            })
+        }
     }
 
     return {
