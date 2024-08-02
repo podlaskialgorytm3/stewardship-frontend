@@ -3,6 +3,7 @@ import '@splidejs/react-splide/css';
 
 import MembersOfGroup from './type-of-slide/members-of-group';
 import RequestsToGroup from './type-of-slide/requests-to-group';
+import AddingToGroup from './type-of-slide/adding-to-group';
 import useCheckRole from '../../../api/hooks/use-check-role';
 
 export const Members: React.FC<{ groupId: string | undefined}> = ({groupId}) => {
@@ -22,7 +23,7 @@ export const Members: React.FC<{ groupId: string | undefined}> = ({groupId}) => 
                                 <RequestsToGroup groupId={groupId} />
                             </SplideSlide>
                             <SplideSlide>
-                                <h1 className="text-xl font-bold mt-5">adding-to-group</h1>
+                                <AddingToGroup groupId={groupId} />
                             </SplideSlide>
                         </>
                     )}
