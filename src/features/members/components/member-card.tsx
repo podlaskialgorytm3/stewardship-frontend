@@ -2,6 +2,7 @@ import { Member } from "../types/types";
 import useCheckRole from "../../../api/hooks/use-check-role";
 import useHandleMember from "../hooks/use-handle-member";
 import useHandleRequest from "../hooks/use-handle-request";
+import useHandleUsers from "../hooks/use-handle-users";
 
 export const MemberCard: 
     React.FC<{member: Member, groupId: string | undefined, type: string}> 
@@ -9,6 +10,7 @@ export const MemberCard:
     const { data: isAdmin, isLoading} = useCheckRole(groupId as string);
     const { handleDelete, handleChangeRole } = useHandleMember({isAdmin: isAdmin as boolean, isLoading, member, groupId});
     const { handleAccept, handleReject } = useHandleRequest({isAdmin: isAdmin as boolean, isLoading, member, groupId});
+    const { handleAdd } = useHandleUsers({isAdmin: isAdmin as boolean, isLoading, member, groupId});
 
     return(
         <div 
@@ -33,7 +35,7 @@ export const MemberCard:
             )}
             {!isLoading && isAdmin && type === "added" && (
                 <div className="w-[50px] flex justify-between">
-                    <p>➕</p>
+                    <p onClick={() => handleAdd()}>➕</p>
                 </div>
             )}
         </div>
