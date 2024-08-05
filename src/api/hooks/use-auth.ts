@@ -19,7 +19,12 @@ const fetchToken = async (token: string) => {
         throw new Error('Something went wrong');
     }
 
-    return response.json();
+    const data = await response.json();
+
+    const now = new Date().getTime();
+    const expiresIn = localStorage.getItem('expiresIn');   
+
+    return data?.authenticated && now < Number(expiresIn) + 60 * 60 * 1000 + 24;
 }
 
 const useAuth = () => {;

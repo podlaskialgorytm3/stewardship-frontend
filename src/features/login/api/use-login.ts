@@ -28,10 +28,7 @@ const login = async (formData: LoginForm) => {
 
     const  data  = await response.json();
 
-    const now = new Date().getTime();
-    const expiresIn = localStorage.getItem('expiresIn');   
-
-    return data?.authenticated && now < Number(expiresIn) + 60 * 60 * 1000 + 24;
+    return data;
 }
 
 export const useLogin = () => {
@@ -52,7 +49,7 @@ export const useLogin = () => {
             setTimeout(() => {
                 navigate('/');
                 window.location.reload();
-            },10000)
+            },1000)
         }
     });
     

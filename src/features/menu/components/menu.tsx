@@ -11,7 +11,7 @@ export const Menu = () => {
             <nav className='text-purple-800 flex justify-center h-[100px]'>
                 <ul className='flex justify-between w-[700px] items-center'>
                     <Logo isImage={false}/>
-                    {(data?.authenticated && !isLoading) ? 
+                    {(data && !isLoading) ? 
                     <>
                         <NavLinkComponent path="/dashboard" name="Dashboard"/>
                         <NavLinkComponent path="/profile" name="Profile"/>
