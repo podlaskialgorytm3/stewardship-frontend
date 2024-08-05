@@ -8,7 +8,7 @@ const AuthPage: React.FC<{children: JSX.Element}> = ({children}) => {
 
     return (
         <div>
-            {(!data?.authenticated && !isLoading) ? 
+            {(!data && !isLoading) ? 
                 <AuthError>
                     You are not logged in!
                 </AuthError>

@@ -1,23 +1,10 @@
 import { Groups } from '../../../features/groups/components/groups';
-import  useAuth  from '../../../api/hooks/use-auth';
-import { AuthError } from '../../../shared/components/auth-error';
+import AuthPage from '../../auth';
 
-const GroupsPage: React.FC = () => {
-    const { data, isLoading } = useAuth();
-
-    return (
-        <div> 
-            {(!data?.authenticated && !isLoading) ? 
-                    <AuthError>
-                        You are not logged in!
-                    </AuthError>
-                    :
-                    <>
-                        <Groups />
-                    </>
-                    }
-        </div>
-    );
-}
+const GroupsPage: React.FC = () => (
+    <AuthPage>
+        <Groups />
+    </AuthPage>
+)
 
 export default GroupsPage;

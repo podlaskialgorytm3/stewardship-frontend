@@ -1,23 +1,10 @@
 import { Profile } from '../../features/user/components/profile';
-import  useAuth  from '../../api/hooks/use-auth';
-import { AuthError } from '../../shared/components/auth-error';
+import AuthPage from '../auth';
 
-const ProfilePage: React.FC = () => {
-    const { data, isLoading } = useAuth();
-
-    return (
-        <div> 
-            {(!data?.authenticated && !isLoading) ? 
-                    <AuthError>
-                        You are not logged in!
-                    </AuthError>
-                    :
-                    <>
-                        <Profile />
-                    </>
-                    }
-        </div>
-    );
-}
+const ProfilePage: React.FC = () => (
+    <AuthPage>
+        <Profile />
+    </AuthPage>
+)
 
 export default ProfilePage;

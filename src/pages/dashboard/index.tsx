@@ -1,23 +1,10 @@
 import { Dashboard } from '../../features/dashboard/components/dashboard';
-import  useAuth  from '../../api/hooks/use-auth';
-import { AuthError } from '../../shared/components/auth-error';
+import AuthPage from '../auth';
 
-const DashboardPage: React.FC = () => {
-    const { data, isLoading } = useAuth();
-
-    return (
-        <div> 
-            {(!data?.authenticated && !isLoading) ? 
-                    <AuthError>
-                        You are not logged in!
-                    </AuthError>
-                    :
-                    <>
-                        <Dashboard />
-                    </>
-                    }
-        </div>
-    );
-}
+const DashboardPage: React.FC = () => (
+    <AuthPage>
+        <Dashboard />
+    </AuthPage>
+)
 
 export default DashboardPage;
