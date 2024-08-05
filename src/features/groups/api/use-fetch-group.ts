@@ -29,7 +29,7 @@ const fetchGroup = async (id: string) => {
 
 const useFetchGroup = (id: string) => (
     useQuery({
-        queryKey: ['groups',id],
+        queryKey: ['group',id],
         queryFn: () => fetchGroup(id)
     })
 )
