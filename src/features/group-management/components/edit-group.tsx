@@ -4,6 +4,10 @@ import useFetchGroup from "../api/use-fetch-group";
 import useErrorMessage from "../../../shared/hooks/use-error-message";
 import { AuthError } from "../../../shared/components/auth-error";
 import Loading  from "../../../shared/components/loading";
+import useMutateData from "../../../shared/hooks/use-mutate-data";
+import { groupSchema } from "../utils/utils";
+import { DEFAULT_GROUP_STATE } from "../../groups/constants/constants";
+import useUpdateGroup from "../api/use-update-group";
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -16,8 +20,14 @@ export const EditGroup: React.FC = () => {
     const { id } = useParams<{id: string}>();
     const {data: isAdmin, isLoading: roleLoading } = useCheckRole(id as string) 
     const { data, isLoading, isError, error } = useFetchGroup(id as string);
+    const { mutate, isPending } = useUpdateGroup();
+    const { formErrors, handleSubmit, handleChange } = useMutateData({
+        data: ['id', 'name', 'category'],
+        schema: groupSchema,
+        mutate: mutate,
+        DEFAULT_STATE: DEFAULT_GROUP_STATE,
+    });
 
-    const isPending = false
 
     useErrorMessage({isError, error } as {isError: boolean, error: {message: string}});
     return (
@@ -46,7 +56,18 @@ export const EditGroup: React.FC = () => {
                                 }}
                                 >
                                 <h1 className='text-3xl font-bold'>Edit group</h1> 
-                                <Box component="form" noValidate sx={{ mt: 1 }} >
+                                <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={handleSubmit} >
+                                <TextField
+                                        margin="normal"
+                                        defaultValue={id}
+                                        required
+                                        fullWidth
+                                        id="id"
+                                        label="id"
+                                        name="id"
+                                        autoFocus
+                                        sx={{display: 'none'}}
+                                    />
                                     <TextField
                                         margin="normal"
                                         defaultValue={data?.name}
@@ -56,9 +77,9 @@ export const EditGroup: React.FC = () => {
                                         label="group-name"
                                         name="name"
                                         autoFocus
-                                        //onChange={() => handleChange('name')}
-                                        //helperText={formErrors.name}
-                                        //error={Boolean(formErrors.name)}
+                                        onChange={() => handleChange('name')}
+                                        helperText={formErrors.name}
+                                        error={Boolean(formErrors.name)}
                                     />
                                     <TextField
                                         margin="normal"
@@ -69,9 +90,9 @@ export const EditGroup: React.FC = () => {
                                         defaultValue={data?.category}
                                         type="text"
                                         id="category"
-                                        //onChange={() => handleChange('category')}
-                                        //helperText={formErrors.category}
-                                        //error={Boolean(formErrors.category)}
+                                        onChange={() => handleChange('category')}
+                                        helperText={formErrors.category}
+                                        error={Boolean(formErrors.category)}
                                     />
                                     <Button
                                     type="submit"

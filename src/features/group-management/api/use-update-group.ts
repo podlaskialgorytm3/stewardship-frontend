@@ -5,7 +5,7 @@ import { queryClient } from "../../../api/utils/query-client";
 import Swal from "sweetalert2";
 
 const updateGroup = async ({id, name, category}: {id: string, name: string, category: string}) => {
-    const response = await fetch(`${API_URL}/stewardship/groups/${id}`, {
+    const response = await fetch(`${API_URL}/stewardship/group/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
