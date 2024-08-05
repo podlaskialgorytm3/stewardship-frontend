@@ -4,7 +4,7 @@ import { AuthError } from "../../../shared/components/auth-error";
 import useBelongGroup from "../api/use-belong-group";
 
 import { Members } from "../../members/components/members";
-import { GroupManagement } from "./group-management";
+import { GroupManagement } from "../../group-management/components/group-management";
 
 export const SingleGroupPage = () => {
     const { id } = useParams<{ id: string }>();
