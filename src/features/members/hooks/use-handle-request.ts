@@ -10,8 +10,6 @@ const useHandleRequest = ({isAdmin, isLoading, member, groupId} : {
 }) => {
     const { mutate } = useChangeStatus();
 
-    console.log(member)
-
     const handleAccept = () => {
         if(!isLoading && isAdmin){
             Swal.fire({

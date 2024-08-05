@@ -4,6 +4,7 @@ import { AuthError } from "../../../shared/components/auth-error";
 import useBelongGroup from "../api/use-belong-group";
 
 import { Members } from "../../members/components/members";
+import { GroupManagement } from "./group-management";
 
 export const SingleGroupPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -13,9 +14,7 @@ export const SingleGroupPage = () => {
         <div> 
             {(isBelongGroup && !isLoadingBelongGroup )? (
                 <div className="flex justify-center items-center w-[1300px] mt-10">
-                    <div className="w-[70%]">
-                        Page with managmenting group
-                    </div>
+                    <GroupManagement groupId={id} />   
                     <Members groupId={id} />
                 </div>
             ):(
