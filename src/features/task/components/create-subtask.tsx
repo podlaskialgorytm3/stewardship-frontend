@@ -8,7 +8,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 import { Select, MenuItem } from '@mui/material';
 
-import { useState } from "react";
+import useHadleSubtask from '../hooks/use-handle-subtask';
+import { subtaskSchema } from "../utils/utils";
 
 export const CreateSubtask: React.FC<{
     handleNext: () => void,
@@ -17,21 +18,18 @@ export const CreateSubtask: React.FC<{
     handleNext,
     handleBack
 }) => {
-    const [subtasks, setSubtasks] = useState<{
-        title: string,
-        description: string,
-        status: string
-    }[]>([]);
+    const { formErrors, handleAdd, handleChange, handleDelete, subtasks } = useHadleSubtask({
+        data: ['title', 'description', 'status'],
+        schema: subtaskSchema,
+        DEFAULT_STATE: {
+            title: '',
+            description: '',
+            status: ''
+        }
+    })
 
     const isPending = false;
 
-    const handleAdd = () => {
-        setSubtasks((prevStates) => [...prevStates, {
-            title: 'title',
-            description: 'description',
-            status: 'status'
-        }])
-    }
 
     return (
         <>
@@ -57,18 +55,18 @@ export const CreateSubtask: React.FC<{
                 }}
                 >
                 <h1 className='text-3xl font-bold'>create subtask</h1> 
-                <Box component="form" noValidate sx={{ mt: 1, width: "400px" }} >
+                <Box component="form" noValidate sx={{ mt: 1, width: "400px" }} onSubmit={handleAdd} >
                     <TextField
                         margin="normal"
                         required
                         fullWidth
                         id="title"
                         label="title"
-                        name="name"
+                        name="title"
                         autoFocus
-                        //onChange={() => handleChange('name')}
-                        //helperText={formErrors.name}
-                        //error={Boolean(formErrors.name)}
+                        onChange={() => handleChange('title')}
+                        helperText={formErrors.title}
+                        error={Boolean(formErrors.title)}
                     />
                     <TextField
                         margin="normal"
@@ -78,9 +76,9 @@ export const CreateSubtask: React.FC<{
                         type="text"
                         id="description"
                         required
-                        //onChange={() => handleChange('category')}
-                        //helperText={formErrors.category}
-                        //error={Boolean(formErrors.category)}
+                        onChange={() => handleChange('description')}
+                        helperText={formErrors.description}
+                        error={Boolean(formErrors.description)}
                     />
                     <Select
                         required
@@ -91,9 +89,8 @@ export const CreateSubtask: React.FC<{
                         placeholder="status"
                         defaultValue={"waiting"}
                         sx={{mt: 2}}
-                        //onChange={() => handleChange('category')}
-                        //helperText={formErrors.category}
-                        //error={Boolean(formErrors.category)}
+                        onChange={() => handleChange('status')}
+                        error={Boolean(formErrors.status)}
                     >
                         <MenuItem value={"done"}>done</MenuItem>
                         <MenuItem value={"in progress"}>in progress</MenuItem>
@@ -102,8 +99,8 @@ export const CreateSubtask: React.FC<{
                     <Button
                             fullWidth
                             variant="contained"
-                            onClick={() => handleAdd()}
                             sx={{ mt: 3, mb: 2 , mr: 2}}
+                            type="submit"
                             >
                             add
                     </Button>
@@ -142,7 +139,7 @@ export const CreateSubtask: React.FC<{
                 {subtasks.length > 0 ? subtasks.map((subtask, index) => 
                     <Box key={index} sx={{
                         display: 'flex',
-                        flexDirection: 'column',
+                        flexDirection: 'row',
                         alignItems: 'center',
                         padding: '10px',
                         marginTop: "25px",
@@ -150,9 +147,28 @@ export const CreateSubtask: React.FC<{
                         width: "400px",
                         boxShadow: "8px -3px 24px -6px rgba(66, 68, 90, 1)",
                     }}>
-                        <p>{subtask.title}</p>
-                        <p>{subtask.description}</p>
-                        <p>{subtask.status}</p>
+                        <div className="flex flex-col items-center justify-center w-[75%]">
+                            <p className="text-2xl">{subtask.title}</p>
+                            <p>{subtask.description}</p>
+                            <p className={`${subtask.status === 'done' ? 'text-green-700' : subtask.status === 'waiting' ? 'text-yellow-400' : 'text-orange-600'}`}>{subtask.status}</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center w-[25%]">
+                            <Button
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                                >
+                                edit
+                            </Button>
+                            <Button
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                                onClick={() => handleDelete(index)}
+                                >
+                                delete
+                            </Button>
+                        </div>
                     </Box>
                 ): 
                     <p>No subtasks added</p>
