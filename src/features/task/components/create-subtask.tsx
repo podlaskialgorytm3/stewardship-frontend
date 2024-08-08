@@ -13,19 +13,32 @@ import { subtaskSchema } from "../utils/utils";
 
 export const CreateSubtask: React.FC<{
     handleNext: () => void,
-    handleBack: () => void
+    handleBack: () => void,
+    subtasks: {
+        title: string,
+        description: string,
+        status: string
+    }[],
+    setSubtasks: React.Dispatch<React.SetStateAction<{
+        title: string;
+        description: string;
+        status: string;
+    }[]>>;
 }> = ({
     handleNext,
-    handleBack
+    handleBack,
+    subtasks,
+    setSubtasks
 }) => {
-    const { formErrors, handleAdd, handleChange, handleDelete, subtasks } = useHadleSubtask({
+    const { formErrors, handleAdd, handleChange, handleDelete } = useHadleSubtask({
         data: ['title', 'description', 'status'],
         schema: subtaskSchema,
         DEFAULT_STATE: {
             title: '',
             description: '',
             status: ''
-        }
+        },
+        setSubtasks: setSubtasks
     })
 
     const isPending = false;

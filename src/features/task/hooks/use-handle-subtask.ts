@@ -5,18 +5,15 @@ import { fromZodError } from 'zod-validation-error';
 const useHandleSubtask = ({
     data,
     schema,
-    DEFAULT_STATE
+    DEFAULT_STATE,
+    setSubtasks
 }:{
     data: Array<string>,
     schema: any,
-    DEFAULT_STATE: object
+    DEFAULT_STATE: object,
+    setSubtasks: React.Dispatch<React.SetStateAction<any[]>>
 }) => {
     const [ formErrors, setFormErrors ] = useState<any>(DEFAULT_STATE);
-    const [subtasks, setSubtasks] = useState<{
-        title: string,
-        description: string,
-        status: string
-    }[]>([]);
 
     const handleDelete = (index: number) => {
         setSubtasks((prevSubtasks) => [...prevSubtasks.slice(0, index), ...prevSubtasks.slice(index + 1)]);
@@ -62,8 +59,7 @@ const useHandleSubtask = ({
         formErrors,
         handleAdd,
         handleChange,
-        handleDelete,
-        subtasks
+        handleDelete
     }
 }
 

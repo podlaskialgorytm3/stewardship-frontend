@@ -15,6 +15,11 @@ const STEPS = [
 
 export const Task: React.FC = () => {
     const [activeStep, setActiveStep] = useState(0);
+    const [subtasks, setSubtasks] = useState<{
+        title: string,
+        description: string,
+        status: string
+    }[]>([]);
 
     const handleNext = () => {
         setActiveStep((prevStep) => prevStep + 1);
@@ -28,7 +33,7 @@ export const Task: React.FC = () => {
             case 0:
                 return <CreateTask handleNext={handleNext} />;
             case 1:
-                return <CreateSubtask handleNext={handleNext} handleBack={handleBack} />;
+                return <CreateSubtask handleNext={handleNext} handleBack={handleBack} subtasks={subtasks} setSubtasks={setSubtasks} />;
             case 2:
                 return "Members";
             default:
