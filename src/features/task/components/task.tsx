@@ -37,7 +37,7 @@ export const Task: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="flex flex-col items-center">
             <Stepper activeStep={activeStep} sx={{mt:5, width: "800px"}} >
                 {STEPS.map((step, index) => (
                     <Step key={index} sx={{display: "flex", justifyContent: "space-between", cursor: "pointer"}} onClick={() => setActiveStep(index)}>
