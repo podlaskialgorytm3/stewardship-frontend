@@ -135,13 +135,12 @@ export const CreateTask: React.FC<{
                         //error={Boolean(formErrors.category)}
                     />
                     <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    onClick={() => handleNext()}
-                    sx={{ mt: 3, mb: 2 }}
-                    >
-                    Next
+                        fullWidth
+                        variant="contained"
+                        onClick={() => handleNext()}
+                        sx={{ mt: 3, mb: 2 }}
+                        >
+                        Next
                     </Button>
                 </Box>
                 </Box>

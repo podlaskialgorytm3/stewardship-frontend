@@ -1,6 +1,8 @@
 import { useState } from "react"
 
 import { CreateTask } from "./create-task"
+import { CreateSubtask } from "./create-subtask";
+
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import { StepIcon } from "@mui/material";
@@ -17,13 +19,16 @@ export const Task: React.FC = () => {
     const handleNext = () => {
         setActiveStep((prevStep) => prevStep + 1);
     };
+    const handleBack = () => {
+        setActiveStep((prevStep) => prevStep - 1);
+    }
 
     const renderStepContent = () => {
         switch (activeStep) {
             case 0:
                 return <CreateTask handleNext={handleNext} />;
             case 1:
-                return "Subtask";
+                return <CreateSubtask handleNext={handleNext} handleBack={handleBack} />;
             case 2:
                 return "Members";
             default:
@@ -35,7 +40,7 @@ export const Task: React.FC = () => {
         <div>
             <Stepper activeStep={activeStep} sx={{mt:5, width: "800px"}} >
                 {STEPS.map((step, index) => (
-                    <Step key={index} sx={{display: "flex", justifyContent: "space-between"}}>
+                    <Step key={index} sx={{display: "flex", justifyContent: "space-between", cursor: "pointer"}} onClick={() => setActiveStep(index)}>
                         <StepIcon
                             icon={index + 1}
                             sx={{
