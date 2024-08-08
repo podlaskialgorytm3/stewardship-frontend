@@ -27,6 +27,7 @@ export const ButtonArea: React.FC<{groupId: string | undefined}> = ({groupId}) =
         <div className="flex justify-between w-[70%] mt-5">
             <button 
                 className="bg-[#1c4c9b] hover:bg-[#398dce] text-white font-bold py-2 px-4 rounded mt-2"
+                onClick={() => navigate(`/dashboard/groups/create-task/${groupId}`)}
                 >create-task
             </button>
             <button 

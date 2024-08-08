@@ -7,4 +7,4 @@ const EditGroupPage: React.FC = () => (
     </AuthPage>
 )
 
-export default EditGroupPage;
+export default EditGroupPage; 
