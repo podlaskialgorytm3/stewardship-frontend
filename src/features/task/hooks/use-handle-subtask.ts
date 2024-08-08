@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { fromZodError } from 'zod-validation-error';
 
+import { SubtaskInterface } from '../types/types';
+
 const useHandleSubtask = ({
     data,
     schema,
@@ -11,7 +13,7 @@ const useHandleSubtask = ({
     data: Array<string>,
     schema: any,
     DEFAULT_STATE: object,
-    setSubtasks: React.Dispatch<React.SetStateAction<any[]>>
+    setSubtasks: React.Dispatch<React.SetStateAction<SubtaskInterface[]>>
 }) => {
     const [ formErrors, setFormErrors ] = useState<any>(DEFAULT_STATE);
 

@@ -10,20 +10,13 @@ import { Select, MenuItem } from '@mui/material';
 
 import useHadleSubtask from '../hooks/use-handle-subtask';
 import { subtaskSchema } from "../utils/utils";
+import { SubtaskInterface } from '../types/types';
 
 export const CreateSubtask: React.FC<{
     handleNext: () => void,
     handleBack: () => void,
-    subtasks: {
-        title: string,
-        description: string,
-        status: string
-    }[],
-    setSubtasks: React.Dispatch<React.SetStateAction<{
-        title: string;
-        description: string;
-        status: string;
-    }[]>>;
+    subtasks: SubtaskInterface[],
+    setSubtasks: React.Dispatch<React.SetStateAction<SubtaskInterface[]>>;
 }> = ({
     handleNext,
     handleBack,

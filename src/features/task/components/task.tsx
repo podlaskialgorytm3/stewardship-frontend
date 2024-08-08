@@ -7,6 +7,8 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import { StepIcon } from "@mui/material";
 
+import { SubtaskInterface } from '../types/types';
+
 const STEPS = [
     'create-task',
     'create-subtask',
@@ -15,11 +17,7 @@ const STEPS = [
 
 export const Task: React.FC = () => {
     const [activeStep, setActiveStep] = useState(0);
-    const [subtasks, setSubtasks] = useState<{
-        title: string,
-        description: string,
-        status: string
-    }[]>([]);
+    const [subtasks, setSubtasks] = useState<SubtaskInterface[]>([]);
 
     const handleNext = () => {
         setActiveStep((prevStep) => prevStep + 1);
