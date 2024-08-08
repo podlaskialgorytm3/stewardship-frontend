@@ -92,7 +92,7 @@ export const CreateTask: React.FC = () => {
                         id="status"
                         fullWidth
                         placeholder="status"
-                        defaultValue={"done"}
+                        defaultValue={"waiting"}
                         sx={{mt: 2}}
                         //onChange={() => handleChange('category')}
                         //helperText={formErrors.category}

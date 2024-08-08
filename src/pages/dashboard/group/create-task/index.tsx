@@ -1,9 +1,9 @@
 import AuthPage from '../../../auth';
-import { CreateTask } from '../../../../features/task/components/create-task';
+import { Task } from '../../../../features/task/components/task';
 
 const CreateTaskPage: React.FC = () => (
     <AuthPage>
-        <CreateTask />
+        <Task />
     </AuthPage>
 )
 
