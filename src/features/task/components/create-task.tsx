@@ -9,7 +9,11 @@ import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 import { Select, MenuItem } from '@mui/material';
 
-export const CreateTask: React.FC = () => {
+export const CreateTask: React.FC<{
+    handleNext: () => void
+}> = ({
+    handleNext
+}) => {
     const { id } = useParams<{id: string}>();
 
     const isPending = false;
@@ -121,7 +125,6 @@ export const CreateTask: React.FC = () => {
                     </Select>
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
                         name="comments"
                         label="comments"
@@ -135,6 +138,7 @@ export const CreateTask: React.FC = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
+                    onClick={() => handleNext()}
                     sx={{ mt: 3, mb: 2 }}
                     >
                     Next
