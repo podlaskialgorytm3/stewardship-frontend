@@ -24,7 +24,6 @@ const useHandleSubtask = ({
     
     const handleAdd = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log("siema")
         const formData = new FormData(event.currentTarget);
         const form = data.reduce((acc: any, item: string) => {
             const value = formData.get(item) as string;
