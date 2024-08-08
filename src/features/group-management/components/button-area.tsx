@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom"
+import useDeleteGroup from "../api/use-delete-group";
 
 import Swal from "sweetalert2";
 
 export const ButtonArea: React.FC<{groupId: string | undefined}> = ({groupId}) => {
     const navigate = useNavigate();
+    const { mutate } = useDeleteGroup()
 
     const handleDelete = () => {
         Swal.fire({
@@ -15,7 +17,9 @@ export const ButtonArea: React.FC<{groupId: string | undefined}> = ({groupId}) =
             cancelButtonColor: '#3085d6',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
-            
+            if(result.isConfirmed){
+                mutate({ id: groupId as string })
+            }
         })
     }
 
