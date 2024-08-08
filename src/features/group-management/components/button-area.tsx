@@ -1,7 +1,23 @@
 import { useNavigate } from "react-router-dom"
 
+import Swal from "sweetalert2";
+
 export const ButtonArea: React.FC<{groupId: string | undefined}> = ({groupId}) => {
     const navigate = useNavigate();
+
+    const handleDelete = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            
+        })
+    }
 
     return (
         <div className="flex justify-between w-[70%] mt-5">
@@ -16,6 +32,7 @@ export const ButtonArea: React.FC<{groupId: string | undefined}> = ({groupId}) =
             </button>
             <button 
                 className="bg-[#7e0000] hover:bg-[#b33131] text-white font-bold py-2 px-4 rounded mt-2"
+                onClick={handleDelete}
                 >delete-group
             </button>
         </div>
