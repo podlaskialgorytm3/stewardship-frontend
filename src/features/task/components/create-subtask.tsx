@@ -156,14 +156,7 @@ export const CreateSubtask: React.FC<{
                             <Button
                                 fullWidth
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
-                                >
-                                edit
-                            </Button>
-                            <Button
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{ mt: 3, mb: 2 , backgroundColor: 'red'}}
                                 onClick={() => handleDelete(index)}
                                 >
                                 delete

@@ -33,6 +33,7 @@ const useHandleSubtask = ({
             const parseData = schema.parse(form);
             setFormErrors(DEFAULT_STATE);
             setSubtasks((prevState: any) => ([...prevState, parseData]));
+            event.currentTarget.reset()
         }
         catch(error: any){
             const validationError = fromZodError(error);
