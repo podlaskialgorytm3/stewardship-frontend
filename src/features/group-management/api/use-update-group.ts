@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { API_URL } from "../../../shared/constants/constants";
 import { queryClient } from "../../../api/utils/query-client";
+import { useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 
@@ -27,18 +28,20 @@ const updateGroup = async ({id, name, category}: {id: string, name: string, cate
     return data;
 }
 
-const useUpdateGroup = () => (
-    useMutation({
+const useUpdateGroup = (id: string) => {
+    const navigate = useNavigate(); 
+    return useMutation({
         mutationFn: updateGroup,
         onSuccess: (data) => {
-            queryClient.invalidateQueries({queryKey: ['group']});
+            queryClient.invalidateQueries({queryKey: ['group',updateGroup]});
             Swal.fire({
                 title: data.type,
                 text: data.message,
                 icon: data.type,
             })
+            navigate(`/dashboard/groups/${id}`)
         }
     })
-)
+}
 
 export default useUpdateGroup;

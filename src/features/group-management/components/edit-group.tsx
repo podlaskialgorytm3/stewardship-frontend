@@ -20,7 +20,7 @@ export const EditGroup: React.FC = () => {
     const { id } = useParams<{id: string}>();
     const {data: isAdmin, isLoading: roleLoading } = useCheckRole(id as string) 
     const { data, isLoading, isError, error } = useFetchGroup(id as string);
-    const { mutate, isPending } = useUpdateGroup();
+    const { mutate, isPending } = useUpdateGroup(id as string);
     const { formErrors, handleSubmit, handleChange } = useMutateData({
         data: ['id', 'name', 'category'],
         schema: groupSchema,
