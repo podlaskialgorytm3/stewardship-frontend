@@ -7,10 +7,10 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Select, MenuItem } from '@mui/material';
 
-import useHandleTask from '../hooks/use-handle-task-info';
+import useHandleTaskInfo from '../hooks/use-handle-task-info';
 import { TaskInterface } from "../types/types";
 
-export const CreateTask: React.FC<{
+export const CreateTaskInfo: React.FC<{
     tasks: TaskInterface,
     setTasks: React.Dispatch<React.SetStateAction<TaskInterface>>
 }> = ({
@@ -18,7 +18,7 @@ export const CreateTask: React.FC<{
     setTasks
 }) => {
     const { id } = useParams<{id: string}>();
-    const { onSubmit, register, errors, handleSubmit } = useHandleTask({
+    const { onSubmit, register, errors, handleSubmit } = useHandleTaskInfo({
         setTasks
     });
     const isPending = false;

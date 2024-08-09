@@ -5,7 +5,7 @@ import { TaskInterface } from '../types/types';
 
 import Swal from 'sweetalert2';
 
-const useHandleTask = ({
+const useHandleTaskInfo = ({
     setTasks
 }:{
     setTasks: React.Dispatch<React.SetStateAction<TaskInterface>>
@@ -37,4 +37,4 @@ const useHandleTask = ({
 }
 
 
-export default useHandleTask;
+export default useHandleTaskInfo;
