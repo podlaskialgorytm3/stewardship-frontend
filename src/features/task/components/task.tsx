@@ -1,8 +1,10 @@
 import { useState } from "react"
+import { useParams } from "react-router-dom";
 
 import { CreateTask } from "./create-task"
 import { CreateSubtask } from "./create-subtask";
-
+import { TaskAffilation } from './task-affilations';
+ 
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import { StepIcon } from "@mui/material";
@@ -13,6 +15,8 @@ import { DEFAULT_TASK, STEPS } from "../constants/constants";
 
 
 export const Task: React.FC = () => {
+    const { id } = useParams()
+
     const [activeStep, setActiveStep] = useState(0);
     const [subtasks, setSubtasks] = useState<SubtaskInterface[]>([]);
     const [tasks, setTasks] = useState<TaskInterface>(DEFAULT_TASK)
@@ -31,7 +35,7 @@ export const Task: React.FC = () => {
             case 1:
                 return <CreateSubtask handleNext={handleNext} handleBack={handleBack} subtasks={subtasks} setSubtasks={setSubtasks} />;
             case 2:
-                return "Members";
+                return <TaskAffilation groupId={id} handleBack={handleBack} />;
             default:
                 return null;
         }
