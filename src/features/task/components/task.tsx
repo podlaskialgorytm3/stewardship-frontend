@@ -8,13 +8,9 @@ import Step from '@mui/material/Step';
 import { StepIcon } from "@mui/material";
 
 import { SubtaskInterface, TaskInterface } from '../types/types';
-import { DEFAULT_TASK } from "../constants/constants";
+import { DEFAULT_TASK, STEPS } from "../constants/constants";
 
-const STEPS = [
-    'create-task',
-    'create-subtask',
-    'add-members',
-]
+
 
 export const Task: React.FC = () => {
     const [activeStep, setActiveStep] = useState(0);

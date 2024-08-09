@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { fromZodError } from 'zod-validation-error';
 import { TaskInterface } from '../types/types';
 
+import Swal from 'sweetalert2';
+
 const useHandleTask = ({
     setTasks
 }:{
@@ -14,6 +16,12 @@ const useHandleTask = ({
         try{
             const dataValidate = taskSchema.parse(data);
             setTasks(dataValidate);
+            Swal.fire({
+                title: "Saved!",
+                text: "Your task has been saved",
+                icon: "info",
+                confirmButtonText: "Cool",
+            })
         }
         catch (error: any){ {
             const validationError = fromZodError(error);

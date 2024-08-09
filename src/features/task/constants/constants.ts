@@ -6,3 +6,9 @@ export const DEFAULT_TASK = {
      priority: '',
      comments: ''
 }
+
+export const STEPS = [
+    'create-task',
+    'create-subtask',
+    'add-members',
+]
