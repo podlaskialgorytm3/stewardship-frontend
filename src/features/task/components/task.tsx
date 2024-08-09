@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useParams } from "react-router-dom";
 
-import { CreateTask } from "./create-task"
+import { CreateTask } from "./create-task-info"
 import { CreateSubtask } from "./create-subtask";
 import { TaskAffilation } from './task-affilations';
  

@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Select, MenuItem } from '@mui/material';
 
-import useHandleTask from '../hooks/use-handle-task';
+import useHandleTask from '../hooks/use-handle-task-info';
 import { TaskInterface } from "../types/types";
 
 export const CreateTask: React.FC<{
