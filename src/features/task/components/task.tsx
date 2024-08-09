@@ -79,6 +79,31 @@ export const Task: React.FC = () => {
                         ))}
                     </Stepper>
                     {renderStepContent()}
+                    <div className="flex justify-between w-[400px]">
+                        <Button
+                            disabled={activeStep === 0}
+                            variant="contained"
+                            onClick={handleBack}
+                            sx={{
+                                mt: 3,
+                                width: activeStep === 1 ? "190px" : "400px",
+                                display: (activeStep === 1 || activeStep == 2) ? "block" : "none"
+                            }}
+                        >
+                            back
+                        </Button>
+                        <Button
+                            variant="contained"
+                            onClick={handleNext}
+                            sx={{
+                                mt: 3,
+                                width: activeStep === 1 ? "190px" : "400px",
+                                display: (activeStep === 0 || activeStep == 1) ? "block" : "none"
+                            }}
+                        >
+                            {activeStep === STEPS.length - 1 ? "finish" : "next"}
+                        </Button>
+                    </div>
                     <Button
                         fullWidth
                         variant="contained"
