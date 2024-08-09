@@ -25,7 +25,7 @@ const useHandleCheck = ({
     const handleAdd = () => {
         const isTasks = tasks["task-name"] && tasks["start-date"] && tasks["end-date"] && tasks.comments;
         if(isTasks){
-            //make a post request to the server
+            console.log(checked)
         }
         else{
             Swal.fire({
@@ -45,7 +45,7 @@ const useHandleCheck = ({
         setChecked(prev => {
             const isChecked = prev.find(item => item.memberId === memberId);
             if (isChecked) {
-                return prev.map(item => item.memberId === memberId ? { ...item, check: !item.check } : item);
+                return prev.map(item => item.memberId === memberId ? { ...item, check: !item.check } : item).filter(item => item.check);
             } else {
                 return [...prev, { memberId, check: true }];
             }
