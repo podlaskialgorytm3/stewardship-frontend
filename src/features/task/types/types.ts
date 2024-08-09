@@ -2,7 +2,7 @@ export interface SubtaskInterface {
     title: string;
     description: string;
     status: string;
-}[]
+}
 export interface TaskInterface {
     'task-name': string;
     'start-date': string;
@@ -10,4 +10,8 @@ export interface TaskInterface {
      status: string;
      priority: string;
      comments: string;
+}
+export interface TaskAffilationInterface {
+    memberId: number;
+    check: boolean;
 }

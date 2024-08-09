@@ -7,6 +7,9 @@ import { CreateTaskInfo } from '../components/create-task-info';
 import { CreateSubtask } from '../components/create-subtask';
 import { TaskAffilation } from '../components/task-affilations';
 
+import useCreateTask from '../api/use-create-task';
+import useErrorMessage from '../../../shared/hooks/use-error-message';
+
 import Swal from 'sweetalert2';
 
 const useHandleCheck = ({
@@ -22,10 +25,17 @@ const useHandleCheck = ({
     const [tasks, setTasks] = useState<TaskInterface>(DEFAULT_TASK)
     const [checked, setChecked] = useState<{memberId: number, check: boolean}[]>([]);
 
+    const { mutate, isPending, isError, error } = useCreateTask();
+
     const handleAdd = () => {
         const isTasks = tasks["task-name"] && tasks["start-date"] && tasks["end-date"] && tasks.comments;
         if(isTasks){
-            console.log(checked)
+            mutate({
+                taskInfo: tasks,
+                subtasks,
+                taskAffilations: checked,
+                groupId
+            })
         }
         else{
             Swal.fire({
@@ -65,7 +75,9 @@ const useHandleCheck = ({
         }
     };
 
-    return { handleAdd, renderStepContent };
+    useErrorMessage({isError, error} as {isError: boolean, error: {message: string}});
+
+    return { handleAdd, renderStepContent, isPending };
 }
 
 export default useHandleCheck;

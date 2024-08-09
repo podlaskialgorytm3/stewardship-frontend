@@ -12,6 +12,7 @@ import { ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "../../../shared/themes/themes";
 
 import useHandleTask from "../hooks/use-handle-task";
+import Loading from "../../../shared/components/loading";
 
 
 export const Task: React.FC = () => {
@@ -19,7 +20,7 @@ export const Task: React.FC = () => {
 
     const [activeStep, setActiveStep] = useState(0);
 
-    const { handleAdd, renderStepContent } = useHandleTask({
+    const { handleAdd, renderStepContent, isPending } = useHandleTask({
         activeStep,
         setActiveStep,
         groupId: id
@@ -52,7 +53,7 @@ export const Task: React.FC = () => {
                             </Step>
                         ))}
                     </Stepper>
-                    {renderStepContent()}
+                    {isPending ? <Loading size={150} /> : renderStepContent()}
                     <div className="flex justify-between w-[400px]">
                         <Button
                             disabled={activeStep === 0}
