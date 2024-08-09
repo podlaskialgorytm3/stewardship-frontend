@@ -16,6 +16,8 @@ import { DEFAULT_TASK, STEPS } from "../constants/constants";
 import { ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "../../../shared/themes/themes";
 
+import Swal from "sweetalert2";
+
 export const Task: React.FC = () => {
     const { id } = useParams()
 
@@ -30,6 +32,25 @@ export const Task: React.FC = () => {
     };
     const handleBack = () => {
         setActiveStep((prevStep) => prevStep - 1);
+    }
+
+    const handleAdd = () => {
+        const isTasks = tasks["task-name"] && tasks["start-date"] && tasks["end-date"] && tasks.comments;
+        if(isTasks){
+            //make a post request to the server
+        }
+        else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You must add information about task!',
+                confirmButtonText: "go to first page"
+            }).then((result) => {
+                if(result.isConfirmed){
+                    setActiveStep(0);
+                }
+            })
+        }
     }
 
     const handleCheck = (memberId: number) => {
@@ -104,6 +125,7 @@ export const Task: React.FC = () => {
                     <Button
                         fullWidth
                         variant="contained"
+                        onClick={handleAdd}
                         sx={{
                             mt: 3,
                             width: "400px"
