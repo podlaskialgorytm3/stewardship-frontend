@@ -4,8 +4,6 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { ThemeProvider } from '@mui/material/styles';
-import { defaultTheme } from '../../../shared/themes/themes';
 import { Select, MenuItem } from '@mui/material';
 
 import useHadleSubtask from '../hooks/use-handle-subtask';

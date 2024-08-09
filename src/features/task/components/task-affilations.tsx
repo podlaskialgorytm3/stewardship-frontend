@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Member } from "../../members/types/types";
 import { SearchBar } from "../../search-bar/components/search-bar";
 
-import { Button } from "@mui/material";
 import { Checkbox } from "@mui/material";
 
 import useFetchMembers from "../api/use-fetch-members";
@@ -29,8 +28,8 @@ export const TaskAffilation: React.FC<{groupId: string | undefined, handleCheck:
                         <p>{member.name}</p>
                         <div className="w-[50px] flex justify-between">
                             <Checkbox
-                                color="secondary"
-                                defaultChecked={checked.find((item: any) => item.memberId === member.id)?.check || false} 
+                                color="secondary" 
+                                checked={checked.find((item) => item.memberId === member.id)?.check || false}
                                 onChange={() => handleCheck(member.id)}
                             />
                         </div>

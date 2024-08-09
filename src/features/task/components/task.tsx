@@ -20,6 +20,7 @@ export const Task: React.FC = () => {
     const { id } = useParams()
 
     const [activeStep, setActiveStep] = useState(0);
+
     const [subtasks, setSubtasks] = useState<SubtaskInterface[]>([]);
     const [tasks, setTasks] = useState<TaskInterface>(DEFAULT_TASK)
     const [checked, setChecked] = useState<{memberId: number, check: boolean}[]>([]);
@@ -32,19 +33,15 @@ export const Task: React.FC = () => {
     }
 
     const handleCheck = (memberId: number) => {
-        setChecked((prev) => {
-            const index = prev.findIndex((item) => item.memberId === memberId);
-            if (index === -1) {
-                return [...prev, {memberId, check: true}]
+        setChecked(prev => {
+            const isChecked = prev.find(item => item.memberId === memberId);
+            if (isChecked) {
+                return prev.map(item => item.memberId === memberId ? { ...item, check: !item.check } : item);
+            } else {
+                return [...prev, { memberId, check: true }];
             }
-            return prev.map((item) => {
-                if (item.memberId === memberId) {
-                    return {...item, check: !item.check}
-                }
-                return item
-            })
-        })
-    }
+        });
+    };
 
     const renderStepContent = () => {
         switch (activeStep) {
@@ -87,7 +84,7 @@ export const Task: React.FC = () => {
                             sx={{
                                 mt: 3,
                                 width: activeStep === 1 ? "190px" : "400px",
-                                display: (activeStep === 1 || activeStep == 2) ? "block" : "none"
+                                display: (activeStep === 1 || activeStep === 2) ? "block" : "none"
                             }}
                         >
                             back
@@ -98,7 +95,7 @@ export const Task: React.FC = () => {
                             sx={{
                                 mt: 3,
                                 width: activeStep === 1 ? "190px" : "400px",
-                                display: (activeStep === 0 || activeStep == 1) ? "block" : "none"
+                                display: (activeStep === 0 || activeStep === 1) ? "block" : "none"
                             }}
                         >
                             {activeStep === STEPS.length - 1 ? "finish" : "next"}
