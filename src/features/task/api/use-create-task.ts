@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../../shared/constants/constants";
 import { queryClient } from "../../../api/utils/query-client";
 import { TaskInterface, SubtaskInterface, TaskAffilationInterface } from "../types/types";
@@ -44,6 +45,7 @@ const createTask = async ({
 }
 
 const useCreateTask = () => {
+    const navigate = useNavigate();
     return useMutation({
         mutationFn: createTask,
         onSuccess: (data) => {
@@ -53,6 +55,7 @@ const useCreateTask = () => {
                 title: data.type,
                 text: data.message
             })
+            navigate(-1);
         },
     })
 }
