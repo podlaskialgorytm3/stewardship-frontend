@@ -9,13 +9,22 @@ import { ThemeProvider } from '@mui/material/styles';
 import { defaultTheme } from '../../../shared/themes/themes';
 import { Select, MenuItem } from '@mui/material';
 
+import useHandleTask from '../hooks/use-handle-task';
+import { TaskInterface } from "../types/types";
+
 export const CreateTask: React.FC<{
-    handleNext: () => void
+    handleNext: () => void,
+    tasks: TaskInterface,
+    setTasks: React.Dispatch<React.SetStateAction<TaskInterface>>
 }> = ({
-    handleNext
+    handleNext,
+    tasks,
+    setTasks
 }) => {
     const { id } = useParams<{id: string}>();
-
+    const { onSubmit, register, errors, handleSubmit } = useHandleTask({
+        setTasks
+    });
     const isPending = false;
 
     return (
@@ -41,7 +50,7 @@ export const CreateTask: React.FC<{
                 }}
                 >
                 <h1 className='text-3xl font-bold'>Create task</h1> 
-                <Box component="form" noValidate sx={{ mt: 1 }} >
+                <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                         margin="normal"
                         defaultValue={id}
@@ -55,52 +64,48 @@ export const CreateTask: React.FC<{
                     />
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
-                        id="name"
+                        id="task-name"
                         label="task-name"
-                        name="name"
                         autoFocus
-                        //onChange={() => handleChange('name')}
-                        //helperText={formErrors.name}
-                        //error={Boolean(formErrors.name)}
+                        defaultValue={tasks["task-name"]}
+                        {...register('task-name')}
+                        error={!!errors['task-name']}
+                        helperText={errors['task-name'] ? String(errors['task-name']?.message) : ''}
                     />
                     <TextField
                         margin="normal"
                         required
                         fullWidth
-                        name="start-date"
                         label="start-date"
                         type="datetime-local"
                         id="start-date"
-                        //onChange={() => handleChange('category')}
-                        //helperText={formErrors.category}
-                        //error={Boolean(formErrors.category)}
+                        defaultValue={tasks["start-date"]}
+                        {...register('start-date')}
+                        error={!!errors['start-date']}
+                        helperText={errors['start-date'] ? String(errors['start-date']?.message) : ''}
                     />
                     <TextField
                         margin="normal"
                         required
                         fullWidth
-                        name="end-date"
                         label="end-date"
                         type="datetime-local"
                         id="end-date"
-                        //onChange={() => handleChange('category')}
-                        //helperText={formErrors.category}
-                        //error={Boolean(formErrors.category)}
+                        defaultValue={tasks["end-date"]}
+                        {...register('end-date')}
+                        error={!!errors['end-date']}
+                        helperText={errors['end-date'] ? String(errors['end-date']?.message) : ''}
                     />
                     <Select
                         required
                         label="status"
-                        name="status"
+                        {...register('status')}
                         id="status"
                         fullWidth
                         placeholder="status"
-                        defaultValue={"waiting"}
+                        defaultValue={tasks.status || "waiting"}
                         sx={{mt: 2}}
-                        //onChange={() => handleChange('category')}
-                        //helperText={formErrors.category}
-                        //error={Boolean(formErrors.category)}
                     >
                         <MenuItem value={"done"}>done</MenuItem>
                         <MenuItem value={"in progress"}>in progress</MenuItem>
@@ -109,15 +114,12 @@ export const CreateTask: React.FC<{
                     <Select
                         required
                         label="priority"
-                        name="priority"
+                        {...register('priority')}
                         id="priority"
                         fullWidth
                         placeholder="priority"
-                        defaultValue={"medium priority"}
+                        defaultValue={tasks.priority || "medium priority"}
                         sx={{mt: 2}}
-                        //onChange={() => handleChange('category')}
-                        //helperText={formErrors.category}
-                        //error={Boolean(formErrors.category)}
                     >
                         <MenuItem value={"low priority"}>low priority</MenuItem>
                         <MenuItem value={"medium priority"}>medium priority</MenuItem>
@@ -126,14 +128,22 @@ export const CreateTask: React.FC<{
                     <TextField
                         margin="normal"
                         fullWidth
-                        name="comments"
                         label="comments"
                         type="text"
                         id="comments"
-                        //onChange={() => handleChange('category')}
-                        //helperText={formErrors.category}
-                        //error={Boolean(formErrors.category)}
+                        defaultValue={tasks.comments}
+                        {...register('comments')}
+                        error={!!errors['comments']}
+                        helperText={errors['comments'] ? String(errors['comments']?.message) : ''}
                     />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                        >
+                        save
+                    </Button>
                     <Button
                         fullWidth
                         variant="contained"
