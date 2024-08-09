@@ -20,12 +20,28 @@ export const Task: React.FC = () => {
     const [activeStep, setActiveStep] = useState(0);
     const [subtasks, setSubtasks] = useState<SubtaskInterface[]>([]);
     const [tasks, setTasks] = useState<TaskInterface>(DEFAULT_TASK)
+    const [checked, setChecked] = useState<{memberId: number, check: boolean}[]>([]);
 
     const handleNext = () => {
         setActiveStep((prevStep) => prevStep + 1);
     };
     const handleBack = () => {
         setActiveStep((prevStep) => prevStep - 1);
+    }
+
+    const handleCheck = (memberId: number) => {
+        setChecked((prev) => {
+            const index = prev.findIndex((item) => item.memberId === memberId);
+            if (index === -1) {
+                return [...prev, {memberId, check: true}]
+            }
+            return prev.map((item) => {
+                if (item.memberId === memberId) {
+                    return {...item, check: !item.check}
+                }
+                return item
+            })
+        })
     }
 
     const renderStepContent = () => {
@@ -35,7 +51,7 @@ export const Task: React.FC = () => {
             case 1:
                 return <CreateSubtask handleNext={handleNext} handleBack={handleBack} subtasks={subtasks} setSubtasks={setSubtasks} />;
             case 2:
-                return <TaskAffilation groupId={id} handleBack={handleBack} />;
+                return <TaskAffilation groupId={id} handleBack={handleBack} handleCheck={handleCheck} checked={checked} />;
             default:
                 return null;
         }
