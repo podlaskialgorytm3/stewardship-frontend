@@ -2,21 +2,19 @@ import { useState } from "react";
 
 import { Member } from "../../members/types/types";
 import { SearchBar } from "../../search-bar/components/search-bar";
-import { defaultTheme } from "../../../shared/themes/themes";
 
 import { Button } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
 import { Checkbox } from "@mui/material";
 
 import useFetchMembers from "../api/use-fetch-members";
 
-export const TaskAffilation: React.FC<{groupId: string | undefined, handleBack: () => void, handleCheck: (memberId: number) => void; checked: { memberId: number, check: boolean }[]}> 
-    = ({groupId, handleBack, handleCheck, checked}) => {
+export const TaskAffilation: React.FC<{groupId: string | undefined, handleCheck: (memberId: number) => void; checked: { memberId: number, check: boolean }[]}> 
+    = ({groupId, handleCheck, checked}) => {
     const [search, setSearch] = useState<string>("");
     const { data, isLoading } = useFetchMembers({groupId: groupId as string, username: search as string});
 
     return(
-    <ThemeProvider theme={defaultTheme}>
+    <>
         <h1 className="text-2xl font-bold mt-10">add-members-to-task</h1>
         <div className="w-[400px] border-[2px] h-[400px] overflow-y-scroll border-[#7e007e] rounded-xl flex flex-col items-center mt-10">
             <div className="flex flex-col items-center">
@@ -42,17 +40,6 @@ export const TaskAffilation: React.FC<{groupId: string | undefined, handleBack: 
                  
             </div>
         </div>
-        <Button
-            fullWidth
-            variant="contained"
-            sx={{
-                mt: 2,
-                width: "400px"
-            }}
-            onClick={() => handleBack()}
-            >
-            Back
-        </Button>  
-        </ThemeProvider>
+        </>
     )
 }

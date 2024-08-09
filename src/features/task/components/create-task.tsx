@@ -13,11 +13,9 @@ import useHandleTask from '../hooks/use-handle-task';
 import { TaskInterface } from "../types/types";
 
 export const CreateTask: React.FC<{
-    handleNext: () => void,
     tasks: TaskInterface,
     setTasks: React.Dispatch<React.SetStateAction<TaskInterface>>
 }> = ({
-    handleNext,
     tasks,
     setTasks
 }) => {
@@ -29,7 +27,6 @@ export const CreateTask: React.FC<{
 
     return (
         <>
-            <ThemeProvider theme={defaultTheme}>
                 <Container component="main" maxWidth="xs" sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -144,19 +141,10 @@ export const CreateTask: React.FC<{
                         >
                         save
                     </Button>
-                    <Button
-                        fullWidth
-                        variant="contained"
-                        onClick={() => handleNext()}
-                        sx={{ mt: 3, mb: 2 }}
-                        >
-                        Next
-                    </Button>
                 </Box>
                 </Box>
                 }
             </Container>  
-    </ThemeProvider>
-        </>
+    </>
     )
 }

@@ -13,13 +13,9 @@ import { subtaskSchema } from "../utils/utils";
 import { SubtaskInterface } from '../types/types';
 
 export const CreateSubtask: React.FC<{
-    handleNext: () => void,
-    handleBack: () => void,
     subtasks: SubtaskInterface[],
     setSubtasks: React.Dispatch<React.SetStateAction<SubtaskInterface[]>>;
 }> = ({
-    handleNext,
-    handleBack,
     subtasks,
     setSubtasks
 }) => {
@@ -39,7 +35,6 @@ export const CreateSubtask: React.FC<{
 
     return (
         <>
-            <ThemeProvider theme={defaultTheme}>
                 <Container component="main" maxWidth="xl" sx={{
                     display: 'flex',
                     flexDirection: 'row',
@@ -111,25 +106,6 @@ export const CreateSubtask: React.FC<{
                             add
                     </Button>
                 </Box>
-                    
-                    <div className="flex justify-between w-full">
-                        <Button
-                            fullWidth
-                            variant="contained"
-                            onClick={() => handleBack()}
-                            sx={{ mt: 3, mb: 2 , mr: 2}}
-                            >
-                            Back
-                        </Button>
-                        <Button
-                            fullWidth
-                            variant="contained"
-                            onClick={() => handleNext()}
-                            sx={{ mt: 3, mb: 2 }}
-                            >
-                            Next
-                        </Button>
-                    </div>
                 </Box>
                 }
                 <Box sx={{
@@ -174,8 +150,6 @@ export const CreateSubtask: React.FC<{
                 }
                 </Box>
             </Container>  
-            
-    </ThemeProvider>
         </>
     )
 }

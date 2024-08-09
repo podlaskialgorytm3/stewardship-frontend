@@ -8,11 +8,13 @@ import { TaskAffilation } from './task-affilations';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import { StepIcon } from "@mui/material";
+import { Button } from "@mui/material";
 
 import { SubtaskInterface, TaskInterface } from '../types/types';
 import { DEFAULT_TASK, STEPS } from "../constants/constants";
 
-
+import { ThemeProvider } from "@emotion/react";
+import { defaultTheme } from "../../../shared/themes/themes";
 
 export const Task: React.FC = () => {
     const { id } = useParams()
@@ -47,35 +49,47 @@ export const Task: React.FC = () => {
     const renderStepContent = () => {
         switch (activeStep) {
             case 0:
-                return <CreateTask handleNext={handleNext} tasks={tasks} setTasks={setTasks} />;
+                return <CreateTask tasks={tasks} setTasks={setTasks} />;
             case 1:
-                return <CreateSubtask handleNext={handleNext} handleBack={handleBack} subtasks={subtasks} setSubtasks={setSubtasks} />;
+                return <CreateSubtask subtasks={subtasks} setSubtasks={setSubtasks} />;
             case 2:
-                return <TaskAffilation groupId={id} handleBack={handleBack} handleCheck={handleCheck} checked={checked} />;
+                return <TaskAffilation groupId={id} handleCheck={handleCheck} checked={checked} />;
             default:
                 return null;
         }
     };
 
     return (
-        <div className="flex flex-col items-center">
-            <Stepper activeStep={activeStep} sx={{mt:5, width: "800px"}} >
-                {STEPS.map((step, index) => (
-                    <Step key={index} sx={{display: "flex", justifyContent: "space-between", cursor: "pointer"}} onClick={() => setActiveStep(index)}>
-                        <StepIcon
-                            icon={index + 1}
-                            sx={{
-                                color: index === activeStep ? '#7e007e' : 'gray',
-                                marginRight: "10px"
-                            }}
-                        />
-                        <p className={`${activeStep === index ? 'text-[#7e007e]' : 'text-gray-800' }`}>
-                            {step}
-                        </p>
-                    </Step>
-                ))}
-            </Stepper>
-            {renderStepContent()}
-        </div>
+        <ThemeProvider theme={defaultTheme}>
+                <div className="flex flex-col items-center">
+                    <Stepper activeStep={activeStep} sx={{mt:5, width: "800px"}} >
+                        {STEPS.map((step, index) => (
+                            <Step key={index} sx={{display: "flex", justifyContent: "space-between", cursor: "pointer"}} onClick={() => setActiveStep(index)}>
+                                <StepIcon
+                                    icon={index + 1}
+                                    sx={{
+                                        color: index === activeStep ? '#7e007e' : 'gray',
+                                        marginRight: "10px"
+                                    }}
+                                />
+                                <p className={`${activeStep === index ? 'text-[#7e007e]' : 'text-gray-800' }`}>
+                                    {step}
+                                </p>
+                            </Step>
+                        ))}
+                    </Stepper>
+                    {renderStepContent()}
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        sx={{
+                            mt: 3,
+                            width: "400px"
+                        }}
+                    >
+                        add task
+                    </Button>
+                </div>
+        </ThemeProvider>
     )
 }
