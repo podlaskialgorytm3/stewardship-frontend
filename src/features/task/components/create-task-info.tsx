@@ -63,7 +63,7 @@ export const CreateTaskInfo: React.FC<{
                         id="task-name"
                         label="task-name"
                         autoFocus
-                        defaultValue={tasks["task-name"]}
+                        defaultValue={tasks["task-name"] || ""}
                         {...register('task-name')}
                         error={!!errors['task-name']}
                         helperText={errors['task-name'] ? String(errors['task-name']?.message) : ''}
@@ -75,7 +75,7 @@ export const CreateTaskInfo: React.FC<{
                         label="start-date"
                         type="datetime-local"
                         id="start-date"
-                        defaultValue={tasks["start-date"]}
+                        defaultValue={tasks["start-date"]  || ""}
                         {...register('start-date')}
                         error={!!errors['start-date']}
                         helperText={errors['start-date'] ? String(errors['start-date']?.message) : ''}
@@ -87,7 +87,7 @@ export const CreateTaskInfo: React.FC<{
                         label="end-date"
                         type="datetime-local"
                         id="end-date"
-                        defaultValue={tasks["end-date"]}
+                        defaultValue={tasks["end-date"]  || ""}
                         {...register('end-date')}
                         error={!!errors['end-date']}
                         helperText={errors['end-date'] ? String(errors['end-date']?.message) : ''}
