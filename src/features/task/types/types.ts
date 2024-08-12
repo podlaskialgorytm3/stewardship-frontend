@@ -16,7 +16,7 @@ export interface TaskAffilationInterface {
     check: boolean;
 }
 
-interface Member {
+export interface Member {
     email: string;
     group: string;
     id: string;
@@ -48,7 +48,7 @@ interface SubtaskResponse {
 
 export interface TaskCardInterface {
     taskInfo: TaskInfoResponse;
-    subtasks: SubtaskResponse[];
-    taskAffiliation: Member[];
+    subTasks: SubtaskResponse[];
+    members: Member[];
     precentOfDoneSubtasks: string;
 }
