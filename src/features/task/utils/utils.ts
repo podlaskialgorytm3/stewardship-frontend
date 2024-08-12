@@ -40,3 +40,10 @@ export const convertHoursToTime = (hours: number) => {
   const formattedTime = `${hoursValue}:${minutesValue.toString().padStart(2, '0')}:${secondsValue.toString().padStart(2, '0')}`;
   return formattedTime;
 }
+
+export const formatDateTime = (dateTime: string) => {
+  const date = new Date(dateTime);
+  date.setHours(date.getHours() - 2); // Subtract 2 hours from the date
+  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+  return date.toLocaleDateString('en-US', options as any);
+}
