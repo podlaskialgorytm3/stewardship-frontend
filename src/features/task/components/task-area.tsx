@@ -6,7 +6,7 @@ import { TaskCardInterface } from '../types/types';
 
 export const TaskArea: React.FC<{groupId: string | undefined}> = ({groupId}) => {
     const { data, isLoading, isError, error } = useFetchTasksToCards(groupId);
-
+    useErrorMessage({isError, error} as {isError: boolean, error: {message: string}});
     return (
         <div className="w-[100%] flex flex-col items-center justify-start mt-5">
             <h1 className="text-2xl font-bold">your-tasks-in-this-group</h1>
@@ -15,7 +15,8 @@ export const TaskArea: React.FC<{groupId: string | undefined}> = ({groupId}) => 
                 {!isLoading && data && data.map((task: TaskCardInterface) => (
                     <TaskCard key={task.taskInfo.id} task={task}/>
                 ))}
+                {!isLoading && data.length === 0 && <p className='mt-5'>there are no tasks in this group</p>}
             </div>
         </div>
     );
-}
+} 
