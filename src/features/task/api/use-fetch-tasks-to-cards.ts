@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { API_URL } from "../../../shared/constants/constants";
 import Swal from "sweetalert2";
 
-const fetchTasksToCards = async (groupId: string) => {
-    const response = await fetch(`${API_URL}/stewardship?groupId=${groupId}`, {
+const fetchTasksToCards = async (groupId: string | undefined) => {
+    const response = await fetch(`${API_URL}/stewardship/task-info?groupId=${groupId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const fetchTasksToCards = async (groupId: string) => {
     return data;
 }
 
-const useFetchTasksToCards = (groupId: string) => (
+const useFetchTasksToCards = (groupId: string | undefined) => (
     useQuery({
         queryKey: ['tasks'],
         queryFn: () => fetchTasksToCards(groupId)
