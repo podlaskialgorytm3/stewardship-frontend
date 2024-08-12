@@ -13,7 +13,7 @@ export const SingleGroupPage = () => {
     return (
         <div> 
             {(isBelongGroup && !isLoadingBelongGroup )? (
-                <div className="flex justify-center items-center w-[1300px] mt-10">
+                <div className="flex justify-center items-start w-[1300px] mt-10">
                     <GroupManagement groupId={id} />   
                     <Members groupId={id} />
                 </div>

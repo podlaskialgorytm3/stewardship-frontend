@@ -2,6 +2,7 @@ import useFetchGroup from "../api/use-fetch-group";
 import Loading from "../../../shared/components/loading";
 import useErrorMessage from "../../../shared/hooks/use-error-message";
 import useCheckRole from "../../../api/hooks/use-check-role";
+import { TaskArea } from "./task-area";
 
 import { ButtonArea } from "./button-area";
 
@@ -11,7 +12,7 @@ export const GroupManagement: React.FC<{groupId: string | undefined}> = ({groupI
   
     useErrorMessage({isError, error } as {isError: boolean, error: {message: string}});
     return (
-        <div className="w-[70%] h-[400px] flex flex-col items-center justify-start">
+        <div className="w-[60%] min-h-[400px] flex flex-col items-center justify-start">
             {(data && !isLoading) ? (
                 <>
                     <h1 className="text-2xl font-bold">{data.name}</h1>
@@ -21,6 +22,7 @@ export const GroupManagement: React.FC<{groupId: string | undefined}> = ({groupI
                 <Loading size={50} />
             )}
             {!roleLoading && isAdmin && <ButtonArea groupId={groupId} />}
+            <TaskArea />
         </div>
     );
 }
