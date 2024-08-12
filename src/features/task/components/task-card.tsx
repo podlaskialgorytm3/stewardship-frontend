@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "../../../shared/themes/themes";
 import { Button } from "@mui/material";
@@ -9,6 +11,7 @@ import { TaskCardAvatars } from "./task-card-avatars";
 import { convertHoursToTime, formatDateTime } from "../utils/utils";
 
 export const TaskCard = ({task} : {task: TaskCardInterface}) => {
+  const navigate = useNavigate();
   return (
     <ThemeProvider theme={defaultTheme}>
     <div className="border-primary border-[2px] text-primary rounded-xl p-6 shadow-md relative w-[700px] m-3">
@@ -39,7 +42,7 @@ export const TaskCard = ({task} : {task: TaskCardInterface}) => {
       </div>
       <div className="text-primary text-sm mt-4 flex w-full justify-between">
         <p>{formatDateTime(task.taskInfo.startDate)} - {formatDateTime(task.taskInfo.endDate)}</p>
-        <Button variant="contained" color="primary">View Task</Button>
+        <Button variant="contained" color="primary" onClick={() => navigate(`/dashboard/groups/task/${task.taskInfo.id}`)}>View Task</Button>
       </div>
     </div>
     </ThemeProvider>

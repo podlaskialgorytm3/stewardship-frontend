@@ -13,6 +13,7 @@ import GroupPage from "../pages/dashboard/group/index"
 import CreateGroupPage from "../pages/dashboard/create-group/index";
 import EditGroupPage from "../pages/dashboard/group/edit-group";
 import CreateTaskPage from "../pages/dashboard/group/create-task";
+import TaskPage from "../pages/dashboard/group/task/index";
 
 export const routes = createBrowserRouter([
     {
@@ -30,7 +31,8 @@ export const routes = createBrowserRouter([
                 {path: "/dashboard/groups/:id", element: <GroupPage />},
                 {path: "/dashboard/groups/edit-group/:id", element: <EditGroupPage />},
                 {path: "/dashboard/groups/create-task/:id", element: <CreateTaskPage />},
-                {path: "/dashboard/create-group", element: <CreateGroupPage />} 
+                {path: "/dashboard/create-group", element: <CreateGroupPage />},
+                {path: "/dashboard/groups/task/:id", element: <TaskPage />}
             ]}
         ]
     }
