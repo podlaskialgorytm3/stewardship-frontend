@@ -5,6 +5,7 @@ import useBelongGroup from "../api/use-belong-group";
 
 import { Members } from "../../members/components/members";
 import { GroupManagement } from "../../group-management/components/group-management";
+import { TaskArea } from "../../task/components/task-area";
 
 export const SingleGroupPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -14,7 +15,10 @@ export const SingleGroupPage = () => {
         <div> 
             {(isBelongGroup && !isLoadingBelongGroup )? (
                 <div className="flex justify-center items-start w-[1300px] mt-10">
-                    <GroupManagement groupId={id} />   
+                    <div className="w-[60%] min-h-[200px] flex flex-col items-center justify-start">
+                        <GroupManagement groupId={id} />
+                        <TaskArea groupId={id} />
+                    </div>
                     <Members groupId={id} />
                 </div>
             ):(
