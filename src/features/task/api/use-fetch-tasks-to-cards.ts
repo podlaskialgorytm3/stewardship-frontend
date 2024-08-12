@@ -26,7 +26,7 @@ const fetchTasksToCards = async (groupId: string | undefined) => {
 
 const useFetchTasksToCards = (groupId: string | undefined) => (
     useQuery({
-        queryKey: ['tasks'],
+        queryKey: ['tasks', groupId],
         queryFn: () => fetchTasksToCards(groupId)
     })
 )
