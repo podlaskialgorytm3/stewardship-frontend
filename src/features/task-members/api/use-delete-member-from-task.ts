@@ -4,7 +4,7 @@ import { queryClient } from '../../../api/utils/query-client';
 
 import Swal from 'sweetalert2';
 
-const deleteMemberFromTask = async ({memberId, taskInfoId} : {memberId: string, taskInfoId: string}) => {
+const deleteMemberFromTask = async ({memberId, taskInfoId} : {memberId: string, taskInfoId: string | undefined}) => {
     const response = await fetch(`${API_URL}/stewardship/task-affilation?taskInfoId=${taskInfoId}&groupUserId=${memberId}`, {
         method: 'DELETE',
         headers: {
@@ -30,7 +30,7 @@ const useDeleteMemberFromTask = () => (
     useMutation({
         mutationFn: deleteMemberFromTask,
         onSuccess: (data) => {
-            queryClient.invalidateQueries({queryKey: ["members-added-to-task","members-off-task"]})
+            queryClient.invalidateQueries({queryKey: ["members"]})
             Swal.fire({
                 title: data.type,
                 text: data.message,

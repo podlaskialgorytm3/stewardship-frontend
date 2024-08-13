@@ -27,7 +27,7 @@ const fetchMembersOffTask = async ({taskInfoId, username} : {taskInfoId: string 
 
 const useFetchMembersOffTask = ({taskInfoId, username} : {taskInfoId: string | undefined; username: string}) => (
     useQuery({
-        queryKey: ['members-off-task', taskInfoId, username],
+        queryKey: ['members', "members-off-task", username],
         queryFn: () => fetchMembersOffTask({taskInfoId, username})
     })
 )

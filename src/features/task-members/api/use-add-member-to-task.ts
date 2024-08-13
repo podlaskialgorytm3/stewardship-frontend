@@ -4,7 +4,7 @@ import { queryClient } from '../../../api/utils/query-client';
 
 import Swal from 'sweetalert2';
 
-const addMemberToTask = async ({memberId, taskInfoId} : {memberId: string, taskInfoId: string}) => {
+const addMemberToTask = async ({memberId, taskInfoId} : {memberId: string, taskInfoId: string | undefined}) => {
     const response = await fetch(`${API_URL}/stewardship/task-affilation`, {
         method: 'POST',
         headers: {
@@ -34,7 +34,7 @@ const useAddMemberToTask = () => (
     useMutation({
         mutationFn: addMemberToTask,
         onSuccess: (data) => {
-            queryClient.invalidateQueries({queryKey: ["members-added-to-task","members-off-task"]})
+            queryClient.invalidateQueries({queryKey: ["members"]})
             Swal.fire({
                 title: data.type,
                 text: data.message,

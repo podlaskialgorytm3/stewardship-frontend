@@ -27,7 +27,7 @@ const fetchMembersAddedToTask = async ({taskInfoId, username} : {taskInfoId: str
 
 const useFetchMembersAddedToTask = ({taskInfoId, username} : {taskInfoId: string | undefined; username: string}) => (
     useQuery({
-        queryKey: ['members-added-to-task', taskInfoId, username],
+        queryKey: ['members', "members-added", username],
         queryFn: () => fetchMembersAddedToTask({taskInfoId, username})
     })
 )
