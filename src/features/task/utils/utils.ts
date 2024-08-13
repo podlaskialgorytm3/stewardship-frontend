@@ -30,20 +30,3 @@ export const taskSchema = object({
       message: 'Comments is required'
     }).min(3, 'Comments must be at least 3 characters')
 })
-
-export const convertHoursToTime = (hours: number) => {
-  const totalSeconds = Math.floor(hours * 3600);
-  const hoursValue = Math.floor(totalSeconds / 3600);
-  const minutesValue = Math.floor((totalSeconds % 3600) / 60);
-  const secondsValue = totalSeconds % 60;
-
-  const formattedTime = `${hoursValue}:${minutesValue.toString().padStart(2, '0')}:${secondsValue.toString().padStart(2, '0')}`;
-  return formattedTime;
-}
-
-export const formatDateTime = (dateTime: string) => {
-  const date = new Date(dateTime);
-  date.setHours(date.getHours() - 2); // Subtract 2 hours from the date
-  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-  return date.toLocaleDateString('en-US', options as any);
-}

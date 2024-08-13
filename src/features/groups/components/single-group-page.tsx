@@ -5,7 +5,7 @@ import useBelongGroup from "../api/use-belong-group";
 
 import { Members } from "../../members/components/members";
 import { GroupManagement } from "../../group-management/components/group-management";
-import { TaskArea } from "../../task/components/task-area";
+import { TaskArea } from "../../task-card/components/task-area";
 
 export const SingleGroupPage = () => {
     const { id } = useParams<{ id: string }>();
