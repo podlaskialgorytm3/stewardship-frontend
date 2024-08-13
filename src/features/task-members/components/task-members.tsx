@@ -15,13 +15,17 @@ export const TaskMembers: React.FC<{ taskInfoId: string | undefined}> = ({taskIn
                 <Splide aria-label="My Favorite Images" className="cursor-grab w-[100%] h-[400px]"  options={{
                     pagination: false
                 }}>
-                    <SplideSlide>
-                          <MembersAddedToTask taskInfoId={taskInfoId} />
-                    </SplideSlide>
+                    {
+                        !isLoading && (
+                            <SplideSlide>
+                                <MembersAddedToTask taskInfoId={taskInfoId}  isAdmin={isAdmin}/>
+                            </SplideSlide>
+                        )
+                    }
                     {!isLoading && isAdmin && (
                         <>
                             <SplideSlide>
-                                <MembersOffTask taskInfoId={taskInfoId}/>
+                                <MembersOffTask taskInfoId={taskInfoId} isAdmin={isAdmin}/>
                             </SplideSlide>
                         </>
                     )}

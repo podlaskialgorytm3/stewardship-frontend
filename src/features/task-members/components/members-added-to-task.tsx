@@ -6,7 +6,7 @@ import { SearchBar } from "../../search-bar/components/search-bar";
 
 import useFetchMembersAddedToTask from "../api/use-fetch-members-added-to-task";
 
-export const MembersAddedToTask: React.FC<{taskInfoId: string | undefined}> = ({taskInfoId}) => {
+export const MembersAddedToTask: React.FC<{taskInfoId: string | undefined, isAdmin: boolean}> = ({taskInfoId, isAdmin}) => {
     const [search, setSearch] = useState<string>("");
     const { data, isLoading } = useFetchMembersAddedToTask({taskInfoId, username: search});
 
@@ -16,7 +16,7 @@ export const MembersAddedToTask: React.FC<{taskInfoId: string | undefined}> = ({
             <SearchBar placeholder="Search members" search={search} setSearch={setSearch} />
             {!isLoading && data && data.map((member: Member) => {
             return (
-                <MemberCard member={member}  key={member.id}/>
+                <MemberCard member={member}  key={member.id} type={"added"} isAdmin={isAdmin}/>
             )
             })}   
         </div>
