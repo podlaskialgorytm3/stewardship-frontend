@@ -4,23 +4,19 @@ import { queryClient } from '../../../api/utils/query-client';
 
 import Swal from 'sweetalert2';
 
-const addMemberToTask = async ({memberId, taskInfoId} : {memberId: string, taskInfoId: string}) => {
-    const response = await fetch(`${API_URL}/stewardship/task-affilation`, {
-        method: 'POST',
+const deleteMemberFromTask = async ({memberId, taskInfoId} : {memberId: string, taskInfoId: string}) => {
+    const response = await fetch(`${API_URL}/stewardship/task-affilation?taskInfoId=${taskInfoId}&groupUserId=${memberId}`, {
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify({
-            memberId,
-            taskInfoId
-        })
+        }
     })
 
     if(!response.ok){
         Swal.fire({
             title: 'Error',
-            text: 'An error occurred while adding the member to the task',
+            text: 'An error occurred while delete the member from task',
             icon: 'error'
         })
     }
@@ -30,9 +26,9 @@ const addMemberToTask = async ({memberId, taskInfoId} : {memberId: string, taskI
     return data;
 }
 
-const useAddMemberToTask = () => (
+const useDeleteMemberFromTask = () => (
     useMutation({
-        mutationFn: addMemberToTask,
+        mutationFn: deleteMemberFromTask,
         onSuccess: (data) => {
             queryClient.invalidateQueries({queryKey: ["members-added-to-task","members-off-task"]})
             Swal.fire({
@@ -44,4 +40,4 @@ const useAddMemberToTask = () => (
     })
 )
 
-export default useAddMemberToTask;
+export default useDeleteMemberFromTask;
