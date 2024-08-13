@@ -16,7 +16,7 @@ export const TaskMembers: React.FC<{ taskInfoId: string | undefined}> = ({taskIn
                     pagination: false
                 }}>
                     <SplideSlide>
-                          <MembersAddedToTask />
+                          <MembersAddedToTask taskInfoId={taskInfoId} />
                     </SplideSlide>
                     {!isLoading && isAdmin && (
                         <>

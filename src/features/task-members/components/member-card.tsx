@@ -1,10 +1,8 @@
-import useCheckRole from "../../../api/hooks/use-check-role-by-group-id";
 import { Member } from "../types/types";
 
 export const MemberCard: 
-    React.FC<{member: Member, groupId: string | undefined, type: string}> 
-    = ({member,groupId, type}) => {
-    const { data: isAdmin, isLoading} = useCheckRole(groupId as string);
+    React.FC<{member: Member}> 
+    = ({member}) => {
 
     return(
         <div 
