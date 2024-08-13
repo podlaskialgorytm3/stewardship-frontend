@@ -4,7 +4,7 @@ import { API_URL } from "../../shared/constants/constants";
 import Swal from "sweetalert2";
 
 const checkRole = async (groupId: string) => {
-    const response = await fetch(`${API_URL}/stewardship//group-user/is-admin/${groupId}`, {
+    const response = await fetch(`${API_URL}/stewardship/group-user/is-admin/${groupId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
