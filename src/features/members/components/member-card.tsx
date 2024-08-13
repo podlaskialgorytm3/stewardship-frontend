@@ -1,5 +1,5 @@
 import { Member } from "../types/types";
-import useCheckRole from "../../../api/hooks/use-check-role";
+import useCheckRole from "../../../api/hooks/use-check-role-by-group-id";
 import useHandleMember from "../hooks/use-handle-member";
 import useHandleRequest from "../hooks/use-handle-request";
 import useHandleUsers from "../hooks/use-handle-users";

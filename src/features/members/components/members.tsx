@@ -4,7 +4,7 @@ import '@splidejs/react-splide/css';
 import MembersOfGroup from './type-of-slide/members-of-group';
 import RequestsToGroup from './type-of-slide/requests-to-group';
 import AddingToGroup from './type-of-slide/adding-to-group';
-import useCheckRole from '../../../api/hooks/use-check-role';
+import useCheckRole from '../../../api/hooks/use-check-role-by-group-id';
 
 export const Members: React.FC<{ groupId: string | undefined}> = ({groupId}) => {
     const { data: isAdmin, isLoading} = useCheckRole(groupId as string);
