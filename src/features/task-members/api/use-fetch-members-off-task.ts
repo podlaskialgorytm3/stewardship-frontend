@@ -3,8 +3,8 @@ import { API_URL } from "../../../shared/constants/constants";
 import { Member } from "../types/types";
 import Swal from "sweetalert2";
 
-const fetchMembersAddedToTask = async ({taskInfoId, username} : {taskInfoId: string, username: string}) => {
-    const resposne = await fetch(`${API_URL}/stewardship/task-affilation?taskInfoId=${taskInfoId}&username=${username}`,{
+const fetchMembersOffTask = async ({taskInfoId, username} : {taskInfoId: string, username: string}) => {
+    const resposne = await fetch(`${API_URL}/stewardship/task-affilation/off-task?taskInfoId=${taskInfoId}&username=${username}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -25,11 +25,11 @@ const fetchMembersAddedToTask = async ({taskInfoId, username} : {taskInfoId: str
     return data as Member[];
 }
 
-const useFetchMembersAddedToTask = ({taskInfoId, username} : {taskInfoId: string; username: string}) => (
+const useFetchMembersOffTask = ({taskInfoId, username} : {taskInfoId: string; username: string}) => (
     useQuery({
         queryKey: ['tasks', taskInfoId, username],
-        queryFn: () => fetchMembersAddedToTask({taskInfoId, username})
+        queryFn: () => fetchMembersOffTask({taskInfoId, username})
     })
 )
 
-export default useFetchMembersAddedToTask;
+export default useFetchMembersOffTask;
