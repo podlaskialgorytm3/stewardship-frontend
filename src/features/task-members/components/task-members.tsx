@@ -5,6 +5,7 @@ import { MembersAddedToTask } from './members-added-to-task';
 import { MembersOffTask } from './members-off-task';
 import useCheckRoleByTasInfokId from '../../../api/hooks/use-check-role-by-task-info-id';
 
+
 export const TaskMembers: React.FC<{ taskInfoId: string | undefined}> = ({taskInfoId}) => {
     const { data: isAdmin, isLoading} = useCheckRoleByTasInfokId(taskInfoId as string);
 
@@ -15,7 +16,7 @@ export const TaskMembers: React.FC<{ taskInfoId: string | undefined}> = ({taskIn
                     pagination: false
                 }}>
                     <SplideSlide>
-                          <MembersAddedToTask groupId={taskInfoId}/>
+                          <MembersAddedToTask />
                     </SplideSlide>
                     {!isLoading && isAdmin && (
                         <>
