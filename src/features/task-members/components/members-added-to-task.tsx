@@ -16,7 +16,7 @@ export const MembersAddedToTask: React.FC<{taskInfoId: string | undefined, isAdm
             <SearchBar placeholder="Search members" search={search} setSearch={setSearch} />
             {!isLoading && data && data.map((member: Member) => {
             return (
-                <MemberCard member={member}  key={member.id} type={"added"} isAdmin={isAdmin}/>
+                <MemberCard member={member}  key={member.id} type={"added"} isAdmin={isAdmin} taskInfoId={taskInfoId}/>
             )
             })}   
         </div>
