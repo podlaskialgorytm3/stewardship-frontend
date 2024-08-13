@@ -3,7 +3,7 @@ import { API_URL } from "../../../shared/constants/constants";
 import { Member } from "../types/types";
 import Swal from "sweetalert2";
 
-const fetchMembersOffTask = async ({taskInfoId, username} : {taskInfoId: string, username: string}) => {
+const fetchMembersOffTask = async ({taskInfoId, username} : {taskInfoId: string | undefined, username: string}) => {
     const resposne = await fetch(`${API_URL}/stewardship/task-affilation/off-task?taskInfoId=${taskInfoId}&username=${username}`,{
         method: 'GET',
         headers: {
@@ -25,9 +25,9 @@ const fetchMembersOffTask = async ({taskInfoId, username} : {taskInfoId: string,
     return data as Member[];
 }
 
-const useFetchMembersOffTask = ({taskInfoId, username} : {taskInfoId: string; username: string}) => (
+const useFetchMembersOffTask = ({taskInfoId, username} : {taskInfoId: string | undefined; username: string}) => (
     useQuery({
-        queryKey: ['tasks', taskInfoId, username],
+        queryKey: ['members-off-task', taskInfoId, username],
         queryFn: () => fetchMembersOffTask({taskInfoId, username})
     })
 )

@@ -21,7 +21,7 @@ export const TaskMembers: React.FC<{ taskInfoId: string | undefined}> = ({taskIn
                     {!isLoading && isAdmin && (
                         <>
                             <SplideSlide>
-                                <MembersOffTask groupId={taskInfoId}/>
+                                <MembersOffTask taskInfoId={taskInfoId}/>
                             </SplideSlide>
                         </>
                     )}
