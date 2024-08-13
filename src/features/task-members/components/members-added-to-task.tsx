@@ -4,13 +4,13 @@ import { Member } from "../types/types";
 import { MemberCard } from "./member-card";
 import { SearchBar } from "../../search-bar/components/search-bar";
 
-export const MembersAddedToTask: React.FC<{groupId: string | undefined}> = ({groupId}) => {
+export const MembersAddedToTask: React.FC<{}> = () => {
     const [search, setSearch] = useState<string>("");
 
     return(
         <div className="flex flex-col items-center">
             <h1 className="text-xl font-bold mt-5">members-added-to-task</h1>
-            <SearchBar placeholder="Search requests" search={search} setSearch={setSearch} />
+            <SearchBar placeholder="Search members" search={search} setSearch={setSearch} />
             {/* {!isLoading && data.data && data.data.map((member: Member) => {
             return (
                 <MemberCard member={member} groupId={groupId} key={member.id} type="waiting"/>
