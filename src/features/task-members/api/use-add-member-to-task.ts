@@ -12,7 +12,7 @@ const addMemberToTask = async ({memberId, taskInfoId} : {memberId: string, taskI
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify({
-            memberId,
+            groupUserId: memberId,
             taskInfoId
         })
     })
