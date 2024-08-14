@@ -8,7 +8,7 @@ import { TaskCardInterface } from "../types/types";
 
 import { TaskCardAvatars } from "./task-card-avatars";
 
-import { convertHoursToTime, formatDateTime } from "../utils/utils";
+import { convertHoursToTime, formatDateTime } from "../../../shared/utils/utils";
 
 export const TaskCard = ({task} : {task: TaskCardInterface}) => {
   const navigate = useNavigate();
