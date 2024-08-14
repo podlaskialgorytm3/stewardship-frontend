@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 
 import { TaskMembers } from "../../task-members/components/task-members"
+import { TaskInformation } from "./task-information";
 
 import useFetchTask from "../api/use-fetch-task";
 import Loading from "../../../shared/components/loading";
@@ -24,7 +25,7 @@ export const SingleTaskPage: React.FC = () => {
                 {!isLoading && data && (
                     <>
                         <div className="w-[70%]">
-    
+                            <TaskInformation taskInfo={data}/>
                         </div>
                         <div className="w-[30%]">
                             <TaskMembers taskInfoId={id}/>
