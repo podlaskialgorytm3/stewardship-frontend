@@ -23,11 +23,11 @@ export const TaskInformation: React.FC<{taskInfo: TaskPageResponse}> = ({taskInf
                     <p>assigned-by: {taskInfo.taskInfo.assignedBy.name}</p>
                     <img src={taskInfo.taskInfo.assignedBy.img} alt={taskInfo.taskInfo.assignedBy.name} className="mt-5 w-12 h-12 rounded-full border-2 border-dark object-cover" />
                 </TaskElement>
-                <TaskElement size={500}>
+                <TaskElement size={500}>    
                     <h1 className="text-xl font-bold">comments:</h1>
                     <p>{taskInfo.taskInfo.comments}</p>
                 </TaskElement>
             </div>
         </div>
     );
-}
+}   

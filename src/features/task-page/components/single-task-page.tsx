@@ -9,6 +9,7 @@ import Loading from "../../../shared/components/loading";
 import useErrorMessage from "../../../shared/hooks/use-error-message";
 import useBelongToTask from "../api/use-belong-to-task";
 import { AuthError } from "../../../shared/components/auth-error";
+import { Subtasks } from "../../subtask/components/subtasks";
 
 export const SingleTaskPage: React.FC = () => {
     const { id } = useParams();
@@ -24,8 +25,9 @@ export const SingleTaskPage: React.FC = () => {
                 {isLoading && !data && <Loading size={150}/>}
                 {!isLoading && data && (
                     <>
-                        <div className="w-[70%]">
+                        <div className="w-[70%] flex flex-col items-center">
                             <TaskInformation taskInfo={data}/>
+                            <Subtasks subtasks={data.subTasks}/>
                         </div>
                         <div className="w-[30%]">
                             <TaskMembers taskInfoId={id}/>

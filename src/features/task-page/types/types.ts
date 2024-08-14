@@ -19,7 +19,7 @@ interface TaskInfoResponse {
     time: number;
 }
 
-interface SubtaskResponse {
+export interface SubtaskResponse {
     assignedBy: Member;
     description: string;
     id: string;
