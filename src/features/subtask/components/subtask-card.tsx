@@ -2,10 +2,12 @@ import { SubtaskResponse } from "../types/types"
 
 import useFetchRight from "../api/use-fetch-right"
 import useHandleStatus from "../hooks/use-handle-status"
+import useHandleEdit from "../hooks/use-handle-edit"
 
 export const SubtaskCard:React.FC<{subtask: SubtaskResponse}> = ({subtask}) => {
     const { data: isAuthorized, isLoading: loadingAuthorized } = useFetchRight(subtask.id);
     const { handleStatus } = useHandleStatus({subtaskId: subtask.id});
+    const { handleEdit } = useHandleEdit({title: subtask.title, description: subtask.description});
 
     return(
         <div className="border-primary border-[2px] text-primary rounded-xl p-6 shadow-md relative w-[750px] m-3 flex flex-col">
@@ -27,7 +29,7 @@ export const SubtaskCard:React.FC<{subtask: SubtaskResponse}> = ({subtask}) => {
                     {
                         isAuthorized && 
                         (<>
-                            <button className="bg-primary text-white px-4 py-2 rounded-xl ml-3">edit</button>
+                            <button className="bg-primary text-white px-4 py-2 rounded-xl ml-3" onClick={() => handleEdit(subtask.id)}>edit</button>
                             <button className="bg-[red] text-white px-4 py-2 rounded-xl ml-3">delete</button>
                         </>
                         )
