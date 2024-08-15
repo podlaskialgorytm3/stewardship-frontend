@@ -7,7 +7,7 @@ export const Subtasks:React.FC<{subtasks: SubtaskResponse[]}> = ({subtasks}) => 
             <h1 className="text-2xl font-bold mt-10">your-subtasks</h1>
                 <div className="flex flex-wrap justify-center">
                 {
-                    subtasks.map((subtask: SubtaskResponse) => (<SubtaskCard key={subtask.id} subtasks={subtask} />))
+                    subtasks.map((subtask: SubtaskResponse) => (<SubtaskCard key={subtask.id} subtask={subtask} />))
                 }
                 </div>
         </>
