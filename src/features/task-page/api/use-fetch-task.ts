@@ -28,7 +28,7 @@ const fetchTask = async (taskInfoId: string) => {
 
 const useFetchTask = (taskInfoId: string) => (
     useQuery({
-        queryKey: ['task', taskInfoId],
+        queryKey: ['task',"subtask", taskInfoId],
         queryFn: () => fetchTask(taskInfoId)
     })
 )
