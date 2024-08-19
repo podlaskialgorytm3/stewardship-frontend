@@ -1,11 +1,11 @@
-import { HomePage } from '../../features/home/components/home';
+import { HomePage } from "../../features/home/components/home";
 
 const Home: React.FC = () => {
-    return (
-        <div>
-            <HomePage />
-        </div>
-    );
-}
+  return (
+    <div>
+      <HomePage />
+    </div>
+  );
+};
 
 export default Home;
