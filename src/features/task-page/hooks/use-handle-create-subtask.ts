@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 import { fromZodError } from "zod-validation-error";
-import { CreateSubtaskSchema, CreateSubtaskType } from "../types/types";
+import { CreateSubtaskSchema } from "../types/types";
 
 const useHandleCreateSubtask = () => {
   const handleCreateSubtask = () => {

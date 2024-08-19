@@ -43,4 +43,9 @@ export const CreateSubtaskSchema = z.object({
   status: z.string().min(3, "Status must have at least 3 character"),
 });
 
-export type CreateSubtaskType = z.infer<typeof CreateSubtaskSchema>;
+export interface CreateSubtaskType {
+  title: string;
+  description: string;
+  status: string;
+  taskInfoId: string;
+}
