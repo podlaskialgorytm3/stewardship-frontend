@@ -37,11 +37,14 @@ export interface TaskPageResponse {
   precentOfDoneSubtasks: string;
 }
 
-export const CreateSubtaskSchema = z.object({
-  title: z.string().min(3, "Title must have at least 3 character"),
-  description: z.string().min(3, "Description must have at least 3 character"),
-  status: z.string().min(3, "Status must have at least 3 character"),
-});
+export interface TaskRequest {
+  name: string;
+  status: string;
+  priority: string;
+  startDate: string;
+  endDate: string;
+  comments: string;
+}
 
 export const EditTaskSchema = z.object({
   name: z.string().min(3, "Task name must have at least 3 character"),
@@ -58,3 +61,9 @@ export interface CreateSubtaskType {
   status: string;
   taskInfoId: string | undefined;
 }
+
+export const CreateSubtaskSchema = z.object({
+  title: z.string().min(3, "Title must have at least 3 character"),
+  description: z.string().min(3, "Description must have at least 3 character"),
+  status: z.string().min(3, "Status must have at least 3 character"),
+});

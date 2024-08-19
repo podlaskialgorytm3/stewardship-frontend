@@ -3,8 +3,6 @@ import { fromZodError } from "zod-validation-error";
 import { EditTaskSchema, TaskInfoResponse } from "../types/types";
 
 const useHandleEditTask = ({ task }: { task: TaskInfoResponse }) => {
-  console.log(task);
-
   const handleEditTask = () => {
     Swal.fire({
       title: "Edit Task",
