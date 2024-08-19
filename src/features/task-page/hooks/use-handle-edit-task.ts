@@ -98,7 +98,7 @@ const useHandleEditTask = ({ task }: { task: TaskInfoResponse }) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        mutate({ task, taskInfoId: task.id });
+        mutate({ task: { ...result.value }, taskInfoId: task.id });
       }
     });
   };
