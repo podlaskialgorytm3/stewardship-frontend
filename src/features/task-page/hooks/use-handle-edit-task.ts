@@ -2,7 +2,11 @@ import Swal from "sweetalert2";
 import { fromZodError } from "zod-validation-error";
 import { EditTaskSchema, TaskInfoResponse } from "../types/types";
 
+import { useEditTask } from "../api/use-edit-task";
+
 const useHandleEditTask = ({ task }: { task: TaskInfoResponse }) => {
+  const { mutate } = useEditTask();
+
   const handleEditTask = () => {
     Swal.fire({
       title: "Edit Task",
@@ -94,7 +98,7 @@ const useHandleEditTask = ({ task }: { task: TaskInfoResponse }) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // mutate data
+        mutate({ task, taskInfoId: task.id });
       }
     });
   };
