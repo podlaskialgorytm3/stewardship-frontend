@@ -9,7 +9,7 @@ export interface Member {
   role: string;
 }
 
-interface TaskInfoResponse {
+export interface TaskInfoResponse {
   assignedBy: Member;
   comments: string;
   endDate: string;

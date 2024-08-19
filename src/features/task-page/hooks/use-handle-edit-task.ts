@@ -1,28 +1,61 @@
 import Swal from "sweetalert2";
 import { fromZodError } from "zod-validation-error";
+import { EditTaskSchema, TaskInfoResponse } from "../types/types";
 
-import { EditTaskSchema } from "../types/types";
+const useHandleEditTask = ({ task }: { task: TaskInfoResponse }) => {
+  console.log(task);
 
-const useHandleEditTask = () => {
   const handleEditTask = () => {
     Swal.fire({
       title: "Edit Task",
       html: `<div style="display: flex; flex-direction: column;">
-                <input id="name" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="name">
-                <select id="status" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" >
-                    <option value="waiting">waiting</option>
-                    <option value="in progress">in progress</option>
-                    <option value="done">done</option>
-                </select>
-                <select id="priority" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" >
-                    <option value="low priority">low priority</option>
-                    <option value="medium priority">medium priority</option>
-                    <option value="high priority">high priority</option>
-                </select>
-                <input id="startDate" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="start date" type="datetime-local">
-                <input id="endDate" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="end date" type="datetime-local">
-                <input id="comments" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="comments">
-                </div>`,
+                                <input id="name" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="name" value="${
+                                  task.name || ""
+                                }">
+                                <select id="status" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;">
+                                        <option value="waiting" ${
+                                          task.status === "waiting"
+                                            ? "selected"
+                                            : ""
+                                        }>waiting</option>
+                                        <option value="in progress" ${
+                                          task.status === "in progress"
+                                            ? "selected"
+                                            : ""
+                                        }>in progress</option>
+                                        <option value="done" ${
+                                          task.status === "done"
+                                            ? "selected"
+                                            : ""
+                                        }>done</option>
+                                </select>
+                                <select id="priority" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;">
+                                        <option value="low priority" ${
+                                          task.priority === "low priority"
+                                            ? "selected"
+                                            : ""
+                                        }>low priority</option>
+                                        <option value="medium priority" ${
+                                          task.priority === "medium priority"
+                                            ? "selected"
+                                            : ""
+                                        }>medium priority</option>
+                                        <option value="high priority" ${
+                                          task.priority === "high priority"
+                                            ? "selected"
+                                            : ""
+                                        }>high priority</option>
+                                </select>
+                                <input id="startDate" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="start date" type="datetime-local" value="${
+                                  task.startDate.slice(0, -8) || ""
+                                }">
+                                <input id="endDate" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="end date" type="datetime-local" value="${
+                                  task.endDate.slice(0, -8) || ""
+                                }">
+                                <input id="comments" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="comments" value="${
+                                  task.comments || ""
+                                }">
+                                </div>`,
       showCancelButton: true,
       confirmButtonText: "Edit",
       showLoaderOnConfirm: true,

@@ -3,11 +3,14 @@ import { TaskElement } from "./task-element";
 import { useHandleCreateSubtask } from "../hooks/use-handle-create-subtask";
 import { useHandleEditTask } from "../hooks/use-handle-edit-task";
 
-const TaskManagement: React.FC<{ taskInfoId: string | undefined }> = ({
-  taskInfoId,
-}) => {
+import { TaskInfoResponse } from "../types/types";
+
+const TaskManagement: React.FC<{
+  taskInfoId: string | undefined;
+  task: TaskInfoResponse;
+}> = ({ taskInfoId, task }) => {
   const { handleCreateSubtask } = useHandleCreateSubtask();
-  const { handleEditTask } = useHandleEditTask();
+  const { handleEditTask } = useHandleEditTask({ task });
 
   return (
     <TaskElement size={400}>
