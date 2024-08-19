@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 
 import { editSubtaskSchema } from "../utils/utils";
 import { fromZodError } from "zod-validation-error";
+import { useEditSubtask } from "../api/use-edit-subtask";
 
 const useHandleEdit = ({
   title,
@@ -10,6 +11,8 @@ const useHandleEdit = ({
   title: string;
   description: string;
 }) => {
+  const { mutate } = useEditSubtask();
+
   const handleEdit = (subtaskId: string) => {
     Swal.fire({
       title: "edit-subtask",
@@ -40,7 +43,7 @@ const useHandleEdit = ({
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // handle edit
+        mutate({ subtaskId, ...result.value });
       }
     });
   };

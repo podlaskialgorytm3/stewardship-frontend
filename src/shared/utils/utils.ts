@@ -1,6 +1,6 @@
 export const formatDateTime = (dateTime: string) => {
   const date = new Date(dateTime);
-  date.setHours(date.getHours() - 2); // Subtract 2 hours from the date
+  date.setHours(date.getHours() - 2);
   const options = {
     year: "numeric",
     month: "long",
