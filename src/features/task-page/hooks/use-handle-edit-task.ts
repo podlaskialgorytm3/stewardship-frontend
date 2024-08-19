@@ -3,10 +3,10 @@ import { fromZodError } from "zod-validation-error";
 import { EditTaskSchema, TaskInfoResponse } from "../types/types";
 
 import { useEditTask } from "../api/use-edit-task";
+import { modifyDate } from "../../../shared/utils/utils";
 
 const useHandleEditTask = ({ task }: { task: TaskInfoResponse }) => {
   const { mutate } = useEditTask();
-
   const handleEditTask = () => {
     Swal.fire({
       title: "Edit Task",
@@ -49,10 +49,10 @@ const useHandleEditTask = ({ task }: { task: TaskInfoResponse }) => {
                                         }>high priority</option>
                                 </select>
                                 <input id="startDate" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="start date" type="datetime-local" value="${
-                                  task.startDate.slice(0, -8) || ""
+                                  modifyDate(task.startDate) || ""
                                 }">
                                 <input id="endDate" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="end date" type="datetime-local" value="${
-                                  task.endDate.slice(0, -8) || ""
+                                  modifyDate(task.endDate) || ""
                                 }">
                                 <input id="comments" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="comments" value="${
                                   task.comments || ""
