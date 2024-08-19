@@ -36,9 +36,11 @@ const useHandleEdit = ({
           return { title, description };
         } catch (error: any) {
           const validationError = fromZodError(error);
+          const errros = [] as string[];
           validationError.details.forEach((detail) => {
-            Swal.showValidationMessage(detail.message);
+            errros.push(detail.message);
           });
+          Swal.showValidationMessage(errros.join("<br>"));
         }
       },
     }).then((result) => {

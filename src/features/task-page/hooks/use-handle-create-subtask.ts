@@ -6,7 +6,7 @@ import { CreateSubtaskSchema, CreateSubtaskType } from "../types/types";
 const useHandleCreateSubtask = () => {
   const handleCreateSubtask = () => {
     Swal.fire({
-      title: "Create a subtask",
+      title: "create-subtask",
       html: `<div style="display: flex; flex-direction: column;">
                 <input id="title" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="title">
                 <input id="description" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="description">
