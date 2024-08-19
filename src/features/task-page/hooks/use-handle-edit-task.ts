@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
-//import { fromZodError } from "zod-validation-error";
+import { fromZodError } from "zod-validation-error";
 
-//import { EditTaskSchema } from "../types/types";
+import { EditTaskSchema } from "../types/types";
 
 const useHandleEditTask = () => {
   const handleEditTask = () => {
@@ -26,7 +26,41 @@ const useHandleEditTask = () => {
       showCancelButton: true,
       confirmButtonText: "Edit",
       showLoaderOnConfirm: true,
-      preConfirm: () => {},
+      preConfirm: () => {
+        const name = (document.getElementById("name") as HTMLInputElement)
+          .value;
+        const status = (document.getElementById("status") as HTMLSelectElement)
+          .value;
+        const priority = (
+          document.getElementById("priority") as HTMLSelectElement
+        ).value;
+        const startDate = (
+          document.getElementById("startDate") as HTMLInputElement
+        ).value;
+        const endDate = (document.getElementById("endDate") as HTMLInputElement)
+          .value;
+        const comments = (
+          document.getElementById("comments") as HTMLInputElement
+        ).value;
+        try {
+          EditTaskSchema.parse({
+            name,
+            status,
+            priority,
+            startDate,
+            endDate,
+            comments,
+          });
+          return { name, status, priority, startDate, endDate, comments };
+        } catch (error: any) {
+          const validationError = fromZodError(error);
+          const errros = [] as string[];
+          validationError.details.forEach((detail) => {
+            errros.push(detail.message);
+          });
+          Swal.showValidationMessage(errros.join("<br>"));
+        }
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         // mutate data

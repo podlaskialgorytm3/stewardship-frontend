@@ -47,8 +47,8 @@ export const EditTaskSchema = z.object({
   name: z.string().min(3, "Task name must have at least 3 character"),
   status: z.string().min(3, "Status must have at least 3 character"),
   priority: z.string().min(3, "Priority must have at least 3 character"),
-  startDate: z.string().min(3, "Start date must have at least 3 character"),
-  endDate: z.string().min(3, "End date must have at least 3 character"),
+  startDate: z.string().min(3, "Start date is required"),
+  endDate: z.string().min(3, "End date is required"),
   comments: z.string().min(3, "Comments must have at least 3 character"),
 });
 
