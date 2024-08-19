@@ -12,7 +12,7 @@ const createSubtask = async ({
   taskInfoId,
 }: CreateSubtaskType) => {
   const response = await fetch(
-    `${API_URL}/stewardship/sub-task/${taskInfoId}`,
+    `${API_URL}/stewardship/sub-task?taskInfoId=${taskInfoId}`,
     {
       method: "POST",
       headers: {
@@ -36,7 +36,7 @@ const createSubtask = async ({
   return data;
 };
 
-const useCreateTask = () =>
+const useCreateSubtask = () =>
   useMutation({
     mutationFn: createSubtask,
     onSuccess: (data) => {
@@ -49,4 +49,4 @@ const useCreateTask = () =>
     },
   });
 
-export { useCreateTask };
+export { useCreateSubtask };

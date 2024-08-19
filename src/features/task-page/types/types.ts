@@ -47,5 +47,5 @@ export interface CreateSubtaskType {
   title: string;
   description: string;
   status: string;
-  taskInfoId: string;
+  taskInfoId: string | undefined;
 }

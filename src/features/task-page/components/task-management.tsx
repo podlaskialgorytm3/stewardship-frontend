@@ -2,7 +2,9 @@ import { TaskElement } from "./task-element";
 
 import { useHandleCreateSubtask } from "../hooks/use-handle-create-subtask";
 
-const TaskManagement: React.FC = () => {
+const TaskManagement: React.FC<{ taskInfoId: string | undefined }> = ({
+  taskInfoId,
+}) => {
   const { handleCreateSubtask } = useHandleCreateSubtask();
 
   return (
@@ -11,7 +13,7 @@ const TaskManagement: React.FC = () => {
       <div className="mt-5 w-full flex justify-around">
         <button
           className="bg-primary text-white p-2 rounded-md"
-          onClick={() => handleCreateSubtask()}
+          onClick={() => handleCreateSubtask(taskInfoId)}
         >
           add-subtask
         </button>

@@ -37,7 +37,7 @@ export const SingleTaskPage: React.FC = () => {
               </div>
               <div className="w-[30%] flex flex-col items-center">
                 <TaskMembers taskInfoId={id} />
-                <TaskManagement />
+                <TaskManagement taskInfoId={id} />
               </div>
             </>
           )}

@@ -2,9 +2,12 @@ import Swal from "sweetalert2";
 
 import { fromZodError } from "zod-validation-error";
 import { CreateSubtaskSchema } from "../types/types";
+import { useCreateSubtask } from "../api/use-create-subtask";
 
 const useHandleCreateSubtask = () => {
-  const handleCreateSubtask = () => {
+  const { mutate } = useCreateSubtask();
+
+  const handleCreateSubtask = (taskInfoId: string | undefined) => {
     Swal.fire({
       title: "create-subtask",
       html: `<div style="display: flex; flex-direction: column;">
@@ -42,7 +45,7 @@ const useHandleCreateSubtask = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // mutate date
+        mutate({ ...result.value, taskInfoId });
       }
     });
   };
