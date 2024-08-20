@@ -2,6 +2,7 @@ import { TaskElement } from "./task-element";
 
 import { useHandleCreateSubtask } from "../hooks/use-handle-create-subtask";
 import { useHandleEditTask } from "../hooks/use-handle-edit-task";
+import { useHandleDeleteTask } from "../hooks/use-handle-delete-task";
 
 import { TaskInfoResponse } from "../types/types";
 
@@ -11,6 +12,7 @@ const TaskManagement: React.FC<{
 }> = ({ taskInfoId, task }) => {
   const { handleCreateSubtask } = useHandleCreateSubtask();
   const { handleEditTask } = useHandleEditTask({ task });
+  const { handleDeleteTask } = useHandleDeleteTask();
 
   return (
     <TaskElement size={400}>
@@ -27,6 +29,12 @@ const TaskManagement: React.FC<{
           onClick={() => handleEditTask()}
         >
           edit-task
+        </button>
+        <button
+          className="bg-primary text-white p-2 rounded-md"
+          onClick={() => handleDeleteTask(taskInfoId)}
+        >
+          delete-task
         </button>
       </div>
     </TaskElement>
