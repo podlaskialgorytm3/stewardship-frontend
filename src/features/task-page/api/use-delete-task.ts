@@ -6,14 +6,14 @@ import { queryClient } from "../../../api/utils/query-client";
 
 import Swal from "sweetalert2";
 
-const deleteTask = async (taskInfoId: string) => {
+const deleteTask = async (taskInfoId: string | undefined) => {
   const response = await fetch(
     `${API_URL}/stewardship/task-info/${taskInfoId}`,
     {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     }
   );
@@ -37,6 +37,7 @@ const useDeleteTask = () => {
     mutationFn: deleteTask,
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["task"] });
+      console.log(data);
       Swal.fire({
         icon: data.type,
         title: data.type,
