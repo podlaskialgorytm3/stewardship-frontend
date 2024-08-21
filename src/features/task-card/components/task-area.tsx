@@ -9,7 +9,7 @@ import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 export const TaskArea: React.FC<{ groupId: string | undefined }> = ({
   groupId,
 }) => {
-  const [status, setStatus] = useState<string>("waiting");
+  const [status, setStatus] = useState<string>("");
   const { data, isLoading, isError, error } = useFetchTasksToCards({
     groupId,
     status,

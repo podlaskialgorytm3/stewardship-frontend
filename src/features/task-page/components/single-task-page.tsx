@@ -15,14 +15,18 @@ import { Subtasks } from "../../subtask/components/subtasks";
 import { TaskManagement } from "./task-management";
 
 export const SingleTaskPage: React.FC = () => {
-  const [subtaskStatus, setSubtaskStatus] = useState<string>("done");
+  const [subtaskStatus, setSubtaskStatus] = useState<string>("");
 
-  const { id } = useParams();
-  const { data, isLoading, isError, error } = useFetchTask(id as string);
+  const { id } = useParams() as { id: string };
+  const { data, isLoading, isError, error } = useFetchTask({
+    taskInfoId: id,
+    subtaskStatus,
+  });
   const { data: belongToTask, isLoading: loadingMemberBelongToTask } =
     useBelongToTask(id as string);
 
   const handleChangeStatus = (event: React.ChangeEvent<{ value: string }>) => {
+    console.log(event.target.value);
     setSubtaskStatus(event.target.value);
   };
 
@@ -42,7 +46,7 @@ export const SingleTaskPage: React.FC = () => {
                 <TaskInformation taskInfo={data} />
                 <Subtasks
                   subtasks={data.subTasks}
-                  handleChangeStatus={() => handleChangeStatus}
+                  handleChangeStatus={handleChangeStatus as () => void}
                   subtaskStatus={subtaskStatus}
                 />
               </div>
