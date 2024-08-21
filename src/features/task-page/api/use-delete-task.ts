@@ -37,7 +37,6 @@ const useDeleteTask = () => {
     mutationFn: deleteTask,
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["task"] });
-      console.log(data);
       Swal.fire({
         icon: data.type,
         title: data.type,

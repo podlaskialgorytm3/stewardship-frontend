@@ -1,51 +1,52 @@
-import { useMutation } from '@tanstack/react-query';
-import { API_URL } from '../../../shared/constants/constants';
-import { queryClient } from '../../../api/utils/query-client';
+import { useMutation } from "@tanstack/react-query";
+import { API_URL } from "../../../shared/constants/constants";
+import { queryClient } from "../../../api/utils/query-client";
 
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
-const deleteMember = async ({memberId, groupId} : {
-    memberId: number,
-    groupId: string
+const deleteMember = async ({
+  memberId,
+  groupId,
+}: {
+  memberId: number;
+  groupId: string;
 }) => {
-    console.log({
-        memberId,
-        groupId
-    })
-    const response = await fetch(`${API_URL}/stewardship/group-user?groupId=${groupId}&memberId=${memberId}`, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("token")}`
-        }
-    })
-
-    if(!response.ok){
-        Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Something went wrong"
-        })
+  const response = await fetch(
+    `${API_URL}/stewardship/group-user?groupId=${groupId}&memberId=${memberId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     }
+  );
 
-    const data = await response.json()
+  if (!response.ok) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Something went wrong",
+    });
+  }
 
-    return data;
-}
+  const data = await response.json();
 
-const useDeleteMember = () => (
-    useMutation({
-        mutationFn: deleteMember,
-        onSuccess: (data) => {
-            queryClient.invalidateQueries({queryKey: ["groups"]})
-            Swal.fire({
-                title: data.type,
-                text: data.message,
-                icon: data.type,
-                confirmButtonColor: "#7e007e"
-            })
-        }
-    })
-)
+  return data;
+};
 
-export default useDeleteMember; 
+const useDeleteMember = () =>
+  useMutation({
+    mutationFn: deleteMember,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["groups"] });
+      Swal.fire({
+        title: data.type,
+        text: data.message,
+        icon: data.type,
+        confirmButtonColor: "#7e007e",
+      });
+    },
+  });
+
+export default useDeleteMember;
