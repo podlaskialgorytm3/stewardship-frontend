@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+const datatimeLocalRegex = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/;
+
 export interface Member {
   email: string;
   group: string;
@@ -46,14 +48,42 @@ export interface TaskRequest {
   comments: string;
 }
 
-export const EditTaskSchema = z.object({
-  name: z.string().min(3, "Task name must have at least 3 character"),
-  status: z.string().min(3, "Status must have at least 3 character"),
-  priority: z.string().min(3, "Priority must have at least 3 character"),
-  startDate: z.string().min(3, "Start date is required"),
-  endDate: z.string().min(3, "End date is required"),
-  comments: z.string().min(3, "Comments must have at least 3 character"),
-});
+export const EditTaskSchema = z
+  .object({
+    name: z
+      .string({
+        message: "Title is required",
+      })
+      .min(3, "Title must be at least 3 characters"),
+    startDate: z.string().regex(datatimeLocalRegex, "Invalid date format"),
+    endDate: z.string().regex(datatimeLocalRegex, "Invalid date format"),
+    status: z
+      .string({
+        message: "Status is required",
+      })
+      .min(3, "Status must be at least 3 characters"),
+    priority: z
+      .string({
+        message: "Priority is required",
+      })
+      .min(3, "Priority must be at least 3 characters"),
+    comments: z
+      .string({
+        message: "Comments is required",
+      })
+      .min(3, "Comments must be at least 3 characters"),
+  })
+  .refine(
+    (data) => {
+      const startDate = new Date(data.startDate);
+      const endDate = new Date(data.endDate);
+      return startDate < endDate;
+    },
+    {
+      message: "Start date must be earlier than end date",
+      path: ["startDate"],
+    }
+  );
 
 export interface CreateSubtaskType {
   title: string;
