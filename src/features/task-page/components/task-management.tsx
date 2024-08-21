@@ -6,6 +6,9 @@ import { useHandleDeleteTask } from "../hooks/use-handle-delete-task";
 
 import { TaskInfoResponse } from "../types/types";
 
+import useCheckRoleByTasInfokId from "../../../api/hooks/use-check-role-by-task-info-id";
+import Loading from "../../../shared/components/loading";
+
 const TaskManagement: React.FC<{
   taskInfoId: string | undefined;
   task: TaskInfoResponse;
@@ -13,6 +16,9 @@ const TaskManagement: React.FC<{
   const { handleCreateSubtask } = useHandleCreateSubtask();
   const { handleEditTask } = useHandleEditTask({ task });
   const { handleDeleteTask } = useHandleDeleteTask();
+
+  const { data: isAdmin, isLoading: loadingRole } =
+    useCheckRoleByTasInfokId(taskInfoId);
 
   return (
     <TaskElement size={400}>
@@ -24,18 +30,23 @@ const TaskManagement: React.FC<{
         >
           add-subtask
         </button>
-        <button
-          className="bg-primary text-white p-2 rounded-md"
-          onClick={() => handleEditTask()}
-        >
-          edit-task
-        </button>
-        <button
-          className="bg-primary text-white p-2 rounded-md"
-          onClick={() => handleDeleteTask(taskInfoId)}
-        >
-          delete-task
-        </button>
+        {loadingRole && <Loading size={100} />}
+        {isAdmin && (
+          <>
+            <button
+              className="bg-primary text-white p-2 rounded-md"
+              onClick={handleEditTask}
+            >
+              edit-task
+            </button>
+            <button
+              className="bg-primary text-white p-2 rounded-md"
+              onClick={() => handleDeleteTask(taskInfoId)}
+            >
+              delete-task
+            </button>
+          </>
+        )}
       </div>
     </TaskElement>
   );
