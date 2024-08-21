@@ -26,7 +26,6 @@ export const SingleTaskPage: React.FC = () => {
     useBelongToTask(id as string);
 
   const handleChangeStatus = (event: React.ChangeEvent<{ value: string }>) => {
-    console.log(event.target.value);
     setSubtaskStatus(event.target.value);
   };
 
