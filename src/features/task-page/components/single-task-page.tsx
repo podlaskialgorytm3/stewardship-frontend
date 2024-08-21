@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 import { TaskMembers } from "../../task-members/components/task-members";
 import { TaskInformation } from "./task-information";
@@ -14,10 +15,16 @@ import { Subtasks } from "../../subtask/components/subtasks";
 import { TaskManagement } from "./task-management";
 
 export const SingleTaskPage: React.FC = () => {
+  const [subtaskStatus, setSubtaskStatus] = useState<string>("done");
+
   const { id } = useParams();
   const { data, isLoading, isError, error } = useFetchTask(id as string);
   const { data: belongToTask, isLoading: loadingMemberBelongToTask } =
     useBelongToTask(id as string);
+
+  const handleChangeStatus = (event: React.ChangeEvent<{ value: string }>) => {
+    setSubtaskStatus(event.target.value);
+  };
 
   useErrorMessage({ isError, error } as {
     isError: boolean;
@@ -33,7 +40,11 @@ export const SingleTaskPage: React.FC = () => {
             <>
               <div className="w-[70%] flex flex-col items-center">
                 <TaskInformation taskInfo={data} />
-                <Subtasks subtasks={data.subTasks} />
+                <Subtasks
+                  subtasks={data.subTasks}
+                  handleChangeStatus={() => handleChangeStatus}
+                  subtaskStatus={subtaskStatus}
+                />
               </div>
               <div className="w-[30%] flex flex-col items-center">
                 <TaskMembers taskInfoId={id} />

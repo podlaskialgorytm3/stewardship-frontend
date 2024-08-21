@@ -3,9 +3,11 @@ import { SubtaskCard } from "./subtask-card";
 
 import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
-export const Subtasks: React.FC<{ subtasks: SubtaskResponse[] }> = ({
-  subtasks,
-}) => {
+export const Subtasks: React.FC<{
+  subtasks: SubtaskResponse[];
+  handleChangeStatus: () => void;
+  subtaskStatus: string;
+}> = ({ subtasks, handleChangeStatus, subtaskStatus }) => {
   return (
     <>
       <h1 className="text-2xl font-bold mt-10">your-subtasks</h1>
@@ -16,7 +18,12 @@ export const Subtasks: React.FC<{ subtasks: SubtaskResponse[] }> = ({
         }}
       >
         <InputLabel id="select-label">choose-status</InputLabel>
-        <Select labelId="select-label" label="choose-status">
+        <Select
+          value={subtaskStatus}
+          onChange={handleChangeStatus}
+          labelId="select-label"
+          label="choose-status"
+        >
           <MenuItem value={`done`}>done</MenuItem>
           <MenuItem value={`in progress`}>in progress</MenuItem>
           <MenuItem value={`waiting`}>waiting</MenuItem>
