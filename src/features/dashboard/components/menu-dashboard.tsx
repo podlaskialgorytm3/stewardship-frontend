@@ -7,8 +7,10 @@ export const MenuDashboard = () => {
       <Logo isImage={false} />
       <br />
       <NavLinkDashboard path="/dashboard/groups" name="groups" />
-      <NavLinkDashboard path="/dashboard/working-hours" name="working-hours" />
-      <NavLinkDashboard path="/dashboard/tasks" name="tasks" />
+      <NavLinkDashboard
+        path="/dashboard/working-scheudle"
+        name="working-scheudle"
+      />
     </div>
   );
 };
