@@ -1,10 +1,10 @@
 import AuthPage from "../../auth";
 import { WorkingSchedule } from "../../../features/working-scheudle-page/index";
 
-const WorkingScheudlePage: React.FC = () => (
+const WorkingSchedulePage: React.FC = () => (
   <AuthPage>
     <WorkingSchedule />
   </AuthPage>
 );
 
-export default WorkingScheudlePage;
+export default WorkingSchedulePage;
