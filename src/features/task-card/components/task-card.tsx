@@ -17,7 +17,7 @@ export const TaskCard = ({ task }: { task: TaskCardInterface }) => {
   const navigate = useNavigate();
   return (
     <ThemeProvider theme={defaultTheme}>
-      <div className="border-primary border-[2px] text-primary rounded-xl p-6 shadow-md relative w-[700px] m-3">
+      <div className="border-primary border-[2px] text-primary rounded-xl p-6 shadow-md relative w-[600px] m-3">
         <div className="flex justify-between">
           <h3 className="text-2xl font-semibold mb-4">{task.taskInfo.name}</h3>
           <p className="flex justify-center items-center">

@@ -8,22 +8,23 @@ import { GroupManagement } from "../../group-management/components/group-managem
 import { TaskArea } from "../../task-card/components/task-area";
 
 export const SingleGroupPage = () => {
-    const { id } = useParams<{ id: string }>();
-    const { data: isBelongGroup, isLoading: isLoadingBelongGroup } = useBelongGroup(id as string);
+  const { id } = useParams<{ id: string }>();
+  const { data: isBelongGroup, isLoading: isLoadingBelongGroup } =
+    useBelongGroup(id as string);
 
-    return (
-        <div> 
-            {(isBelongGroup && !isLoadingBelongGroup )? (
-                <div className="flex justify-center items-start w-[1300px] mt-10">
-                    <div className="w-[60%] min-h-[200px] flex flex-col items-center justify-start">
-                        <GroupManagement groupId={id} />
-                        <TaskArea groupId={id} />
-                    </div>
-                    <Members groupId={id} />
-                </div>
-            ):(
-                <AuthError>You are not belong to group!</AuthError>
-            )}
+  return (
+    <div>
+      {isBelongGroup && !isLoadingBelongGroup ? (
+        <div className="flex justify-center items-start w-[1300px] mt-10">
+          <div className="w-[60%] min-h-[200px] flex flex-col items-center justify-start">
+            <GroupManagement groupId={id} />
+            <TaskArea groupId={id} />
+          </div>
+          <Members groupId={id} />
         </div>
-    );
-}
+      ) : (
+        <AuthError>You are not belong to group!</AuthError>
+      )}
+    </div>
+  );
+};

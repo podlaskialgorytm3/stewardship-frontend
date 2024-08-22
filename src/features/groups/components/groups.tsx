@@ -29,7 +29,7 @@ export const Groups: React.FC = () => {
       {isLoading ? (
         <Loading size={150} />
       ) : (
-        <div className="w-full flex flex-wrap justify-center">
+        <div className="w-[1000px] flex flex-wrap justify-center">
           {data && data.data.length > 0 ? (
             data.data.map((group: GroupResponse) => (
               <GroupCard key={group.id} group={group} />

@@ -45,7 +45,7 @@ export const TaskArea: React.FC<{ groupId: string | undefined }> = ({
           <MenuItem value="waiting">waiting</MenuItem>
         </Select>
       </FormControl>
-      <div className="mt-5 flex flex-wrap">
+      <div className="mt-5 flex flex-wrap justify-center">
         {isLoading && !data && <Loading size={150} />}
         {!isLoading &&
           data &&
