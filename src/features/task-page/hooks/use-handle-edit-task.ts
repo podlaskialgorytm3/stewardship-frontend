@@ -9,7 +9,7 @@ const useHandleEditTask = ({ task }: { task: TaskInfoResponse }) => {
   const { mutate } = useEditTask();
   const handleEditTask = () => {
     Swal.fire({
-      title: "Edit Task",
+      title: "edit-task",
       html: `<div style="display: flex; flex-direction: column;">
                                 <input id="name" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 10px;" placeholder="name" value="${
                                   task.name || ""
