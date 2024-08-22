@@ -41,7 +41,7 @@ export const SingleTaskPage: React.FC = () => {
           {isLoading && !data && <Loading size={150} />}
           {!isLoading && data && (
             <>
-              <div className="w-[70%] flex flex-col items-center">
+              <div className="w-[60%] flex flex-col items-center">
                 <TaskInformation taskInfo={data} />
                 <Subtasks
                   subtasks={data.subTasks}
@@ -49,7 +49,7 @@ export const SingleTaskPage: React.FC = () => {
                   subtaskStatus={subtaskStatus}
                 />
               </div>
-              <div className="w-[30%] flex flex-col items-center">
+              <div className="w-[40%] flex flex-col items-center">
                 <TaskMembers taskInfoId={id} />
                 <TaskManagement taskInfoId={id} task={data.taskInfo} />
               </div>
