@@ -5,7 +5,7 @@ export const Dashboard: React.FC = () => {
   const location = useLocation();
   return (
     <div className="flex items-start w-full">
-      <div className="w-[300px]">
+      <div className="w-[350px]">
         <MenuDashboard />
       </div>
       <div className="w-[1400px]">
