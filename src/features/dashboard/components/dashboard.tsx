@@ -7,6 +7,9 @@ export const Dashboard: React.FC = () => {
     <div className="flex items-start w-full">
       <MenuDashboard />
       <div className="w-[1400px]">
+        {location.pathname === "/dashboard" && (
+          <h1 className="text-xl font-bold">weclome in your dashboard!</h1>
+        )}
         <Outlet />
       </div>
     </div>

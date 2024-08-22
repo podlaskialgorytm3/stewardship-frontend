@@ -2,14 +2,18 @@ import { Outlet } from "react-router-dom";
 import { Menu } from "../../features/menu/components/menu";
 import { Footer } from "../../features/footer/components/footer";
 
-const Root: React.FC = () => {
-    return (
-        <div>
-            <Menu />
-            <Outlet />
-            <Footer />
-        </div>
-    );
-}
+import { useLocation } from "react-router-dom";
 
-export default Root;  
+const Root: React.FC = () => {
+  const location = useLocation();
+
+  return (
+    <div>
+      {!location.pathname.includes("/dashboard") && <Menu />}
+      <Outlet />
+      {!location.pathname.includes("/dashboard") && <Footer />}
+    </div>
+  );
+};
+
+export default Root;
