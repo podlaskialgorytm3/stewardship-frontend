@@ -19,7 +19,7 @@ export const SubtaskCard: React.FC<{ subtask: SubtaskResponse }> = ({
   const { handleDelete } = useHandleDelete();
 
   return (
-    <div className="border-primary border-[2px] text-primary rounded-xl p-6 shadow-md relative w-[750px] m-3 flex flex-col">
+    <div className="border-primary border-[2px] text-primary rounded-xl p-6 shadow-md relative w-[600px] m-3 flex flex-col">
       <div className="flex justify-between">
         <div>
           <h1 className="text-2xl font-bold">{subtask.title}</h1>
