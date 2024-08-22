@@ -8,7 +8,7 @@ export const Dashboard: React.FC = () => {
       <div className="w-[350px]">
         <MenuDashboard />
       </div>
-      <div className="w-[1400px]">
+      <div className="w-[1400px] min-h-[90vh]">
         {location.pathname === "/dashboard" && (
           <h1 className="text-xl font-bold">weclome in your dashboard!</h1>
         )}
