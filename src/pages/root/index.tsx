@@ -11,7 +11,7 @@ const Root: React.FC = () => {
     <div>
       {!location.pathname.includes("/dashboard") && <Menu />}
       <Outlet />
-      {!location.pathname.includes("/dashboard") && <Footer />}
+      <Footer />
     </div>
   );
 };

@@ -37,7 +37,7 @@ export const SingleTaskPage: React.FC = () => {
     <>
       {loadingMemberBelongToTask && <Loading size={150} />}
       {!loadingMemberBelongToTask && belongToTask && (
-        <div className="mt-5 w-[1200px] flex">
+        <div className="mt-5 flex">
           {isLoading && !data && <Loading size={150} />}
           {!isLoading && data && (
             <>

@@ -20,10 +20,10 @@ export const GroupManagement: React.FC<{ groupId: string | undefined }> = ({
   return (
     <>
       {data && !isLoading ? (
-        <>
+        <div className="flex flex-col justify-center items-center">
           <h1 className="text-2xl font-bold">{data.name}</h1>
           <p className="text-m">{data.category}</p>
-        </>
+        </div>
       ) : (
         <Loading size={50} />
       )}

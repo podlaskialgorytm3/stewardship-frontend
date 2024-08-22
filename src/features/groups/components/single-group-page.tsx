@@ -15,8 +15,8 @@ export const SingleGroupPage = () => {
   return (
     <div>
       {isBelongGroup && !isLoadingBelongGroup ? (
-        <div className="flex justify-center items-start w-[1300px] mt-10">
-          <div className="w-[60%] min-h-[200px] flex flex-col items-center justify-start">
+        <div className="flex justify-center items-start mt-10 w-[1300px]">
+          <div className="w-[50%] min-h-[200px] flex flex-col items-center justify-start">
             <GroupManagement groupId={id} />
             <TaskArea groupId={id} />
           </div>
