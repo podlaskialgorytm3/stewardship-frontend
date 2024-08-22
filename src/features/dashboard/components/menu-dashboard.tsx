@@ -8,8 +8,8 @@ export const MenuDashboard = () => {
       <br />
       <NavLinkDashboard path="/dashboard/groups" name="groups" />
       <NavLinkDashboard
-        path="/dashboard/working-scheudle"
-        name="working-scheudle"
+        path="/dashboard/working-schedule"
+        name="working-schedule"
       />
     </div>
   );
