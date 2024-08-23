@@ -54,9 +54,7 @@ export const TaskCard = ({ task }: { task: TaskCardInterface }) => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() =>
-              navigate(`/dashboard/groups/task/${task.taskInfo.id}`)
-            }
+            onClick={() => navigate(`/dashboard/task/${task.taskInfo.id}`)}
           >
             View Task
           </Button>

@@ -42,7 +42,7 @@ export const routes = createBrowserRouter([
             element: <CreateTaskPage />,
           },
           { path: "/dashboard/create-group", element: <CreateGroupPage /> },
-          { path: "/dashboard/groups/task/:id", element: <TaskPage /> },
+          { path: "/dashboard/task/:id", element: <TaskPage /> },
           {
             path: "/dashboard/working-schedule",
             element: <WorkingSchedulePage />,
