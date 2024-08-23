@@ -1,12 +1,12 @@
 export interface GroupResponse {
-    id: number;
-    name: string;
-    category: string;
-    membership: string
+  id: string;
+  name: string;
+  category: string;
+  membership: string;
 }
 export interface HandlingGroupCard {
-    sendRequestMutate: any;
-    cancelRequestMutate: any;
-    groupId: number;
-    typeOfMember: string;
+  sendRequestMutate: any;
+  cancelRequestMutate: any;
+  groupId: string;
+  typeOfMember: string;
 }
