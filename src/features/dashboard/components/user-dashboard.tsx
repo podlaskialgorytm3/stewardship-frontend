@@ -1,4 +1,5 @@
 import { DashboardElement } from "./dashboard-element";
+import { GroupCard } from "./group-card";
 
 export const UserDashboard: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ export const UserDashboard: React.FC = () => {
       </h1>
       <div className="mt-5 w-[80%] flex flex-wrap">
         <DashboardElement title="your-groups" width={400}>
-          <p>Groups will be displayed here</p>
+          <GroupCard />
         </DashboardElement>
       </div>
     </div>
