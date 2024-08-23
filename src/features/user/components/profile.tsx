@@ -17,7 +17,7 @@ export const Profile: React.FC = () => {
       <div className="flex justify-center items-center flex-col">
         <h1 className="text-3xl font-bold">profile</h1>
         <div className="flex flex-col items-center">
-          {(data || !isLoading) && (
+          {data && !isLoading && (
             <img
               src={data.img ? data.img : ""}
               alt="profile"

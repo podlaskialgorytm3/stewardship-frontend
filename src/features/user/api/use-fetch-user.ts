@@ -19,12 +19,14 @@ const fetchUser = async () => {
     });
   }
 
-  return response.json();
+  const data = await response.json();
+
+  return data;
 };
 
 export const useFetchUser = () => {
   return useQuery({
-    queryKey: ["user"],
+    queryKey: ["user", "fetch"],
     queryFn: () => fetchUser(),
   });
 };
