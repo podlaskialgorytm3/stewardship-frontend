@@ -1,5 +1,6 @@
 import { DashboardElement } from "./dashboard-element";
 import { GroupCard } from "./group-card";
+import { TaskCard } from "./task-card";
 
 export const UserDashboard: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ export const UserDashboard: React.FC = () => {
           <GroupCard />
         </DashboardElement>
         <DashboardElement title="your-tasks" width={400}>
-          <GroupCard />
+          <TaskCard />
         </DashboardElement>
       </div>
     </div>
