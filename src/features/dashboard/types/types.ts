@@ -3,3 +3,8 @@ export interface GroupDashboardResponse {
   name: string;
   category: string;
 }
+export interface TaskDashboardResponse {
+  id: string;
+  name: string;
+  assignedBy: { group: string };
+}

@@ -1,8 +1,9 @@
 import { DashboardElement } from "./dashboard-element";
 import { GroupCard } from "./group-card";
 import { TaskCard } from "./task-card";
-import { GroupDashboardResponse } from "../types/types";
+import { GroupDashboardResponse, TaskDashboardResponse } from "../types/types";
 import { useFetchGroups } from "../api/use-fetch-groups";
+import { useFetchTasks } from "../api/use-fetch-tasks";
 import Loading from "../../../shared/components/loading";
 import useErrorMessage from "../../../shared/hooks/use-error-message";
 
@@ -13,6 +14,8 @@ export const UserDashboard: React.FC = () => {
     isError,
     error,
   } = useFetchGroups();
+
+  const { data: tasks = [], isLoading: tasksLoading } = useFetchTasks();
 
   useErrorMessage({ isError, error } as {
     isError: boolean;
@@ -36,7 +39,15 @@ export const UserDashboard: React.FC = () => {
           )}
         </DashboardElement>
         <DashboardElement title="your-tasks" width={400}>
-          <TaskCard />
+          {tasksLoading ? (
+            <Loading size={50} />
+          ) : tasks && Array.isArray(tasks) ? (
+            tasks.map((task: TaskDashboardResponse) => (
+              <TaskCard key={task.id} task={task} />
+            ))
+          ) : (
+            <p>No tasks available.</p>
+          )}
         </DashboardElement>
       </div>
     </div>
