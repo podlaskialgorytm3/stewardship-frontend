@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { UserData } from "../types/types";
 import Swal from "sweetalert2";
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../../api/utils/query-client";
