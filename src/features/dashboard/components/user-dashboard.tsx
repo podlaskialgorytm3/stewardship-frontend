@@ -7,8 +7,15 @@ export const UserDashboard: React.FC = () => {
       <h1 className="text-3xl font-bold text-center">
         Welcome to your dashboard!
       </h1>
-      <div className="mt-5 w-[80%] flex flex-wrap">
+      <div className="mt-5 w-[80%] flex flex-wrap justify-center">
         <DashboardElement title="your-groups" width={400}>
+          <GroupCard />
+          <GroupCard />
+          <GroupCard />
+          <GroupCard />
+          <GroupCard />
+        </DashboardElement>
+        <DashboardElement title="your-tasks" width={400}>
           <GroupCard />
         </DashboardElement>
       </div>
