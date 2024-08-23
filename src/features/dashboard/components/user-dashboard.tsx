@@ -1,13 +1,15 @@
+import { DashboardElement } from "./dashboard-element";
+
 export const UserDashboard: React.FC = () => {
   return (
-    <div className="w-[100%] flex justify-center mt-10">
-      <div className="w-[80%]">
-        <h1 className="text-4xl font-bold text-center">
-          Welcome to your dashboard!
-        </h1>
-        <p className="text-center mt-5 text-lg">
-          You can see all your information here.
-        </p>
+    <div className="w-[100%] mt-10 flex flex-col items-center">
+      <h1 className="text-3xl font-bold text-center">
+        Welcome to your dashboard!
+      </h1>
+      <div className="mt-5 w-[80%] flex flex-wrap">
+        <DashboardElement title="your-groups" width={400}>
+          <p>Groups will be displayed here</p>
+        </DashboardElement>
       </div>
     </div>
   );
