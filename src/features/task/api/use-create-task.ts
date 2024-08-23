@@ -21,7 +21,7 @@ const createTask = async ({
   taskAffilations: TaskAffilationInterface[];
   groupId: string;
 }) => {
-  const response = await fetch(`${API_URL}/stewardship//task-info`, {
+  const response = await fetch(`${API_URL}/stewardship/task-info`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
