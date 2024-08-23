@@ -1,4 +1,6 @@
 import { MenuDashboard } from "./menu-dashboard";
+import { UserDashboard } from "./user-dashboard";
+
 import { Outlet, useLocation } from "react-router-dom";
 
 export const Dashboard: React.FC = () => {
@@ -9,9 +11,7 @@ export const Dashboard: React.FC = () => {
         <MenuDashboard />
       </div>
       <div className="w-[1400px] min-h-[90vh]">
-        {location.pathname === "/dashboard" && (
-          <h1 className="text-xl font-bold">weclome in your dashboard!</h1>
-        )}
+        {location.pathname === "/dashboard" && <UserDashboard />}
         <Outlet />
       </div>
     </div>
