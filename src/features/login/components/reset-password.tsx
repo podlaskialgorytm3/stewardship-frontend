@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { passwordFormSchema } from "../utils/utils";
-import useErrorMessage from "../../../shared/hooks/use-error-message";
+import { useErrorMessage } from "../../../shared/hooks/use-error-message";
 import useMutateData from "../../../shared/hooks/use-mutate-data";
 import { useResetPassword } from "../api/use-reset-password";
 

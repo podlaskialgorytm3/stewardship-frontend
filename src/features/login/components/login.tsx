@@ -3,7 +3,7 @@ import { loginFormSchema } from "../utils/utils";
 import { Loading } from "../../../shared/components/loading";
 import { useLogin } from "../api/use-login";
 import useMutateData from "../../../shared/hooks/use-mutate-data";
-import useErrorMessage from "../../../shared/hooks/use-error-message";
+import { useErrorMessage } from "../../../shared/hooks/use-error-message";
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";

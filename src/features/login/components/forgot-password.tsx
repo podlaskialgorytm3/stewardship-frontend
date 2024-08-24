@@ -2,7 +2,7 @@ import { emailFormSchema } from "../utils/utils";
 import { Loading } from "../../../shared/components/loading";
 import { useSendEmail } from "../api/use-send-email";
 import useMutateData from "../../../shared/hooks/use-mutate-data";
-import useErrorMessage from "../../../shared/hooks/use-error-message";
+import { useErrorMessage } from "../../../shared/hooks/use-error-message";
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";

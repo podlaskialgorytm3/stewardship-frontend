@@ -8,7 +8,7 @@ import { CreateSubtask } from "../components/create-subtask";
 import { TaskAffilation } from "../components/task-affilations";
 
 import { useCreateTask } from "../api/use-create-task";
-import useErrorMessage from "../../../../../shared/hooks/use-error-message";
+import { useErrorMessage } from "../../../../../shared/hooks/use-error-message";
 
 import Swal from "sweetalert2";
 

@@ -10,7 +10,7 @@ import { useCreateGroup } from "../api/use-create-group";
 import useMutateData from "../../../shared/hooks/use-mutate-data";
 import { groupSchema } from "../utils/utils";
 import { DEFAULT_GROUP_STATE } from "../constants/constants";
-import useErrorMessage from "../../../shared/hooks/use-error-message";
+import { useErrorMessage } from "../../../shared/hooks/use-error-message";
 
 export const CreateGroup = () => {
   const { mutate, isPending, isError, error } = useCreateGroup();

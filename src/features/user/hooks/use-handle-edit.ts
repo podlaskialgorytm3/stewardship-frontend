@@ -6,7 +6,7 @@ import { useUpdateName } from "../api/use-update-name";
 import { useUpdateEmail } from "../api/use-update-email";
 import { useUpdatePassword } from "../api/use-update-password";
 
-import useErrorMessage from "../../../shared/hooks/use-error-message";
+import { useErrorMessage } from "../../../shared/hooks/use-error-message";
 
 const useHandleEdit = ({ data }: { data: User }) => {
   const {

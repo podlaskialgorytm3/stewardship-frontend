@@ -3,7 +3,7 @@ import { registerFormSchema } from "../utils/utils";
 import { Loading } from "../../../shared/components/loading";
 import { NavLink } from "react-router-dom";
 import useMutateData from "../../../shared/hooks/use-mutate-data";
-import useErrorMessage from "../../../shared/hooks/use-error-message";
+import { useErrorMessage } from "../../../shared/hooks/use-error-message";
 import { useRegister } from "../api/use-register";
 
 import Avatar from "@mui/material/Avatar";

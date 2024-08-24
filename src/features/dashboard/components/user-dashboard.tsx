@@ -5,7 +5,7 @@ import { GroupDashboardResponse, TaskDashboardResponse } from "../types/types";
 import { useFetchGroups } from "../api/use-fetch-groups";
 import { useFetchTasks } from "../api/use-fetch-tasks";
 import { Loading } from "../../../shared/components/loading";
-import useErrorMessage from "../../../shared/hooks/use-error-message";
+import { useErrorMessage } from "../../../shared/hooks/use-error-message";
 
 export const UserDashboard: React.FC = () => {
   const {
