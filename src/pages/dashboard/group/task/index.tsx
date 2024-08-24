@@ -7,4 +7,4 @@ const TaskPage: React.FC = () => (
   </AuthPage>
 );
 
-export default TaskPage;
+export { TaskPage };

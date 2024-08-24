@@ -7,4 +7,4 @@ const DashboardPage: React.FC = () => (
   </AuthPage>
 );
 
-export default DashboardPage;
+export { DashboardPage };

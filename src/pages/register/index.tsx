@@ -17,4 +17,4 @@ const RegisterPage: React.FC = () => {
   );
 };
 
-export default RegisterPage;
+export { RegisterPage };

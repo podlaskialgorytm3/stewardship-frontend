@@ -7,4 +7,4 @@ const CreateGroupPage: React.FC = () => (
   </AuthPage>
 );
 
-export default CreateGroupPage;
+export { CreateGroupPage };

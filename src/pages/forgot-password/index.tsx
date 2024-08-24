@@ -17,4 +17,4 @@ const ForgorPasswordPage = () => {
   );
 };
 
-export default ForgorPasswordPage;
+export { ForgorPasswordPage };

@@ -7,4 +7,4 @@ const WorkingSchedulePage: React.FC = () => (
   </AuthPage>
 );
 
-export default WorkingSchedulePage;
+export { WorkingSchedulePage };

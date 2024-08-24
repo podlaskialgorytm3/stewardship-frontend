@@ -16,4 +16,4 @@ const Root: React.FC = () => {
   );
 };
 
-export default Root;
+export { Root };

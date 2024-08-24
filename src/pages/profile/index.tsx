@@ -7,4 +7,4 @@ const ProfilePage: React.FC = () => (
   </AuthPage>
 );
 
-export default ProfilePage;
+export { ProfilePage };
