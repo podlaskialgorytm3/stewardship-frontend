@@ -46,4 +46,4 @@ const useChangeRole = () =>
     },
   });
 
-export default useChangeRole;
+export { useChangeRole };

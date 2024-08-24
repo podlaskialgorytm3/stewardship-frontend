@@ -48,4 +48,4 @@ const useAddUser = () =>
     },
   });
 
-export default useAddUser;
+export { useAddUser };

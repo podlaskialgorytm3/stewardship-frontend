@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import { Member } from "../../../../../shared/types/members";
-import useAddUser from "../api/use-add-user";
+import { useAddUser } from "../api/use-add-user";
 
 const useHandleUsers = ({
   isAdmin,
@@ -38,4 +38,4 @@ const useHandleUsers = ({
   };
 };
 
-export default useHandleUsers;
+export { useHandleUsers };

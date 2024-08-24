@@ -46,4 +46,4 @@ const useFetchRequests = ({
     queryKey: ["groups", "requests", username],
   });
 
-export default useFetchRequests;
+export { useFetchRequests };

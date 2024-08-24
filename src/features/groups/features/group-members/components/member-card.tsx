@@ -1,8 +1,8 @@
 import { Member } from "../../../../../shared/types/members";
 import { useCheckRole } from "../../../../../api/hooks/use-check-role-by-group-id";
-import useHandleMember from "../hooks/use-handle-member";
-import useHandleRequest from "../hooks/use-handle-request";
-import useHandleUsers from "../hooks/use-handle-users";
+import { useHandleMember } from "../hooks/use-handle-member";
+import { useHandleRequest } from "../hooks/use-handle-request";
+import { useHandleUsers } from "../hooks/use-handle-users";
 
 export const MemberCard: React.FC<{
   member: Member;

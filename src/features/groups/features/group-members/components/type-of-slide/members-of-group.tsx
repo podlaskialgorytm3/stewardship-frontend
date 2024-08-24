@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import useFetchMembers from "../../api/use-fetch-members";
+import { useFetchMembers } from "../../api/use-fetch-members";
 import { Member } from "../../../../../../shared/types/members";
 import { SearchBar } from "../../../../../search-bar/components/search-bar";
 import { MemberCard } from "../member-card";

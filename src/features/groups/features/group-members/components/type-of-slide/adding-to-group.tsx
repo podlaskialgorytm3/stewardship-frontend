@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Member } from "../../../../../../shared/types/members";
 import { SearchBar } from "../../../../../search-bar/components/search-bar";
 import { MemberCard } from "../member-card";
-import useFetchUsers from "../../api/use-fetch-users";
+import { useFetchUsers } from "../../api/use-fetch-users";
 
 const AddingToGroup: React.FC<{ groupId: string | undefined }> = ({
   groupId,

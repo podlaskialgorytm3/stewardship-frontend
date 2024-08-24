@@ -49,4 +49,4 @@ const useDeleteMember = () =>
     },
   });
 
-export default useDeleteMember;
+export { useDeleteMember };

@@ -1,8 +1,8 @@
 import Swal from "sweetalert2";
 import { Member } from "../../../../../shared/types/members";
 
-import useDeleteMember from "../api/use-delete-member";
-import useChangeRole from "../api/use-change-role";
+import { useDeleteMember } from "../api/use-delete-member";
+import { useChangeRole } from "../api/use-change-role";
 
 const useHandleMember = ({
   isAdmin,
@@ -59,4 +59,4 @@ const useHandleMember = ({
   return { handleDelete, handleChangeRole };
 };
 
-export default useHandleMember;
+export { useHandleMember };

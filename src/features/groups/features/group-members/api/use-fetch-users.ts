@@ -45,4 +45,4 @@ const useFetchUsers = ({
     queryFn: () => fetchUsers({ groupId, username }),
   });
 
-export default useFetchUsers;
+export { useFetchUsers };

@@ -52,4 +52,4 @@ const useChangeStatus = () =>
     },
   });
 
-export default useChangeStatus;
+export { useChangeStatus };

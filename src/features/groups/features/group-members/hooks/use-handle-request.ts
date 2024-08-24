@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import { Member } from "../../../../../shared/types/members";
-import useChangeStatus from "../api/use-change-status";
+import { useChangeStatus } from "../api/use-change-status";
 
 const useHandleRequest = ({
   isAdmin,
@@ -65,4 +65,4 @@ const useHandleRequest = ({
   };
 };
 
-export default useHandleRequest;
+export { useHandleRequest };

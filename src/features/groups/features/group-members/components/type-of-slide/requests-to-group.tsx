@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import useFetchRequest from "../../api/use-fetch-requests";
+import { useFetchRequests } from "../../api/use-fetch-requests";
 import { Member } from "../../../../../../shared/types/members";
 import { SearchBar } from "../../../../../search-bar/components/search-bar";
 import { MemberCard } from "../member-card";
@@ -9,7 +9,7 @@ const RequestsToGroup: React.FC<{ groupId: string | undefined }> = ({
   groupId,
 }) => {
   const [search, setSearch] = useState<string>("");
-  const { data, isLoading } = useFetchRequest({
+  const { data, isLoading } = useFetchRequests({
     groupId: groupId as string,
     username: search as string,
   });
