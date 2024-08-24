@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { Select, MenuItem } from "@mui/material";
 
-import useHadleSubtask from "../hooks/use-handle-subtask";
+import { useHandleSubtask } from "../hooks/use-handle-subtask";
 import { subtaskSchema } from "../utils/utils";
 import { SubtaskInterface } from "../types/types";
 
@@ -14,8 +14,8 @@ export const CreateSubtask: React.FC<{
   subtasks: SubtaskInterface[];
   setSubtasks: React.Dispatch<React.SetStateAction<SubtaskInterface[]>>;
 }> = ({ subtasks, setSubtasks }) => {
-  const { formErrors, handleAdd, handleChange, handleDelete } = useHadleSubtask(
-    {
+  const { formErrors, handleAdd, handleChange, handleDelete } =
+    useHandleSubtask({
       data: ["title", "description", "status"],
       schema: subtaskSchema,
       DEFAULT_STATE: {
@@ -24,8 +24,7 @@ export const CreateSubtask: React.FC<{
         status: "",
       },
       setSubtasks: setSubtasks,
-    }
-  );
+    });
 
   const isPending = false;
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TaskCard } from "./task-card";
-import useFetchTasksToCards from "../api/use-fetch-tasks-to-cards";
+import { useFetchTasksToCards } from "../api/use-fetch-tasks-to-cards";
 import useErrorMessage from "../../../../../shared/hooks/use-error-message";
 import Loading from "../../../../../shared/components/loading";
 import { TaskCardInterface } from "../types/types";

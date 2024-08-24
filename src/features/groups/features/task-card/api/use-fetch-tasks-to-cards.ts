@@ -49,4 +49,4 @@ const useFetchTasksToCards = ({
       }),
   });
 
-export default useFetchTasksToCards;
+export { useFetchTasksToCards };

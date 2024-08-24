@@ -5,7 +5,7 @@ import { SearchBar } from "../../../../search-bar/components/search-bar";
 
 import { Checkbox } from "@mui/material";
 
-import useFetchMembers from "../api/use-fetch-members";
+import { useFetchMembers } from "../api/use-fetch-members";
 
 export const TaskAffilation: React.FC<{
   groupId: string | undefined;

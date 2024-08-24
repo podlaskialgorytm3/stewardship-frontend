@@ -38,4 +38,4 @@ const useHandleTaskInfo = ({
   return { onSubmit, register, errors, handleSubmit };
 };
 
-export default useHandleTaskInfo;
+export { useHandleTaskInfo };

@@ -7,12 +7,12 @@ import { CreateTaskInfo } from "../components/create-task-info";
 import { CreateSubtask } from "../components/create-subtask";
 import { TaskAffilation } from "../components/task-affilations";
 
-import useCreateTask from "../api/use-create-task";
+import { useCreateTask } from "../api/use-create-task";
 import useErrorMessage from "../../../../../shared/hooks/use-error-message";
 
 import Swal from "sweetalert2";
 
-const useHandleCheck = ({
+const useHandleTask = ({
   activeStep,
   setActiveStep,
   groupId,
@@ -98,4 +98,4 @@ const useHandleCheck = ({
   return { handleAdd, renderStepContent, isPending };
 };
 
-export default useHandleCheck;
+export { useHandleTask };

@@ -45,4 +45,4 @@ const useFetchMembers = ({
     queryKey: ["tasks", groupId, username],
   });
 
-export default useFetchMembers;
+export { useFetchMembers };
