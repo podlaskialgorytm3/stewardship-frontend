@@ -1,6 +1,6 @@
 import { NavLinkComponent } from "./nav-link";
 import { Logo } from "../../../shared/components/logo";
-import useAuth from "../../../api/hooks/use-auth";
+import { useAuth } from "../../../api/hooks/use-auth";
 import { LogoutButton } from "./logout-button";
 
 export const Menu = () => {
