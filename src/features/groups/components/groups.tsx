@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSearchGroup } from "../api/use-search-group";
 import { GroupCard } from "./group-card";
 import { GroupResponse } from "../types/types";
-import Loading from "../../../shared/components/loading";
+import { Loading } from "../../../shared/components/loading";
 import { SearchBar } from "../../search-bar/components/search-bar";
 import { useNavigate } from "react-router-dom";
 

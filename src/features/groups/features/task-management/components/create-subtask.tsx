@@ -1,4 +1,4 @@
-import Loading from "../../../../../shared/components/loading";
+import { Loading } from "../../../../../shared/components/loading";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";

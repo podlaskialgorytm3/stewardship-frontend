@@ -1,6 +1,6 @@
 import { DEFAULT_REGISTER_STATE } from "../constants/constants";
 import { registerFormSchema } from "../utils/utils";
-import Loading from "../../../shared/components/loading";
+import { Loading } from "../../../shared/components/loading";
 import { NavLink } from "react-router-dom";
 import useMutateData from "../../../shared/hooks/use-mutate-data";
 import useErrorMessage from "../../../shared/hooks/use-error-message";

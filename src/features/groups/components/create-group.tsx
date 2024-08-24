@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
 import { defaultTheme } from "../../../shared/themes/themes";
 
-import Loading from "../../../shared/components/loading";
+import { Loading } from "../../../shared/components/loading";
 import { useCreateGroup } from "../api/use-create-group";
 import useMutateData from "../../../shared/hooks/use-mutate-data";
 import { groupSchema } from "../utils/utils";

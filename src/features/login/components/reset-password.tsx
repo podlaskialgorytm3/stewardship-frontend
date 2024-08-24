@@ -14,7 +14,7 @@ import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
 import { defaultTheme } from "../../../shared/themes/themes";
 
-import Loading from "../../../shared/components/loading";
+import { Loading } from "../../../shared/components/loading";
 
 export const ResetPassword: React.FC = () => {
   const { mutate, isPending, isError, error } = useResetPassword();

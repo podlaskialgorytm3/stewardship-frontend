@@ -1,5 +1,5 @@
 import { emailFormSchema } from "../utils/utils";
-import Loading from "../../../shared/components/loading";
+import { Loading } from "../../../shared/components/loading";
 import { useSendEmail } from "../api/use-send-email";
 import useMutateData from "../../../shared/hooks/use-mutate-data";
 import useErrorMessage from "../../../shared/hooks/use-error-message";

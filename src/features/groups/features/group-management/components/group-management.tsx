@@ -1,5 +1,5 @@
 import { useFetchGroup } from "../api/use-fetch-group";
-import Loading from "../../../../../shared/components/loading";
+import { Loading } from "../../../../../shared/components/loading";
 import useErrorMessage from "../../../../../shared/hooks/use-error-message";
 import { useCheckRole } from "../../../../../api/hooks/use-check-role-by-group-id";
 

@@ -12,7 +12,7 @@ import { ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "../../../../../shared/themes/themes";
 
 import { useHandleTask } from "../hooks/use-handle-task";
-import Loading from "../../../../../shared/components/loading";
+import { Loading } from "../../../../../shared/components/loading";
 
 export const Task: React.FC = () => {
   const { id = "" } = useParams();
