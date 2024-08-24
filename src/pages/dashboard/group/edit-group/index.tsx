@@ -1,10 +1,10 @@
-import AuthPage from '../../../auth';
-import { EditGroup } from '../../../../features/group-management/components/edit-group';
+import AuthPage from "../../../auth";
+import { EditGroup } from "../../../../features/groups/features/group-management/components/edit-group";
 
 const EditGroupPage: React.FC = () => (
-    <AuthPage>
-        <EditGroup />
-    </AuthPage>
-)
+  <AuthPage>
+    <EditGroup />
+  </AuthPage>
+);
 
-export default EditGroupPage; 
+export default EditGroupPage;

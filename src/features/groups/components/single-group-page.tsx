@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { AuthError } from "../../../shared/components/auth-error";
 import useBelongGroup from "../api/use-belong-group";
 
-import { Members } from "../../members/components/members";
-import { GroupManagement } from "../../group-management/components/group-management";
-import { TaskArea } from "../../task-card/components/task-area";
+import { Members } from "../features/group-members/components/members";
+import { GroupManagement } from "../features/group-management/components/group-management";
+import { TaskArea } from "../features/task-card/components/task-area";
 
 export const SingleGroupPage = () => {
   const { id } = useParams<{ id: string }>();

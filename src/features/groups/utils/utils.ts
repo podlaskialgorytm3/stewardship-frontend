@@ -1,4 +1,4 @@
-import zod from 'zod';
+import zod from "zod";
 
 export const groupSchema = zod.object({
   name: zod.string().min(3),

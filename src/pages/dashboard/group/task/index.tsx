@@ -1,10 +1,10 @@
-import AuthPage from '../../../auth';
-import { SingleTaskPage } from '../../../../features/task-page/components/single-task-page';
+import AuthPage from "../../../auth";
+import { SingleTaskPage } from "../../../../features/task-page/components/single-task-page";
 
 const TaskPage: React.FC = () => (
-    <AuthPage>
-       <SingleTaskPage />
-    </AuthPage>
-)
+  <AuthPage>
+    <SingleTaskPage />
+  </AuthPage>
+);
 
-export default TaskPage; 
+export default TaskPage;
