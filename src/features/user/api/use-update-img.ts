@@ -40,4 +40,4 @@ const useUpdateImg = () =>
     },
   });
 
-export default useUpdateImg;
+export { useUpdateImg };

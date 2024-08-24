@@ -1,6 +1,6 @@
 import { useFetchUser } from "../api/use-fetch-user";
 import Loading from "../../../shared/components/loading";
-import useHandleEdit from "../hooks/use-handle-edit";
+import { useHandleEdit } from "../hooks/use-handle-edit";
 
 export const Profile: React.FC = () => {
   const { data, isLoading } = useFetchUser();

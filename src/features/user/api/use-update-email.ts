@@ -46,4 +46,4 @@ const useUpdateEmail = () =>
     },
   });
 
-export default useUpdateEmail;
+export { useUpdateEmail };

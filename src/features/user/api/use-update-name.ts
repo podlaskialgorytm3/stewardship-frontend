@@ -40,4 +40,4 @@ const useUpdateName = () =>
     },
   });
 
-export default useUpdateName;
+export { useUpdateName };

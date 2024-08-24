@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 import { User } from "../types/types";
 
-import useUpdateImg from "../api/use-update-img";
-import useUpdateName from "../api/use-update-name";
-import useUpdateEmail from "../api/use-update-email";
-import useUpdatePassword from "../api/use-update-password";
+import { useUpdateImg } from "../api/use-update-img";
+import { useUpdateName } from "../api/use-update-name";
+import { useUpdateEmail } from "../api/use-update-email";
+import { useUpdatePassword } from "../api/use-update-password";
 
 import useErrorMessage from "../../../shared/hooks/use-error-message";
 
@@ -191,4 +191,4 @@ const useHandleEdit = ({ data }: { data: User }) => {
   };
 };
 
-export default useHandleEdit;
+export { useHandleEdit };

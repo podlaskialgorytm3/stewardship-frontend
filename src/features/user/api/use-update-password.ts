@@ -46,4 +46,4 @@ const useUpdatePassword = () =>
     },
   });
 
-export default useUpdatePassword;
+export { useUpdatePassword };
