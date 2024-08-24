@@ -34,4 +34,4 @@ const useCheckRole = (groupId: string) =>
     queryKey: ["groups", groupId],
   });
 
-export default useCheckRole;
+export { useCheckRole };
