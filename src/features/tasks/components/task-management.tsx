@@ -6,7 +6,7 @@ import { useHandleDeleteTask } from "../hooks/use-handle-delete-task";
 
 import { TaskInfoResponse } from "../types/types";
 
-import useCheckRoleByTasInfokId from "../../../api/hooks/use-check-role-by-task-info-id";
+import { useCheckRoleByTasInfokId } from "../../../api/hooks/use-check-role-by-task-info-id";
 import Loading from "../../../shared/components/loading";
 
 const TaskManagement: React.FC<{

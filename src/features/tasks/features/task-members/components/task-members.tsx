@@ -3,7 +3,7 @@ import "@splidejs/react-splide/css";
 
 import { MembersAddedToTask } from "./members-added-to-task";
 import { MembersOffTask } from "./members-off-task";
-import useCheckRoleByTasInfokId from "../../../../../api/hooks/use-check-role-by-task-info-id";
+import { useCheckRoleByTasInfokId } from "../../../../../api/hooks/use-check-role-by-task-info-id";
 
 export const TaskMembers: React.FC<{ taskInfoId: string | undefined }> = ({
   taskInfoId,

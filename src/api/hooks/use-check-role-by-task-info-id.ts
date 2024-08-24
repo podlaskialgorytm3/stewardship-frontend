@@ -34,4 +34,4 @@ const useCheckRoleByTasInfokId = (taskInfoId: string | undefined) =>
     queryKey: ["groups", taskInfoId],
   });
 
-export default useCheckRoleByTasInfokId;
+export { useCheckRoleByTasInfokId };
