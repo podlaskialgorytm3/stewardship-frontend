@@ -51,4 +51,4 @@ const useRegister = () => {
   return registerMutation;
 };
 
-export default useRegister;
+export { useRegister };

@@ -46,4 +46,4 @@ const useLogout = () => {
   return logoutMutation;
 };
 
-export default useLogout;
+export { useLogout };

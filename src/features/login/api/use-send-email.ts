@@ -47,4 +47,4 @@ const useSendEmail = () =>
     },
   });
 
-export default useSendEmail;
+export { useSendEmail };

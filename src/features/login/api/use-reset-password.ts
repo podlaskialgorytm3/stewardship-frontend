@@ -52,4 +52,4 @@ const useResetPassword = () => {
   });
 };
 
-export default useResetPassword;
+export { useResetPassword };
