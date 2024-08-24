@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Member } from "../types/types";
 import { MemberCard } from "./member-card";
-import { SearchBar } from "../../search-bar/components/search-bar";
+import { SearchBar } from "../../../../search-bar/components/search-bar";
 
 import useFetchMembersAddedToTask from "../api/use-fetch-members-added-to-task";
 

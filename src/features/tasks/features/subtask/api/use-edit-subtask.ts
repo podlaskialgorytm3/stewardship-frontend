@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { API_URL } from "../../../shared/constants/constants";
-import { queryClient } from "../../../api/utils/query-client";
+import { API_URL } from "../../../../../shared/constants/constants";
+import { queryClient } from "../../../../../api/utils/query-client";
 import { SubtaskUpdate } from "../types/types";
 
 import Swal from "sweetalert2";

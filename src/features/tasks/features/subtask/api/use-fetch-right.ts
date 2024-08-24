@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { API_URL } from "../../../shared/constants/constants";
+import { API_URL } from "../../../../../shared/constants/constants";
 
 import Swal from "sweetalert2";
 
