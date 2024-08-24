@@ -46,4 +46,4 @@ const useFetchMembersOffTask = ({
     queryFn: () => fetchMembersOffTask({ taskInfoId, username }),
   });
 
-export default useFetchMembersOffTask;
+export { useFetchMembersOffTask };

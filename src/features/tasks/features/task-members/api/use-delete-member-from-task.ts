@@ -48,4 +48,4 @@ const useDeleteMemberFromTask = () =>
     },
   });
 
-export default useDeleteMemberFromTask;
+export { useDeleteMemberFromTask };

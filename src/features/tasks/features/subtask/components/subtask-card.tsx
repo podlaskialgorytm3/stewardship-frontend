@@ -1,8 +1,8 @@
 import { SubtaskResponse } from "../types/types";
 
-import useFetchRight from "../api/use-fetch-right";
-import useHandleStatus from "../hooks/use-handle-status";
-import useHandleEdit from "../hooks/use-handle-edit";
+import { useFetchRight } from "../api/use-fetch-right";
+import { useHandleStatus } from "../hooks/use-handle-status";
+import { useHandleEdit } from "../hooks/use-handle-edit";
 import { useHandleDelete } from "../hooks/use-handle-delete";
 
 export const SubtaskCard: React.FC<{ subtask: SubtaskResponse }> = ({

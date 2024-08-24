@@ -47,4 +47,4 @@ const useFetchTask = ({
     queryFn: () => fetchTask({ taskInfoId, subtaskStatus }),
   });
 
-export default useFetchTask;
+export { useFetchTask };

@@ -49,4 +49,4 @@ const useAddMemberToTask = () =>
     },
   });
 
-export default useAddMemberToTask;
+export { useAddMemberToTask };

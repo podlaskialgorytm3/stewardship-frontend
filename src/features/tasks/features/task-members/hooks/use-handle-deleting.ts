@@ -2,7 +2,7 @@ import { Member } from "../types/types";
 
 import Swal from "sweetalert2";
 
-import useDeleteMemberFromTask from "../api/use-delete-member-from-task";
+import { useDeleteMemberFromTask } from "../api/use-delete-member-from-task";
 
 import useErrorMessage from "../../../../../shared/hooks/use-error-message";
 

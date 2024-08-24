@@ -1,6 +1,6 @@
 import { Member } from "../types/types";
 
-import useAddMemberToTask from "../api/use-add-member-to-task";
+import { useAddMemberToTask } from "../api/use-add-member-to-task";
 import useErrorMessage from "../../../../../shared/hooks/use-error-message";
 
 import Swal from "sweetalert2";

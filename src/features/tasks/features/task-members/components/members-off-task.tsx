@@ -4,7 +4,7 @@ import { Member } from "../types/types";
 import { MemberCard } from "./member-card";
 import { SearchBar } from "../../../../search-bar/components/search-bar";
 
-import useFetchMembersOffTask from "../api/use-fetch-members-off-task";
+import { useFetchMembersOffTask } from "../api/use-fetch-members-off-task";
 
 export const MembersOffTask: React.FC<{
   taskInfoId: string | undefined;

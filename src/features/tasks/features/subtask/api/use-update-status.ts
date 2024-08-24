@@ -49,4 +49,4 @@ const useUpdateStatus = () =>
     },
   });
 
-export default useUpdateStatus;
+export { useUpdateStatus };

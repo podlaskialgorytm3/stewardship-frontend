@@ -55,4 +55,4 @@ const useHandleEdit = ({
   };
 };
 
-export default useHandleEdit;
+export { useHandleEdit };

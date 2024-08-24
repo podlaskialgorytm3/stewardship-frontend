@@ -46,4 +46,4 @@ const useFetchMembersAddedToTask = ({
     queryFn: () => fetchMembersAddedToTask({ taskInfoId, username }),
   });
 
-export default useFetchMembersAddedToTask;
+export { useFetchMembersAddedToTask };

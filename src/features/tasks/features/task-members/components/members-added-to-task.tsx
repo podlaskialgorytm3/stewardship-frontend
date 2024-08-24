@@ -4,7 +4,7 @@ import { Member } from "../types/types";
 import { MemberCard } from "./member-card";
 import { SearchBar } from "../../../../search-bar/components/search-bar";
 
-import useFetchMembersAddedToTask from "../api/use-fetch-members-added-to-task";
+import { useFetchMembersAddedToTask } from "../api/use-fetch-members-added-to-task";
 
 export const MembersAddedToTask: React.FC<{
   taskInfoId: string | undefined;

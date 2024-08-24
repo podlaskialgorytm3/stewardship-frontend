@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import useUpdateStatus from "../api/use-update-status";
+import { useUpdateStatus } from "../api/use-update-status";
 
 const useHandleStatus = ({ status }: { status: string }) => {
   const { mutate } = useUpdateStatus();
@@ -26,4 +26,4 @@ const useHandleStatus = ({ status }: { status: string }) => {
   return { handleStatus };
 };
 
-export default useHandleStatus;
+export { useHandleStatus };

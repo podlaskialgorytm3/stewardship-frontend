@@ -4,11 +4,11 @@ import { useState } from "react";
 import { TaskMembers } from "../features/task-members/components/task-members";
 import { TaskInformation } from "./task-information";
 
-import useFetchTask from "../api/use-fetch-task";
+import { useFetchTask } from "../api/use-fetch-task";
 import Loading from "../../../shared/components/loading";
 
 import useErrorMessage from "../../../shared/hooks/use-error-message";
-import useBelongToTask from "../api/use-belong-to-task";
+import { useBelongToTask } from "../api/use-belong-to-task";
 import { AuthError } from "../../../shared/components/auth-error";
 import { Subtasks } from "../features/subtask/components/subtasks";
 

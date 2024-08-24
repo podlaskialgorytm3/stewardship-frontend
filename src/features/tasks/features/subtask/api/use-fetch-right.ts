@@ -34,4 +34,4 @@ const useFetchRight = (subtaskId: string) =>
     queryFn: () => fetchRight(subtaskId),
   });
 
-export default useFetchRight;
+export { useFetchRight };
