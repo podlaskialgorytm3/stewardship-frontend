@@ -1,6 +1,6 @@
-import useSendRequest from "../api/use-send-request";
-import useCancelRequest from "../api/use-cancel-request";
-import useGroupButton from "../hooks/use-group-button";
+import { useSendRequest } from "../api/use-send-request";
+import { useCancelRequest } from "../api/use-cancel-request";
+import { useGroupButton } from "../hooks/use-group-button";
 import Loading from "../../../shared/components/loading";
 
 export const GroupButton = ({

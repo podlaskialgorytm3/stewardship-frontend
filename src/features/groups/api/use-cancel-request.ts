@@ -42,4 +42,4 @@ const useCancelRequest = () =>
     },
   });
 
-export default useCancelRequest;
+export { useCancelRequest };

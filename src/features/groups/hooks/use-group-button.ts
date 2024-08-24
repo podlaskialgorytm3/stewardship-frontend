@@ -46,4 +46,4 @@ const useGroupButton = ({
   return { membership, handleClick };
 };
 
-export default useGroupButton;
+export { useGroupButton };

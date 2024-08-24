@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import { AuthError } from "../../../shared/components/auth-error";
-import useBelongGroup from "../api/use-belong-group";
+import { useBelongGroup } from "../api/use-belong-group";
 
 import { Members } from "../features/group-members/components/members";
 import { GroupManagement } from "../features/group-management/components/group-management";

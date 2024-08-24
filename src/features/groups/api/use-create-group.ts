@@ -46,4 +46,4 @@ const useCreateGroup = () =>
     },
   });
 
-export default useCreateGroup;
+export { useCreateGroup };

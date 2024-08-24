@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useSearchGroup from "../api/use-search-group";
+import { useSearchGroup } from "../api/use-search-group";
 import { GroupCard } from "./group-card";
 import { GroupResponse } from "../types/types";
 import Loading from "../../../shared/components/loading";
