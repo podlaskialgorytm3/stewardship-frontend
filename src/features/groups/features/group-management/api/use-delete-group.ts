@@ -43,4 +43,4 @@ const useDeleteGroup = () => {
   });
 };
 
-export default useDeleteGroup;
+export { useDeleteGroup };

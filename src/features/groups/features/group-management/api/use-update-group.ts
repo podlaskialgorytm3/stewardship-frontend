@@ -52,4 +52,4 @@ const useUpdateGroup = (id: string) => {
   });
 };
 
-export default useUpdateGroup;
+export { useUpdateGroup };

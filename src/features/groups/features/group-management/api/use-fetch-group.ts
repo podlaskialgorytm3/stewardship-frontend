@@ -33,4 +33,4 @@ const useFetchGroup = (id: string) =>
     queryFn: () => fetchGroup(id),
   });
 
-export default useFetchGroup;
+export { useFetchGroup };

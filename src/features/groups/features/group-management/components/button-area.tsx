@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import useDeleteGroup from "../api/use-delete-group";
+import { useDeleteGroup } from "../api/use-delete-group";
 
 import Swal from "sweetalert2";
 

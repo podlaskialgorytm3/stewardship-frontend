@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useCheckRole } from "../../../../../api/hooks/use-check-role-by-group-id";
-import useFetchGroup from "../api/use-fetch-group";
+import { useFetchGroup } from "../api/use-fetch-group";
 import useErrorMessage from "../../../../../shared/hooks/use-error-message";
 import { AuthError } from "../../../../../shared/components/auth-error";
 import Loading from "../../../../../shared/components/loading";
 import useMutateData from "../../../../../shared/hooks/use-mutate-data";
 import { groupSchema } from "../utils/utils";
 import { DEFAULT_GROUP_STATE } from "../../../../groups/constants/constants";
-import useUpdateGroup from "../api/use-update-group";
+import { useUpdateGroup } from "../api/use-update-group";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
