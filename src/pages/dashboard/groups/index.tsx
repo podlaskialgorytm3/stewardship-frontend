@@ -1,10 +1,10 @@
-import { Groups } from '../../../features/groups/components/groups';
-import AuthPage from '../../auth';
+import { Groups } from "../../../features/groups/components/groups";
+import { AuthPage } from "../../auth";
 
 const GroupsPage: React.FC = () => (
-    <AuthPage>
-        <Groups />
-    </AuthPage>
-)
+  <AuthPage>
+    <Groups />
+  </AuthPage>
+);
 
 export default GroupsPage;

@@ -1,5 +1,5 @@
-import AuthPage from "../../auth";
-import { WorkingSchedule } from "../../../features/working-schedule-page/components/working-schedule";
+import { AuthPage } from "../../auth";
+import { WorkingSchedule } from "../../../features/working-schedule/components/working-schedule";
 
 const WorkingSchedulePage: React.FC = () => (
   <AuthPage>

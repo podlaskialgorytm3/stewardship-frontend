@@ -16,4 +16,4 @@ const AuthPage: React.FC<{ children: JSX.Element }> = ({ children }) => {
   );
 };
 
-export default AuthPage;
+export { AuthPage };
