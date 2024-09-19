@@ -1,46 +1,31 @@
-import { Button } from "@mui/material";
+import { ScheduleNavLink } from "./schedule-nav-link";
 
-export const ScheduleManagement: React.FC = () => {
+export const ScheduleManagement: React.FC<{ groupId: string | undefined }> = ({
+  groupId,
+}) => {
   return (
     <>
-      <h1 className="font-bold text-xl">schedule-management</h1>
-      <div className="mt-5 flex flex-wrap justify-around items-around w-full">
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ margin: 1, width: "200px" }}
-        >
-          skills
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ margin: 1, width: "200px" }}
-        >
-          schedule-rules
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ margin: 1, width: "200px" }}
-        >
-          shifts
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ margin: 1, width: "200px" }}
-        >
-          employment-types
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ margin: 1, width: "200px" }}
-        >
-          work-schedules
-        </Button>
-      </div>
+      <h1 className="font-bold text-xl mb-5">schedule-management</h1>
+      <ScheduleNavLink
+        path={`/dashboard/groups/skills/${groupId}`}
+        name="Skills"
+      />
+      <ScheduleNavLink
+        path={`/dashboard/groups/schedule-rules/${groupId}`}
+        name="Schedule Rules"
+      />
+      <ScheduleNavLink
+        path={`/dashboard/groups/shifts/${groupId}`}
+        name="Shifts"
+      />
+      <ScheduleNavLink
+        path={`/dashboard/groups/employment-types/${groupId}`}
+        name="Employment Types"
+      />
+      <ScheduleNavLink
+        path={`/dashboard/groups/work-schedules/${groupId}`}
+        name="Work Schedules"
+      />
     </>
   );
 };
