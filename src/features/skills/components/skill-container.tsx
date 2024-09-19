@@ -17,9 +17,12 @@ const SkillContainer: React.FC<{ groupId: string | undefined }> = ({
           {!isLoading &&
             data &&
             data?.map(
-              (skill: { id: string; skillName: string; isRemote: boolean }) => (
-                <SkillCard key={skill.id} skill={skill} />
-              )
+              (skill: {
+                id: string;
+                skillName: string;
+                isRemote: boolean;
+                groupId: string;
+              }) => <SkillCard key={skill.id} skill={skill} />
             )}
         </div>
       </BoxElement>

@@ -1,7 +1,7 @@
 import { useHandleDeleteSkill } from "../hooks/use-handle-delete-skill";
 
 const SkillCard: React.FC<{
-  skill: { id: string; skillName: string; isRemote: boolean };
+  skill: { id: string; skillName: string; isRemote: boolean; groupId: string };
 }> = ({ skill }) => {
   const { handleDeleteSkill } = useHandleDeleteSkill();
   return (
@@ -10,7 +10,10 @@ const SkillCard: React.FC<{
         <h1 className="font-bold">{skill.skillName}</h1>
         <p>{skill.isRemote && "remote"}</p>
       </div>
-      <p onClick={() => handleDeleteSkill(skill.id)} className="cursor-pointer">
+      <p
+        onClick={() => handleDeleteSkill(skill.id, skill.groupId)}
+        className="cursor-pointer"
+      >
         🗑️
       </p>
     </div>

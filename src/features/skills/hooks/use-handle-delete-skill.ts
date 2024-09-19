@@ -1,7 +1,11 @@
 import Swal from "sweetalert2";
 
+import { useDeleteSkill } from "../api/use-delete-skill";
+
 const useHandleDeleteSkill = () => {
-  const handleDeleteSkill = (skillId: string) => {
+  const { mutate } = useDeleteSkill();
+
+  const handleDeleteSkill = (skillId: string, groupId: string) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -12,7 +16,10 @@ const useHandleDeleteSkill = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        mutate({
+          skillId,
+          groupId,
+        });
       }
     });
   };
