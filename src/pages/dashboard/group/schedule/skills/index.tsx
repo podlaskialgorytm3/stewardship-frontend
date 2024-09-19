@@ -1,8 +1,9 @@
 import { AuthPage } from "../../../../auth";
+import { Skill } from "../../../../../features/skills/components/skill";
 
 const SkillPage: React.FC = () => (
   <AuthPage>
-    <h1>Skills</h1>
+    <Skill />
   </AuthPage>
 );
 
