@@ -6,6 +6,8 @@ import { useBelongGroup } from "../api/use-belong-group";
 import { Members } from "../features/group-members/components/members";
 import { GroupManagement } from "../features/group-management/components/group-management";
 import { TaskArea } from "../features/task-card/components/task-area";
+import { GroupElement } from "./group-element";
+import { ScheduleManagement } from "./schedule-management";
 
 export const SingleGroupPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -20,7 +22,12 @@ export const SingleGroupPage = () => {
             <GroupManagement groupId={id} />
             <TaskArea groupId={id} />
           </div>
-          <Members groupId={id} />
+          <div className="w-[30%] flex flex-col justify-center items-center">
+            <Members groupId={id} />
+            <GroupElement size={400}>
+              <ScheduleManagement />
+            </GroupElement>
+          </div>
         </div>
       ) : (
         <AuthError>You are not belong to group!</AuthError>
