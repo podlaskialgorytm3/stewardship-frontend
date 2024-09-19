@@ -9,7 +9,6 @@ import { GroupManagement } from "../features/group-management/components/group-m
 import { TaskArea } from "../features/task-card/components/task-area";
 import { GroupElement } from "./group-element";
 import { ScheduleManagement } from "./schedule-management";
-import { Loading } from "../../../shared/components/loading";
 
 export const SingleGroupPage = () => {
   const { id } = useParams<{ id: string }>();
