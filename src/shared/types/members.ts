@@ -6,4 +6,5 @@ export interface Member {
   img: string;
   groupId: number;
   requestId: number;
+  position: string;
 }
