@@ -1,3 +1,9 @@
+import { useState } from "react";
+
+import { SkillInterface } from "../types/types";
+
+import { useHanbleCreateSkill } from "../hooks/use-handle-create-skill";
+
 import { BoxElement } from "../../../shared/components/box-element";
 import {
   TextField,
@@ -8,6 +14,15 @@ import {
 } from "@mui/material";
 
 const CreateSkill: React.FC = () => {
+  const [skill, setSkill] = useState<SkillInterface>({
+    skill: "",
+    isRemote: false,
+  });
+
+  const { onSubmit, register, errors, handleSubmit } = useHanbleCreateSkill({
+    setSkill,
+  });
+
   return (
     <>
       <BoxElement size={350}>
@@ -15,7 +30,7 @@ const CreateSkill: React.FC = () => {
         <Box
           component="form"
           color={"secondary"}
-          //onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit as () => void)}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -26,20 +41,22 @@ const CreateSkill: React.FC = () => {
         >
           <TextField
             label="Skill"
-            name="skill"
+            id="skill"
             color={"secondary"}
-            // value={formData.skill}
-            // onChange={handleChange}
+            defaultValue={skill.skill}
+            {...register("skill")}
+            error={!!errors["skill"]}
+            helperText={errors["skill"] ? String(errors["skill"]?.message) : ""}
             fullWidth
             required
           />
           <FormControlLabel
             control={
               <Checkbox
-                name="isRemote"
+                id="isRemote"
+                {...register("isRemote")}
                 color={"secondary"}
-                //checked={formData.isRemote}
-                //onChange={handleChange}
+                defaultChecked={skill.isRemote}
               />
             }
             label="Is Remote"
