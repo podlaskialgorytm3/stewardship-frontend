@@ -12,7 +12,7 @@ export const Members: React.FC<{ groupId: string | undefined }> = ({
   const { data: isAdmin, isLoading } = useCheckRole(groupId as string);
 
   return (
-    <div className="w-[30%] border-[2px] h-[400px] overflow-y-scroll border-[#7e007e] rounded-xl flex flex-col items-center">
+    <div className="w-[100%] border-[2px] h-[400px] overflow-y-scroll border-[#7e007e] rounded-xl flex flex-col items-center">
       <Splide
         aria-label="My Favorite Images"
         className="cursor-grab w-[100%] h-[400px]"
