@@ -1,8 +1,9 @@
 import { AuthPage } from "../../../../auth";
+import { Positions } from "../../../../../features/positions/components/positions";
 
 const PositionPage: React.FC = () => (
   <AuthPage>
-    <h1>Positions</h1>
+    <Positions />
   </AuthPage>
 );
 
