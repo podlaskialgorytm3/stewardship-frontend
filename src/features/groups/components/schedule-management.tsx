@@ -10,7 +10,7 @@ export const ScheduleManagement: React.FC = () => {
           color="secondary"
           sx={{ margin: 1, width: "200px" }}
         >
-          skill
+          skills
         </Button>
         <Button
           variant="contained"
@@ -31,14 +31,14 @@ export const ScheduleManagement: React.FC = () => {
           color="secondary"
           sx={{ margin: 1, width: "200px" }}
         >
-          employment-type
+          employment-types
         </Button>
         <Button
           variant="contained"
           color="secondary"
           sx={{ margin: 1, width: "200px" }}
         >
-          work-schedule
+          work-schedules
         </Button>
       </div>
     </>
