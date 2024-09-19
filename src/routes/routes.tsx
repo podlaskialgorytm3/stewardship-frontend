@@ -39,22 +39,6 @@ export const routes = createBrowserRouter([
           {
             path: "/dashboard/groups",
             element: <GroupsPage />,
-            children: [
-              { path: "/dashboard/groups/skills/:id", element: <SkillPage /> },
-              {
-                path: "/dashboard/groups/schedule-rules/:id",
-                element: <ScheduleRulePage />,
-              },
-              { path: "/dashboard/groups/shifts/:id", element: <ShiftPage /> },
-              {
-                path: "/dashboard/groups/employment-types/:id",
-                element: <EmploymentTypePage />,
-              },
-              {
-                path: "/dashboard/groups/work-schedules/:id",
-                element: <WorkSchedulePage />,
-              },
-            ],
           },
           { path: "/dashboard/groups/:id", element: <GroupPage /> },
           {
@@ -70,6 +54,20 @@ export const routes = createBrowserRouter([
           {
             path: "/dashboard/working-schedule",
             element: <WorkingSchedulePage />,
+          },
+          { path: "/dashboard/groups/skills/:id", element: <SkillPage /> },
+          {
+            path: "/dashboard/groups/schedule-rules/:id",
+            element: <ScheduleRulePage />,
+          },
+          { path: "/dashboard/groups/shifts/:id", element: <ShiftPage /> },
+          {
+            path: "/dashboard/groups/employment-types/:id",
+            element: <EmploymentTypePage />,
+          },
+          {
+            path: "/dashboard/groups/work-schedules/:id",
+            element: <WorkSchedulePage />,
           },
         ],
       },
