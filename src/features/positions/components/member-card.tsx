@@ -2,8 +2,7 @@ import { Member } from "../../../shared/types/members";
 
 export const MemberCard: React.FC<{
   member: Member;
-  type: string;
-}> = ({ member, type }) => {
+}> = ({ member }) => {
   return (
     <div className="flex items-center justify-between w-[95%] p-2 rounded-xl cursor-pointer hover:bg-[#7e007e] hover:text-white">
       <img
@@ -12,7 +11,7 @@ export const MemberCard: React.FC<{
         className="w-[50px] h-[50px] rounded-full object-cover border-[#7e007e] border-[1px]"
       />
       <p>{member.name}</p>
-      {type === "follower" && <p>{member.role}</p>}
+      <p>position</p>
     </div>
   );
 };

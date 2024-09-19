@@ -13,8 +13,8 @@ const Members: React.FC<{ groupId: string | undefined }> = ({ groupId }) => {
   });
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-xl font-bold mt-5">members-of-group</h1>
+    <div className="flex flex-col items-center w-[500px]">
+      <h1 className="text-xl font-bold mt-5">click-to-set-position</h1>
       <SearchBar
         placeholder="search-members"
         search={search}
@@ -23,7 +23,7 @@ const Members: React.FC<{ groupId: string | undefined }> = ({ groupId }) => {
       {!isLoading &&
         data.data &&
         data.data.map((member: Member) => {
-          return <MemberCard member={member} key={member.id} type="follower" />;
+          return <MemberCard member={member} key={member.id} />;
         })}
     </div>
   );
