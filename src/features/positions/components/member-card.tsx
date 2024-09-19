@@ -10,7 +10,7 @@ export const MemberCard: React.FC<{
   return (
     <div
       className="flex items-center justify-between w-[95%] p-2 rounded-xl cursor-pointer hover:bg-[#7e007e] hover:text-white"
-      onClick={() => handlePosition(member.position)}
+      onClick={() => handlePosition(member.position, member.id.toString())}
     >
       <img
         src={member.img}

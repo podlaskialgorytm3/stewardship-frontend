@@ -1,7 +1,10 @@
 import Swal from "sweetalert2";
 
+import { useUpdatePosition } from "../api/use-update-position";
+
 const useHandlePosition = () => {
-  const handlePosition = (position: string) => {
+  const { mutate } = useUpdatePosition();
+  const handlePosition = (position: string, memberId: string) => {
     Swal.fire({
       input: "text",
       title: "set-position",
@@ -12,7 +15,7 @@ const useHandlePosition = () => {
       inputValue: position,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("position-submitted", "", "success");
+        mutate({ position: result.value, memberId });
       }
     });
   };
