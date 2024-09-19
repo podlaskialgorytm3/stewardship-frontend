@@ -71,7 +71,7 @@ export const routes = createBrowserRouter([
             element: <WorkSchedulePage />,
           },
           {
-            path: "/dashboard/groups/position/:id",
+            path: "/dashboard/groups/positions/:id",
             element: <PositionPage />,
           },
         ],

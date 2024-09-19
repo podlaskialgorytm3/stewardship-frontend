@@ -7,6 +7,10 @@ export const ScheduleManagement: React.FC<{ groupId: string | undefined }> = ({
     <>
       <h1 className="font-bold text-xl mb-5">schedule-management</h1>
       <ScheduleNavLink
+        path={`/dashboard/groups/positions/${groupId}`}
+        name="Positions"
+      />
+      <ScheduleNavLink
         path={`/dashboard/groups/skills/${groupId}`}
         name="Skills"
       />
