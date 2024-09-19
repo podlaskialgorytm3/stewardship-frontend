@@ -20,6 +20,7 @@ import { ScheduleRulePage } from "../pages/dashboard/group/schedule/schedule-rul
 import { ShiftPage } from "../pages/dashboard/group/schedule/shifts";
 import { EmploymentTypePage } from "../pages/dashboard/group/schedule/employment-types";
 import { WorkSchedulePage } from "../pages/dashboard/group/schedule/work-schedules";
+import { PositionPage } from "../pages/dashboard/group/schedule/positions";
 
 export const routes = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ export const routes = createBrowserRouter([
           {
             path: "/dashboard/groups/work-schedules/:id",
             element: <WorkSchedulePage />,
+          },
+          {
+            path: "/dashboard/groups/position/:id",
+            element: <PositionPage />,
           },
         ],
       },
