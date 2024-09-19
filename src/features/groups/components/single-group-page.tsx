@@ -25,7 +25,7 @@ export const SingleGroupPage = () => {
           <div className="w-[30%] flex flex-col justify-center items-center">
             <Members groupId={id} />
             <GroupElement size={400}>
-              <ScheduleManagement />
+              <ScheduleManagement groupId={id} />
             </GroupElement>
           </div>
         </div>
