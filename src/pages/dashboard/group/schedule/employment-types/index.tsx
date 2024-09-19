@@ -1,9 +1,9 @@
 import { AuthPage } from "../../../../auth";
 
-const EditGroupPage: React.FC = () => (
+const EmploymentTypePage: React.FC = () => (
   <AuthPage>
     <h1>Employemnt Types</h1>
   </AuthPage>
 );
 
-export { EditGroupPage };
+export { EmploymentTypePage };

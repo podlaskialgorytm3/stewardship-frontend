@@ -1,9 +1,9 @@
 import { AuthPage } from "../../../../auth";
 
-const EditGroupPage: React.FC = () => (
+const ShiftPage: React.FC = () => (
   <AuthPage>
     <h1>Shifts</h1>
   </AuthPage>
 );
 
-export { EditGroupPage };
+export { ShiftPage };

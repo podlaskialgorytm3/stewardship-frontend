@@ -15,6 +15,11 @@ import { EditGroupPage } from "../pages/dashboard/group/edit-group";
 import { CreateTaskPage } from "../pages/dashboard/group/create-task";
 import { TaskPage } from "../pages/dashboard/group/task/index";
 import { WorkingSchedulePage } from "../pages/dashboard/working-scheudule";
+import { SkillPage } from "../pages/dashboard/group/schedule/skills";
+import { ScheduleRulePage } from "../pages/dashboard/group/schedule/schedule-rules";
+import { ShiftPage } from "../pages/dashboard/group/schedule/shifts";
+import { EmploymentTypePage } from "../pages/dashboard/group/schedule/employment-types";
+import { WorkSchedulePage } from "../pages/dashboard/group/schedule/work-schedules";
 
 export const routes = createBrowserRouter([
   {
@@ -31,7 +36,26 @@ export const routes = createBrowserRouter([
         path: "/dashboard",
         element: <DashboardPage />,
         children: [
-          { path: "/dashboard/groups", element: <GroupsPage /> },
+          {
+            path: "/dashboard/groups",
+            element: <GroupsPage />,
+            children: [
+              { path: "/dashboard/groups/skills/:id", element: <SkillPage /> },
+              {
+                path: "/dashboard/groups/schedule-rules/:id",
+                element: <ScheduleRulePage />,
+              },
+              { path: "/dashboard/groups/shifts/:id", element: <ShiftPage /> },
+              {
+                path: "/dashboard/groups/employment-types/:id",
+                element: <EmploymentTypePage />,
+              },
+              {
+                path: "/dashboard/groups/work-schedules/:id",
+                element: <WorkSchedulePage />,
+              },
+            ],
+          },
           { path: "/dashboard/groups/:id", element: <GroupPage /> },
           {
             path: "/dashboard/groups/edit-group/:id",
