@@ -24,8 +24,6 @@ const fetchSkills = async ({ groupId }: { groupId: string | undefined }) => {
 
   const data = await response.json();
 
-  console.log(data);
-
   return data;
 };
 
