@@ -2,17 +2,20 @@ import { useParams } from "react-router-dom";
 
 import { AuthError } from "../../../shared/components/auth-error";
 import { useBelongGroup } from "../api/use-belong-group";
+import { useCheckRole } from "../../../api/hooks/use-check-role-by-group-id";
 
 import { Members } from "../features/group-members/components/members";
 import { GroupManagement } from "../features/group-management/components/group-management";
 import { TaskArea } from "../features/task-card/components/task-area";
 import { GroupElement } from "./group-element";
 import { ScheduleManagement } from "./schedule-management";
+import { Loading } from "../../../shared/components/loading";
 
 export const SingleGroupPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data: isBelongGroup, isLoading: isLoadingBelongGroup } =
     useBelongGroup(id as string);
+  const { data: isAdmin, isLoading: loadingRole } = useCheckRole(id as string);
 
   return (
     <div>
@@ -24,9 +27,11 @@ export const SingleGroupPage = () => {
           </div>
           <div className="w-[30%] flex flex-col justify-center items-center">
             <Members groupId={id} />
-            <GroupElement size={400}>
-              <ScheduleManagement groupId={id} />
-            </GroupElement>
+            {isAdmin && !loadingRole && (
+              <GroupElement size={400}>
+                <ScheduleManagement groupId={id} />
+              </GroupElement>
+            )}
           </div>
         </div>
       ) : (
