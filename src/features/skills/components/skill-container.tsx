@@ -3,8 +3,6 @@ import { Loading } from "../../../shared/components/loading";
 import { SkillCard } from "./skill-card";
 import { useFetchSkills } from "../api/use-fetch-skills";
 
-import { SkillInterface } from "../types/types";
-
 const SkillContainer: React.FC<{ groupId: string | undefined }> = ({
   groupId,
 }) => {
@@ -18,9 +16,11 @@ const SkillContainer: React.FC<{ groupId: string | undefined }> = ({
           {isLoading && <Loading size={50} />}
           {!isLoading &&
             data &&
-            data?.map((skill: SkillInterface & { id: string }) => (
-              <SkillCard key={skill.id} skill={skill} />
-            ))}
+            data?.map(
+              (skill: { id: string; skillName: string; isRemote: boolean }) => (
+                <SkillCard key={skill.id} skill={skill} />
+              )
+            )}
         </div>
       </BoxElement>
     </>
