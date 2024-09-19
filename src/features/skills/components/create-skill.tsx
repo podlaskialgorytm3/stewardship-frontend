@@ -13,7 +13,9 @@ import {
   Box,
 } from "@mui/material";
 
-const CreateSkill: React.FC = () => {
+const CreateSkill: React.FC<{ groupId: string | undefined }> = ({
+  groupId,
+}) => {
   const [skill, setSkill] = useState<SkillInterface>({
     skill: "",
     isRemote: false,
@@ -21,6 +23,7 @@ const CreateSkill: React.FC = () => {
 
   const { onSubmit, register, errors, handleSubmit } = useHanbleCreateSkill({
     setSkill,
+    groupId,
   });
 
   return (
