@@ -44,7 +44,7 @@ const useCreateSkill = () =>
   useMutation({
     mutationFn: createSkill,
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["groups"] });
+      queryClient.invalidateQueries({ queryKey: ["skills"] });
       Swal.fire({
         icon: data.type,
         title: data.type,
