@@ -4,10 +4,19 @@ import { Member } from "../../../shared/types/members";
 
 import { motion } from "framer-motion";
 
+import { useFetchBelongingSkills } from "../api/use-fetch-belonging-skills";
+
+import { Loading } from "../../../shared/components/loading";
+import { UserSkillCard } from "./user-skill-card";
+
 export const MemberCard: React.FC<{
   member: Member;
 }> = ({ member }) => {
   const [isClick, setIsClick] = useState<boolean>(false);
+  const { data: belongingSkills, isLoading: lodaingBelongSkills } =
+    useFetchBelongingSkills({
+      groupUserId: member.id,
+    });
 
   const handleClick = () => {
     setIsClick(!isClick);
@@ -36,19 +45,20 @@ export const MemberCard: React.FC<{
           transition={{ duration: 0.5, ease: "easeInOut" }}
           style={{ overflow: "hidden" }}
         >
-          {" "}
           <p className="font-bold">user's skill</p>
           <div className="flex flex-wrap">
-            <div className="bg-[#7e007e] text-white p-2 m-1 rounded-xl">
-              <p>skill</p>
-            </div>
+            {lodaingBelongSkills && <Loading size={50} />}
+            {belongingSkills?.length === 0 && <p>no skills</p>}
+            {!lodaingBelongSkills &&
+              belongingSkills &&
+              belongingSkills?.map(
+                (skill: { id: string; skillName: string }) => (
+                  <UserSkillCard key={skill.id} skill={skill} type="delete" />
+                )
+              )}
           </div>
           <p className="font-bold">add skils to user</p>
-          <div className="flex flex-wrap">
-            <div className="bg-[#7e007e] text-white p-2 m-1 rounded-xl">
-              <p>skill</p>
-            </div>
-          </div>
+          <div className="flex flex-wrap"></div>
         </motion.div>
       }
     </>
