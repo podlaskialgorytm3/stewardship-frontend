@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { CreateSkill } from "./create-skill";
 import { SkillContainer } from "./skill-container";
-
+import { Members } from "./members";
 const Skill: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
@@ -13,7 +13,9 @@ const Skill: React.FC = () => {
           <CreateSkill groupId={id} />
           <SkillContainer groupId={id} />
         </div>
-        <div className="w-[50%] mt-10">member skill management</div>
+        <div className="w-[50%] mt-10">
+          <Members groupId={id} />
+        </div>
       </div>
     </div>
   );
