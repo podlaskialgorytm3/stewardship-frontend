@@ -5,7 +5,7 @@ const UserSkillCard: React.FC<{
   type: string;
   groupUserId: number;
 }> = ({ skill, type, groupUserId }) => {
-  const { handleAddSkill } = useHandleUserSkillCard();
+  const { handleAddSkill, handleDeleteSkill } = useHandleUserSkillCard();
 
   return (
     <div className="bg-[#7e007e] text-white p-2 m-1 rounded-xl flex">
@@ -18,7 +18,14 @@ const UserSkillCard: React.FC<{
           ➕
         </p>
       )}
-      {type === "delete" && <p className="cursor-pointer">🗑️</p>}
+      {type === "delete" && (
+        <p
+          className="cursor-pointer"
+          onClick={() => handleDeleteSkill({ skillId: skill.id, groupUserId })}
+        >
+          🗑️
+        </p>
+      )}
     </div>
   );
 };
