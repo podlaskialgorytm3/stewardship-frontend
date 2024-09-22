@@ -36,7 +36,7 @@ const fetchBelongingSkills = async ({
 const useFetchBelongingSkills = ({ groupUserId }: { groupUserId: number }) =>
   useQuery({
     queryFn: () => fetchBelongingSkills({ groupUserId }),
-    queryKey: ["skills", groupUserId],
+    queryKey: ["skills", "belonging", groupUserId],
   });
 
 export { useFetchBelongingSkills };

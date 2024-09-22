@@ -36,7 +36,7 @@ const fetchNotBelongingSkills = async ({
 const useFetchNotBelongingSkills = ({ groupUserId }: { groupUserId: number }) =>
   useQuery({
     queryFn: () => fetchNotBelongingSkills({ groupUserId }),
-    queryKey: ["skills", groupUserId],
+    queryKey: ["skills", "not-belonging", groupUserId],
   });
 
 export { useFetchNotBelongingSkills };
