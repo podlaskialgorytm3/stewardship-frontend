@@ -13,6 +13,8 @@ import { Loading } from "../../../../src/shared/components/loading";
 
 import { useFetchScheduleRules } from "../api/use-fetch-schedule-rules";
 
+import { ScheduleRuleInterface } from "../types/types";
+
 const ScheduleRuleContainer: React.FC = () => {
   const { id: groupId } = useParams<{ id: string }>();
   const { data, isLoading } = useFetchScheduleRules({ groupId } as {
@@ -33,24 +35,15 @@ const ScheduleRuleContainer: React.FC = () => {
         </TableHeader>
         <TableBody>
           {isLoading && <Loading size={50} />}
-          {data?.map(
-            (scheduleRule: {
-              id: string;
-              scheduleRuleName: string;
-              maxDailyHours: number;
-              maxWeeklyHours: number;
-              minRestBeetwenShifts: number;
-              minWeeklyRest: number;
-            }) => (
-              <TableRow key={scheduleRule.id}>
-                <TableCell>{scheduleRule.scheduleRuleName}</TableCell>
-                <TableCell>{scheduleRule.maxDailyHours} h</TableCell>
-                <TableCell>{scheduleRule.maxWeeklyHours} h</TableCell>
-                <TableCell>{scheduleRule.minRestBeetwenShifts} h</TableCell>
-                <TableCell>{scheduleRule.minWeeklyRest} h</TableCell>
-              </TableRow>
-            )
-          )}
+          {data?.map((scheduleRule: ScheduleRuleInterface) => (
+            <TableRow key={scheduleRule.id} className="hover:font-bold">
+              <TableCell>{scheduleRule.scheduleRuleName}</TableCell>
+              <TableCell>{scheduleRule.maxDailyHours} h</TableCell>
+              <TableCell>{scheduleRule.maxWeeklyHours} h</TableCell>
+              <TableCell>{scheduleRule.minRestBeetwenShifts} h</TableCell>
+              <TableCell>{scheduleRule.minWeeklyRest} h</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>
