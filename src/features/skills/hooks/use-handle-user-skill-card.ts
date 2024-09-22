@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-import { useAddSkill } from "../api/use-add-skill";
+import { useAddSkill } from "../api/use-add-skill-to-user";
 
 const useHandleUserSkillCard = () => {
   const { mutate: addSkill } = useAddSkill();
