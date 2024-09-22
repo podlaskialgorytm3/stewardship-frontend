@@ -39,7 +39,16 @@ export const MemberCard: React.FC<{
           className="w-[50px] h-[50px] rounded-full object-cover border-[#7e007e] border-[1px]"
         />
         <p>{member.name}</p>
-        <p>+</p>
+        <p>
+          <motion.div
+            onClick={handleClick}
+            style={{ cursor: "pointer", fontSize: "48px", userSelect: "none" }}
+            animate={{ rotate: isClick ? 0 : 180 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            ▲
+          </motion.div>
+        </p>
       </div>
       {
         <motion.div
