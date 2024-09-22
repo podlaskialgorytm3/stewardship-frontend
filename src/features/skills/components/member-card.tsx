@@ -43,7 +43,12 @@ export const MemberCard: React.FC<{
             isClick ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
           }
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          style={{ overflow: "hidden" }}
+          style={{
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
           <p className="font-bold">user's skill</p>
           <div className="flex flex-wrap">
