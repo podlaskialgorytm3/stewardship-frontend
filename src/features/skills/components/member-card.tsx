@@ -5,6 +5,7 @@ import { Member } from "../../../shared/types/members";
 import { motion } from "framer-motion";
 
 import { useFetchBelongingSkills } from "../api/use-fetch-belonging-skills";
+import { useFetchNotBelongingSkills } from "../api/use-fetch-not-belonging-skills";
 
 import { Loading } from "../../../shared/components/loading";
 import { UserSkillCard } from "./user-skill-card";
@@ -15,6 +16,10 @@ export const MemberCard: React.FC<{
   const [isClick, setIsClick] = useState<boolean>(false);
   const { data: belongingSkills, isLoading: lodaingBelongSkills } =
     useFetchBelongingSkills({
+      groupUserId: member.id,
+    });
+  const { data: notBelongingSkills, isLoading: loadingNotBelongSkills } =
+    useFetchNotBelongingSkills({
       groupUserId: member.id,
     });
 
@@ -63,7 +68,17 @@ export const MemberCard: React.FC<{
               )}
           </div>
           <p className="font-bold">add skils to user</p>
-          <div className="flex flex-wrap"></div>
+          <div className="flex flex-wrap justify-center">
+            {loadingNotBelongSkills && <Loading size={50} />}
+            {notBelongingSkills?.length === 0 && <p>no skills</p>}
+            {!loadingNotBelongSkills &&
+              notBelongingSkills &&
+              notBelongingSkills?.map(
+                (skill: { id: string; skillName: string }) => (
+                  <UserSkillCard key={skill.id} skill={skill} type="add" />
+                )
+              )}
+          </div>
         </motion.div>
       }
     </>
