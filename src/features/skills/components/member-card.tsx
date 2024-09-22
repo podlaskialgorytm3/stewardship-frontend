@@ -63,7 +63,12 @@ export const MemberCard: React.FC<{
               belongingSkills &&
               belongingSkills?.map(
                 (skill: { id: string; skillName: string }) => (
-                  <UserSkillCard key={skill.id} skill={skill} type="delete" />
+                  <UserSkillCard
+                    key={skill.id}
+                    skill={skill}
+                    type="delete"
+                    groupUserId={member.id}
+                  />
                 )
               )}
           </div>
@@ -75,7 +80,12 @@ export const MemberCard: React.FC<{
               notBelongingSkills &&
               notBelongingSkills?.map(
                 (skill: { id: string; skillName: string }) => (
-                  <UserSkillCard key={skill.id} skill={skill} type="add" />
+                  <UserSkillCard
+                    key={skill.id}
+                    skill={skill}
+                    type="add"
+                    groupUserId={member.id}
+                  />
                 )
               )}
           </div>
