@@ -8,7 +8,7 @@ const addSkill = async ({
   skillId,
   groupUserId,
 }: {
-  skillId: number;
+  skillId: string;
   groupUserId: number;
 }) => {
   const response = await fetch(`${API_URL}/stewardship/group-skill`, {

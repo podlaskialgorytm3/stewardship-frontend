@@ -1,6 +1,10 @@
 import Swal from "sweetalert2";
 
+import { useAddSkill } from "../api/use-add-skill";
+
 const useHandleUserSkillCard = () => {
+  const { mutate: addSkill } = useAddSkill();
+
   const handleAddSkill = ({
     skillId,
     groupUserId,
@@ -17,7 +21,7 @@ const useHandleUserSkillCard = () => {
       cancelButtonText: "No",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Add skill
+        addSkill({ skillId, groupUserId });
       }
     });
   };
