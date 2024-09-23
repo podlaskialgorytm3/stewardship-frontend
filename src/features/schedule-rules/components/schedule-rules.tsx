@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { ScheduleRuleContainer } from "./schedule-rule-container";
+import { CreateScheduleRule } from "./create-schedule-rule";
 import { Menu } from "./menu";
 
 const ScheduleRules: React.FC = () => {
@@ -16,6 +17,7 @@ const ScheduleRules: React.FC = () => {
       <Menu handleChangePage={handleChangePage} selectedMenu={selectedMenu} />
       <div className="flex w-[90%] justify-center">
         {selectedMenu === "rules" && <ScheduleRuleContainer />}
+        {selectedMenu === "creating" && <CreateScheduleRule />}
       </div>
     </div>
   );
