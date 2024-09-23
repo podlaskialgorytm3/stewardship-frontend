@@ -7,4 +7,10 @@ interface ScheduleRuleInterface {
   minWeeklyRest: number;
 }
 
-export type { ScheduleRuleInterface };
+interface CreateSchedulePropsInterface {
+  name: string;
+  label: string;
+  type: string;
+}
+
+export type { ScheduleRuleInterface, CreateSchedulePropsInterface };
