@@ -1,10 +1,11 @@
 import { TextField } from "@mui/material";
 import { CreateSchedulePropsInterface } from "../types/types";
+import { UseFormRegister, FieldErrors } from "react-hook-form";
 
 const FormTextInput: React.FC<{
   rule: CreateSchedulePropsInterface;
-  register: any;
-  errors: any;
+  register: UseFormRegister<any>;
+  errors: FieldErrors<any>;
   value: string;
 }> = ({ rule, register, errors, value }) => {
   return (
