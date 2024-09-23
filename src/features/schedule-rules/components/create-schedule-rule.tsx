@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { CreateScheduleRuleInterface } from "../types/types";
 import { useHandleCreateScheduleRule } from "../hooks/use-handle-create-schedule-rule";
@@ -9,6 +10,8 @@ import { CREATE_SCHEDULE_RULE } from "../constants/constants";
 import { CreateSchedulePropsInterface } from "../types/types";
 
 const CreateScheduleRule: React.FC = () => {
+  const { id: groupId } = useParams<{ id: string }>();
+
   const [scheduleRule, setScheduleRule] = useState<CreateScheduleRuleInterface>(
     {
       scheduleRuleName: "",
@@ -22,7 +25,7 @@ const CreateScheduleRule: React.FC = () => {
   const { onSubmit, register, errors, handleSubmit } =
     useHandleCreateScheduleRule({
       setScheduleRule,
-      groupId: "1",
+      groupId: groupId,
     });
   return (
     <div className="flex flex-col items-center mt-10">
