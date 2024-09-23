@@ -10,6 +10,7 @@ import {
 import { useParams } from "react-router-dom";
 
 import { Loading } from "../../../../src/shared/components/loading";
+import { ScheduleTableRow } from "./schedule-table-row";
 
 import { useFetchScheduleRules } from "../api/use-fetch-schedule-rules";
 
@@ -36,13 +37,10 @@ const ScheduleRuleContainer: React.FC = () => {
         <TableBody>
           {isLoading && <Loading size={50} />}
           {data?.map((scheduleRule: ScheduleRuleInterface) => (
-            <TableRow key={scheduleRule.id} className="hover:font-bold">
-              <TableCell>{scheduleRule.scheduleRuleName}</TableCell>
-              <TableCell>{scheduleRule.maxDailyHours} h</TableCell>
-              <TableCell>{scheduleRule.maxWeeklyHours} h</TableCell>
-              <TableCell>{scheduleRule.minRestBeetwenShifts} h</TableCell>
-              <TableCell>{scheduleRule.minWeeklyRest} h</TableCell>
-            </TableRow>
+            <ScheduleTableRow
+              key={scheduleRule.id}
+              scheduleRule={scheduleRule}
+            />
           ))}
         </TableBody>
       </Table>
