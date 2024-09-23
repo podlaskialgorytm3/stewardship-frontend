@@ -1,9 +1,12 @@
 import { TextField } from "@mui/material";
 import { CreateSchedulePropsInterface } from "../types/types";
 
-const FormTextInput: React.FC<{ rule: CreateSchedulePropsInterface }> = ({
-  rule,
-}) => {
+const FormTextInput: React.FC<{
+  rule: CreateSchedulePropsInterface;
+  register: any;
+  errors: any;
+  value: string;
+}> = ({ rule, register, errors, value }) => {
   return (
     <TextField
       label={rule.label}
@@ -11,12 +14,11 @@ const FormTextInput: React.FC<{ rule: CreateSchedulePropsInterface }> = ({
       color={"secondary"}
       variant="standard"
       type={rule.type}
-      //defaultValue={skill.skill}
-      //{...register("skill")}
-      //error={!!errors["skill"]}
-      //helperText={errors["skill"] ? String(errors["skill"]?.message) : ""}
+      defaultValue={value}
+      {...register(rule.name)}
+      error={!!errors[rule.name]}
+      helperText={errors[rule.name] ? String(errors[rule.name]?.message) : ""}
       fullWidth
-      required
     />
   );
 };
