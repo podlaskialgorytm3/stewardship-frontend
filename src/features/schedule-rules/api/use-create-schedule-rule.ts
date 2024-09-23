@@ -11,7 +11,7 @@ const createScheduleRule = async ({
   groupId,
 }: {
   scheduleRule: CreateScheduleRuleInterface;
-  groupId: string;
+  groupId: string | undefined;
 }) => {
   const response = await fetch(`${API_URL}/stewardship/schedule-rule`, {
     method: "POST",
@@ -38,12 +38,12 @@ const createScheduleRule = async ({
 const useCreateScheduleRule = () =>
   useMutation({
     mutationFn: createScheduleRule,
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["schedule-rules"] });
       Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: "Schedule rule created",
+        icon: data.type,
+        title: data.type,
+        text: data.message,
       });
     },
   });

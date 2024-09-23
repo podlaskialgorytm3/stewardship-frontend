@@ -10,7 +10,7 @@ import { CREATE_SCHEDULE_RULE } from "../constants/constants";
 import { CreateSchedulePropsInterface } from "../types/types";
 
 const CreateScheduleRule: React.FC = () => {
-  const { id: groupId } = useParams<{ id: string }>();
+  const { id: groupId } = useParams<{ id: string | undefined }>();
 
   const [scheduleRule, setScheduleRule] = useState<CreateScheduleRuleInterface>(
     {

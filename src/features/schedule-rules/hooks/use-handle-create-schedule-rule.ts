@@ -5,6 +5,8 @@ import {
   CreateScheduleRuleSchema,
 } from "../types/types";
 
+import { useCreateScheduleRule } from "../api/use-create-schedule-rule";
+
 const useHandleCreateScheduleRule = ({
   setScheduleRule,
   groupId,
@@ -21,6 +23,8 @@ const useHandleCreateScheduleRule = ({
     formState: { errors },
   } = useForm();
 
+  const { mutate } = useCreateScheduleRule();
+
   const onSubmit = (data: CreateScheduleRuleInterface) => {
     try {
       const dataValidate = CreateScheduleRuleSchema.parse({
@@ -31,6 +35,7 @@ const useHandleCreateScheduleRule = ({
         scheduleRuleName: data.scheduleRuleName,
       });
       setScheduleRule(dataValidate);
+      mutate({ scheduleRule: dataValidate, groupId });
     } catch (error: any) {
       const validationError = fromZodError(error);
       validationError.details.forEach((detail: any) => {
