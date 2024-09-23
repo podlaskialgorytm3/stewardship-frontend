@@ -23,9 +23,14 @@ const useHandleCreateScheduleRule = ({
 
   const onSubmit = (data: CreateScheduleRuleInterface) => {
     try {
-      const dataValidate = CreateScheduleRuleSchema.parse(data);
+      const dataValidate = CreateScheduleRuleSchema.parse({
+        maxDailyHours: Number(data.maxDailyHours),
+        maxWeeklyHours: Number(data.maxWeeklyHours),
+        minRestBeetwenShifts: Number(data.minRestBeetwenShifts),
+        minWeeklyRest: Number(data.minWeeklyRest),
+        scheduleRuleName: data.scheduleRuleName,
+      });
       setScheduleRule(dataValidate);
-      //mutate
     } catch (error: any) {
       const validationError = fromZodError(error);
       validationError.details.forEach((detail: any) => {
