@@ -1,3 +1,5 @@
+import { object, z } from "zod";
+
 interface ScheduleRuleInterface {
   id: string;
   scheduleRuleName: string;
@@ -13,4 +15,28 @@ interface CreateSchedulePropsInterface {
   type: string;
 }
 
-export type { ScheduleRuleInterface, CreateSchedulePropsInterface };
+interface CreateScheduleInterface {
+  scheduleRuleName: string;
+  maxDailyHours: number;
+  maxWeeklyHours: number;
+  minRestBeetwenShifts: number;
+  minWeeklyRest: number;
+}
+
+const CreateScheduleSchema = object({
+  scheduleRuleName: z
+    .string()
+    .min(3, { message: "Name must be at least 3 characters long" }),
+  maxDailyHours: z.number().min(1, { message: "Must be at least 1" }),
+  maxWeeklyHours: z.number().min(1, { message: "Must be at least 1" }),
+  minRestBeetwenShifts: z.number().min(1, { message: "Must be at least 1" }),
+  minWeeklyRest: z.number().min(1, { message: "Must be at least 1" }),
+});
+
+export type {
+  ScheduleRuleInterface,
+  CreateSchedulePropsInterface,
+  CreateScheduleInterface,
+};
+
+export { CreateScheduleSchema };
