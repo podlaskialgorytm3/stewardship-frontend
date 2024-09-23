@@ -15,7 +15,7 @@ interface CreateSchedulePropsInterface {
   type: string;
 }
 
-interface CreateScheduleInterface {
+interface CreateScheduleRuleInterface {
   scheduleRuleName: string;
   maxDailyHours: number;
   maxWeeklyHours: number;
@@ -23,7 +23,7 @@ interface CreateScheduleInterface {
   minWeeklyRest: number;
 }
 
-const CreateScheduleSchema = object({
+const CreateScheduleRuleSchema = object({
   scheduleRuleName: z
     .string()
     .min(3, { message: "Name must be at least 3 characters long" }),
@@ -36,7 +36,7 @@ const CreateScheduleSchema = object({
 export type {
   ScheduleRuleInterface,
   CreateSchedulePropsInterface,
-  CreateScheduleInterface,
+  CreateScheduleRuleInterface,
 };
 
-export { CreateScheduleSchema };
+export { CreateScheduleRuleSchema };
