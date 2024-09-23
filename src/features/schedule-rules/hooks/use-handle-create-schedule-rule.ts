@@ -10,11 +10,13 @@ import { useCreateScheduleRule } from "../api/use-create-schedule-rule";
 const useHandleCreateScheduleRule = ({
   setScheduleRule,
   groupId,
+  handleChangePage,
 }: {
   setScheduleRule: React.Dispatch<
     React.SetStateAction<CreateScheduleRuleInterface>
   >;
   groupId: string | undefined;
+  handleChangePage: (menu: string) => void;
 }) => {
   const {
     register,
@@ -36,6 +38,7 @@ const useHandleCreateScheduleRule = ({
       });
       setScheduleRule(dataValidate);
       mutate({ scheduleRule: dataValidate, groupId });
+      handleChangePage("rules");
     } catch (error: any) {
       const validationError = fromZodError(error);
       validationError.details.forEach((detail: any) => {

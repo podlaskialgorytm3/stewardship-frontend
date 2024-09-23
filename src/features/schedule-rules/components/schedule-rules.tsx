@@ -17,7 +17,11 @@ const ScheduleRules: React.FC = () => {
       <Menu handleChangePage={handleChangePage} selectedMenu={selectedMenu} />
       <div className="flex w-[90%] justify-center">
         {selectedMenu === "rules" && <ScheduleRuleContainer />}
-        {selectedMenu === "creating" && <CreateScheduleRule />}
+        {selectedMenu === "creating" && (
+          <CreateScheduleRule
+            handleChangePage={handleChangePage as () => void}
+          />
+        )}
       </div>
     </div>
   );

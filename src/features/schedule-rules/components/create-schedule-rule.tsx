@@ -9,7 +9,9 @@ import { FormTextInput } from "./form-text-input";
 import { CREATE_SCHEDULE_RULE } from "../constants/constants";
 import { CreateSchedulePropsInterface } from "../types/types";
 
-const CreateScheduleRule: React.FC = () => {
+const CreateScheduleRule: React.FC<{ handleChangePage: () => void }> = ({
+  handleChangePage,
+}) => {
   const { id: groupId } = useParams<{ id: string | undefined }>();
 
   const [scheduleRule, setScheduleRule] = useState<CreateScheduleRuleInterface>(
@@ -26,6 +28,7 @@ const CreateScheduleRule: React.FC = () => {
     useHandleCreateScheduleRule({
       setScheduleRule,
       groupId: groupId,
+      handleChangePage: handleChangePage,
     });
   return (
     <div className="flex flex-col items-center mt-10">
