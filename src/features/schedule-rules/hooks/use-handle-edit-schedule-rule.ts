@@ -5,6 +5,8 @@ import {
   CreateScheduleRuleSchema,
 } from "../types/types";
 
+import { useEditScheduleRule } from "../api/use-edit-schedule-rule";
+
 const useHandleEditScheduleRule = ({
   setScheduleRule,
   groupId,
@@ -23,6 +25,8 @@ const useHandleEditScheduleRule = ({
     formState: { errors },
   } = useForm();
 
+  const { mutate } = useEditScheduleRule();
+
   const onSubmit = (data: CreateScheduleRuleInterface) => {
     try {
       const dataValidate = CreateScheduleRuleSchema.parse({
@@ -33,7 +37,7 @@ const useHandleEditScheduleRule = ({
         scheduleRuleName: data.scheduleRuleName,
       });
       setScheduleRule(dataValidate);
-      // mutowanie danych
+      mutate({ scheduleRule: dataValidate, groupId, scheduleRuleId });
     } catch (error: any) {
       const validationError = fromZodError(error);
       validationError.details.forEach((detail: any) => {

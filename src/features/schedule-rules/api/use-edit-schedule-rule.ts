@@ -18,7 +18,7 @@ const editScheduleRule = async ({
   const response = await fetch(
     `${API_URL}/stewardship/schedule-rule/${scheduleRuleId}`,
     {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
