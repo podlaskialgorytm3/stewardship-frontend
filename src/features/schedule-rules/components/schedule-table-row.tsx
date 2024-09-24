@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 
 import { EditScheduleRule } from "./edit-schedule-rule";
 
+import Swal from "sweetalert2";
+
 const ScheduleTableRow = ({
   scheduleRule,
   groupId,
@@ -37,6 +39,22 @@ const ScheduleTableRow = ({
       setPosition({
         x: newX,
         y: position.y,
+      });
+    }
+    if (newX < -200) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert schedule rule!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          console.log("delete");
+        }
       });
     }
   };
