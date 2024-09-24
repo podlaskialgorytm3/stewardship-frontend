@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { useDeleteScheduleRule } from "../api/use-delete-schedule-rule";
+
 import { TableCell, TableRow as UITableRow } from "../../../ui/table";
 import { ScheduleRuleInterface } from "../types/types";
 
@@ -17,6 +19,8 @@ const ScheduleTableRow = ({
   groupId: string | undefined;
 }) => {
   const [isClick, setIsClick] = useState<boolean>(false);
+
+  const { mutate } = useDeleteScheduleRule();
 
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -53,7 +57,7 @@ const ScheduleTableRow = ({
         cancelButtonColor: "#3085d6",
       }).then((result) => {
         if (result.isConfirmed) {
-          console.log("delete");
+          mutate({ scheduleRuleId: scheduleRule.id, groupId });
         }
       });
     }
@@ -93,9 +97,11 @@ const ScheduleTableRow = ({
         <TableCell>{scheduleRule.maxWeeklyHours} h</TableCell>
         <TableCell>{scheduleRule.minRestBeetwenShifts} h</TableCell>
         <TableCell>{scheduleRule.minWeeklyRest} h</TableCell>
-        <TableCell className="bg-red-600 text-white">
-          {"   DELETE   "}
-        </TableCell>
+        {isDragging && (
+          <TableCell className="bg-red-600 text-white absolute">
+            {"   DELETE   "}
+          </TableCell>
+        )}
       </UITableRow>
       <TableCell colSpan={5}>
         <motion.div
