@@ -16,6 +16,40 @@ const ScheduleTableRow = ({
 }) => {
   const [isClick, setIsClick] = useState<boolean>(false);
 
+  const [isDragging, setIsDragging] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    setStartPos({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
+    });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+
+    const newX = e.clientX - startPos.x;
+
+    if (newX >= -200 && newX <= 0) {
+      setPosition({
+        x: newX,
+        y: position.y,
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+
+    setPosition({
+      x: 0,
+      y: position.y,
+    });
+  };
+
   const handleClick = () => {
     setIsClick(!isClick);
   };
@@ -24,14 +58,26 @@ const ScheduleTableRow = ({
     <>
       <UITableRow
         key={scheduleRule.id}
-        className="cursor-pointer hover:font-bold"
+        className="cursor-grab hover:font-bold"
         onClick={() => handleClick()}
+        style={{
+          transform: `translate(${position.x}px, ${position.y}px)`,
+          cursor: isDragging ? "grabbing" : "grab",
+          transition: isDragging ? "none" : "transform 0.3s ease",
+        }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
       >
         <TableCell>{scheduleRule.scheduleRuleName}</TableCell>
         <TableCell>{scheduleRule.maxDailyHours} h</TableCell>
         <TableCell>{scheduleRule.maxWeeklyHours} h</TableCell>
         <TableCell>{scheduleRule.minRestBeetwenShifts} h</TableCell>
         <TableCell>{scheduleRule.minWeeklyRest} h</TableCell>
+        <TableCell className="bg-red-600 text-white">
+          {"   DELETE   "}
+        </TableCell>
       </UITableRow>
       <TableCell colSpan={5}>
         <motion.div
