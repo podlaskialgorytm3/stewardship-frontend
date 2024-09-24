@@ -16,7 +16,7 @@ import { useFetchScheduleRules } from "../api/use-fetch-schedule-rules";
 import { ScheduleRuleInterface } from "../types/types";
 
 const ScheduleRuleContainer: React.FC = () => {
-  const { id: groupId } = useParams<{ id: string }>();
+  const { id: groupId } = useParams<{ id: string | undefined }>();
   const { data, isLoading } = useFetchScheduleRules({ groupId } as {
     groupId: string;
   });
@@ -39,6 +39,7 @@ const ScheduleRuleContainer: React.FC = () => {
             <ScheduleTableRow
               key={scheduleRule.id}
               scheduleRule={scheduleRule}
+              groupId={groupId}
             />
           ))}
         </TableBody>
