@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 
 import { Loading } from "../../../shared/components/loading";
 
+import { Box, Select, Button } from "@mui/material";
+
 export const MemberCard: React.FC<{
   member: Member;
 }> = ({ member }) => {
@@ -51,7 +53,37 @@ export const MemberCard: React.FC<{
             flexDirection: "column",
             alignItems: "center",
           }}
-        ></motion.div>
+        >
+          <h1 className="m-4 font-bold text-lg">select schedule rule</h1>
+          <Box
+            component="form"
+            color={"secondary"}
+            //onSubmit={handleSubmit(onSubmit as () => void)}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              marginTop: "10px",
+              gap: 2,
+              width: "300px",
+              margin: "auto",
+            }}
+          >
+            <Select
+              label="Select"
+              placeholder="Select"
+              variant="outlined"
+              color="secondary"
+              sx={{ width: "100%" }}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </Select>
+            <Button type="submit" variant="contained" color="secondary">
+              Submit
+            </Button>
+          </Box>
+        </motion.div>
       }
     </>
   );
