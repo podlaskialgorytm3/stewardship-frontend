@@ -45,10 +45,14 @@ const CreateScheduleRuleSchema = object({
     .max(168, { message: "Must be at most 168" }),
 });
 
+const ScheduleRuleIdSchema = object({
+  scheduleRuleId: z.string(),
+});
+
 export type {
   ScheduleRuleInterface,
   CreateSchedulePropsInterface,
   CreateScheduleRuleInterface,
 };
 
-export { CreateScheduleRuleSchema };
+export { CreateScheduleRuleSchema, ScheduleRuleIdSchema };
