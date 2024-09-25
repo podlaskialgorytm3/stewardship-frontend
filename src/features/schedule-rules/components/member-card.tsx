@@ -9,6 +9,7 @@ import { Loading } from "../../../shared/components/loading";
 import { Box, Select, Button, MenuItem } from "@mui/material";
 
 import { useFetchScheduleRules } from "../api/use-fetch-schedule-rules";
+import { useHandleSetScheduleRule } from "../hooks/use-handle-set-schedule-rule";
 import { ScheduleRuleInterface } from "../types/types";
 
 export const MemberCard: React.FC<{
@@ -16,10 +17,20 @@ export const MemberCard: React.FC<{
   groupId: string | undefined;
 }> = ({ member, groupId }) => {
   const [isClick, setIsClick] = useState<boolean>(false);
+  const [scheduleRuleId, setScheduleRuleId] = useState<{
+    scheduleRuleId: string;
+  }>({ scheduleRuleId: member.scheduleRuleId });
 
   const { data, isLoading } = useFetchScheduleRules({ groupId } as {
     groupId: string;
   });
+
+  const { onSubmit, register, errors, handleSubmit } = useHandleSetScheduleRule(
+    {
+      setScheduleRuleId,
+      groupUserId: String(member.id),
+    }
+  );
 
   const handleClick = () => {
     setIsClick(!isClick);
@@ -66,7 +77,7 @@ export const MemberCard: React.FC<{
           <Box
             component="form"
             color={"secondary"}
-            //onSubmit={handleSubmit(onSubmit as () => void)}
+            onSubmit={handleSubmit(onSubmit as () => void)}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -82,6 +93,8 @@ export const MemberCard: React.FC<{
               variant="outlined"
               color="secondary"
               sx={{ width: "100%" }}
+              {...register("scheduleRuleId")}
+              error={Boolean(errors.scheduleRuleId)}
               defaultValue={member.scheduleRuleId}
             >
               {isLoading && <Loading size={50} />}
