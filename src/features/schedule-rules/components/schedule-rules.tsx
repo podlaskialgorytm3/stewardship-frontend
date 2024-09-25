@@ -4,6 +4,8 @@ import { ScheduleRuleContainer } from "./schedule-rule-container";
 import { CreateScheduleRule } from "./create-schedule-rule";
 import { Menu } from "./menu";
 
+import { Members } from "./members";
+
 const ScheduleRules: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState<string>("rules");
 
@@ -22,6 +24,7 @@ const ScheduleRules: React.FC = () => {
             handleChangePage={handleChangePage as () => void}
           />
         )}
+        {selectedMenu === "members" && <Members />}
       </div>
     </div>
   );
