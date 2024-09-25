@@ -82,6 +82,7 @@ export const MemberCard: React.FC<{
               display: "flex",
               flexDirection: "column",
               marginTop: "10px",
+              marginBottom: "10px",
               gap: 2,
               width: "300px",
               margin: "auto",
@@ -95,7 +96,7 @@ export const MemberCard: React.FC<{
               sx={{ width: "100%" }}
               {...register("scheduleRuleId")}
               error={Boolean(errors.scheduleRuleId)}
-              defaultValue={member.scheduleRuleId}
+              defaultValue={member.scheduleRuleId || scheduleRuleId}
             >
               {isLoading && <Loading size={50} />}
               {data?.map((scheduleRule: ScheduleRuleInterface) => (
@@ -108,7 +109,12 @@ export const MemberCard: React.FC<{
                 </MenuItem>
               ))}
             </Select>
-            <Button type="submit" variant="contained" color="secondary">
+            <Button
+              type="submit"
+              variant="contained"
+              color="secondary"
+              sx={{ marginBottom: "10px" }}
+            >
               Submit
             </Button>
           </Box>
