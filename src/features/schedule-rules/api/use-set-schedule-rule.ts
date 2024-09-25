@@ -12,9 +12,9 @@ const setScheduleRule = async ({
   scheduleRuleId: string;
 }) => {
   const response = await fetch(
-    `${API_URL}/stewardship/schedule-rule?scheduleRuleId=${scheduleRuleId}&groupUserId=${groupUserId}`,
+    `${API_URL}/stewardship/group-user/schedule-rule?scheduleRuleId=${scheduleRuleId}&groupUserId=${groupUserId}`,
     {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -39,7 +39,7 @@ const useSetScheduleRule = () =>
   useMutation({
     mutationFn: setScheduleRule,
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["schedule-rules"] });
+      queryClient.invalidateQueries({ queryKey: ["groups"] });
       Swal.fire({
         icon: data.type,
         title: data.type,
