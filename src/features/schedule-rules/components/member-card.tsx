@@ -6,12 +6,20 @@ import { motion } from "framer-motion";
 
 import { Loading } from "../../../shared/components/loading";
 
-import { Box, Select, Button } from "@mui/material";
+import { Box, Select, Button, MenuItem } from "@mui/material";
+
+import { useFetchScheduleRules } from "../api/use-fetch-schedule-rules";
+import { ScheduleRuleInterface } from "../types/types";
 
 export const MemberCard: React.FC<{
   member: Member;
-}> = ({ member }) => {
+  groupId: string | undefined;
+}> = ({ member, groupId }) => {
   const [isClick, setIsClick] = useState<boolean>(false);
+
+  const { data, isLoading } = useFetchScheduleRules({ groupId } as {
+    groupId: string;
+  });
 
   const handleClick = () => {
     setIsClick(!isClick);
@@ -74,10 +82,18 @@ export const MemberCard: React.FC<{
               variant="outlined"
               color="secondary"
               sx={{ width: "100%" }}
+              defaultValue={member.scheduleRuleId}
             >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              {isLoading && <Loading size={50} />}
+              {data?.map((scheduleRule: ScheduleRuleInterface) => (
+                <MenuItem
+                  key={scheduleRule.id}
+                  value={scheduleRule.id}
+                  className="cursor-pointer"
+                >
+                  {scheduleRule.scheduleRuleName}
+                </MenuItem>
+              ))}
             </Select>
             <Button type="submit" variant="contained" color="secondary">
               Submit

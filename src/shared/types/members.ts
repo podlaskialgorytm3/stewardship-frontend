@@ -7,4 +7,5 @@ export interface Member {
   groupId: number;
   requestId: number;
   position: string;
+  scheduleRuleId: string;
 }

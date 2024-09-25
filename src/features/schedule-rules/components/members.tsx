@@ -25,7 +25,9 @@ const Members: React.FC = () => {
       {!isLoading &&
         data.data &&
         data.data.map((member: Member) => {
-          return <MemberCard member={member} key={member.id} />;
+          return (
+            <MemberCard member={member} key={member.id} groupId={groupId} />
+          );
         })}
     </div>
   );
