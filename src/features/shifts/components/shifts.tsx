@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Menu } from "./menu";
 import { ShiftContainer } from "./shift-container";
+import { CreateShift } from "./create-shift";
 
 const Shfits: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState<string>("shifts");
@@ -16,6 +17,9 @@ const Shfits: React.FC = () => {
       <Menu handleChangePage={handleChangePage} selectedMenu={selectedMenu} />
       <div className="flex w-[90%] justify-center">
         {selectedMenu === "shifts" && <ShiftContainer />}
+        {selectedMenu === "creating" && (
+          <CreateShift handleChangePage={handleChangePage as () => void} />
+        )}
       </div>
     </div>
   );
