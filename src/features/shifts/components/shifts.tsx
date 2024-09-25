@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { Menu } from "./menu";
+import { ShiftContainer } from "./shift-container";
 
 const Shfits: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState<string>("shifts");
@@ -13,7 +14,9 @@ const Shfits: React.FC = () => {
     <div className=" flex flex-col justify-center items-center">
       <h1 className="mt-10 text-3xl font-bold">shift-management</h1>
       <Menu handleChangePage={handleChangePage} selectedMenu={selectedMenu} />
-      <div className="flex w-[90%] justify-center"></div>
+      <div className="flex w-[90%] justify-center">
+        {selectedMenu === "shifts" && <ShiftContainer />}
+      </div>
     </div>
   );
 };
