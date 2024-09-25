@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 
 import Swal from "sweetalert2";
 
+import { useDeleteShift } from "../api/use-delete-shfit";
+
 const ShiftTableRow = ({
   shift,
   groupId,
@@ -15,6 +17,8 @@ const ShiftTableRow = ({
   groupId: string | undefined;
 }) => {
   const [isClick, setIsClick] = useState<boolean>(false);
+
+  const { mutate } = useDeleteShift();
 
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -42,7 +46,7 @@ const ShiftTableRow = ({
     if (newX < -200) {
       Swal.fire({
         title: "Are you sure?",
-        text: "You won't be able to revert schedule rule!",
+        text: "You won't be able to revert shift!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, delete it!",
@@ -51,7 +55,7 @@ const ShiftTableRow = ({
         cancelButtonColor: "#3085d6",
       }).then((result) => {
         if (result.isConfirmed) {
-          // mutate with deliting
+          mutate({ shiftId: shift.id, groupId: groupId });
         }
       });
     }
