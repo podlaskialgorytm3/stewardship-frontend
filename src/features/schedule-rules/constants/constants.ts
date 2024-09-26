@@ -9,4 +9,15 @@ const CREATE_SCHEDULE_RULE = [
   },
   { name: "minWeeklyRest", type: "number", label: "min weekly rest" },
 ];
-export { CREATE_SCHEDULE_RULE };
+
+const DAY_OF_WEEK = [
+  { value: "Monday" },
+  { value: "Tuesday" },
+  { value: "Wednesday" },
+  { value: "Thursday" },
+  { value: "Friday" },
+  { value: "Saturday" },
+  { value: "Sunday" },
+];
+
+export { CREATE_SCHEDULE_RULE, DAY_OF_WEEK };
