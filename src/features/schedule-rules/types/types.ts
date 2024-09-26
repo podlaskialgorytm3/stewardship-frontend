@@ -23,6 +23,11 @@ interface CreateScheduleRuleInterface {
   minWeeklyRest: number;
 }
 
+interface DayRestrictionInterface {
+  dayOfWeek: string;
+  maxFollowingDay: number;
+}
+
 const CreateScheduleRuleSchema = object({
   scheduleRuleName: z
     .string()
@@ -49,10 +54,16 @@ const ScheduleRuleIdSchema = object({
   scheduleRuleId: z.string(),
 });
 
+const DayRestrictionSchema = object({
+  dayOfWeek: z.string(),
+  maxFollowingDay: z.number().min(2, { message: "Must be at least 2" }),
+});
+
 export type {
   ScheduleRuleInterface,
   CreateSchedulePropsInterface,
   CreateScheduleRuleInterface,
+  DayRestrictionInterface,
 };
 
-export { CreateScheduleRuleSchema, ScheduleRuleIdSchema };
+export { CreateScheduleRuleSchema, ScheduleRuleIdSchema, DayRestrictionSchema };
