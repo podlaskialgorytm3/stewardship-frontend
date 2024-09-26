@@ -9,6 +9,8 @@ import Swal from "sweetalert2";
 
 import { useDeleteShift } from "../api/use-delete-shfit";
 
+import { EditShift } from "./edit-shift";
+
 const ShiftTableRow = ({
   shift,
   groupId,
@@ -118,7 +120,7 @@ const ShiftTableRow = ({
             width: "1000px",
           }}
         >
-          EDITING FORM
+          <EditShift groupId={groupId} shift={shift} />
         </motion.div>
       </TableCell>
     </>
