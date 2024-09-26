@@ -19,6 +19,9 @@ const FormTextInput: React.FC<{
       {...register(shift.name)}
       error={!!errors[shift.name]}
       helperText={errors[shift.name] ? String(errors[shift.name]?.message) : ""}
+      placeholder={
+        shift.name.includes("To") || shift.name.includes("From") ? "HH:MM" : ""
+      }
       fullWidth
     />
   );
