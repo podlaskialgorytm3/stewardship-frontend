@@ -22,11 +22,11 @@ const ScheduleRuleContainer: React.FC = () => {
   });
 
   return (
-    <div className="w-[90%] mt-5">
+    <div className="w-[92%] mt-5">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[250px]">name</TableHead>
+            <TableHead>name</TableHead>
             <TableHead>max daily hours</TableHead>
             <TableHead>max weekly hours</TableHead>
             <TableHead>min rest beetwen shifts</TableHead>

@@ -33,7 +33,7 @@ const EditScheduleRule: React.FC<{
       scheduleRuleId: scheduleRule.id,
     });
   return (
-    <div className="w-full flex justify-center items-center flex-col">
+    <div className="flex justify-center items-center flex-col">
       <h1 className="text-2xl font-bold mb-4">edit-schedule-rule</h1>
       <Box
         component="form"

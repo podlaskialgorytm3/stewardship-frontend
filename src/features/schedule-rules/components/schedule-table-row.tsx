@@ -8,6 +8,8 @@ import { ScheduleRuleInterface } from "../types/types";
 import { motion } from "framer-motion";
 
 import { EditScheduleRule } from "./edit-schedule-rule";
+import { CreateDayRestriction } from "./create-day-restriction";
+import { DayRestrictionView } from "./day-restriction-view";
 
 import Swal from "sweetalert2";
 
@@ -113,12 +115,14 @@ const ScheduleTableRow = ({
           style={{
             overflow: "hidden",
             display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "1000px",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            width: "100%",
           }}
         >
           <EditScheduleRule groupId={groupId} scheduleRule={scheduleRule} />
+          <CreateDayRestriction />
+          <DayRestrictionView />
         </motion.div>
       </TableCell>
     </>
