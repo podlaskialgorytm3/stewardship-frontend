@@ -34,16 +34,16 @@ const CreateShiftSchema = object({
     .min(3, { message: "Name must be at least 3 characters long" }),
   startFrom: z
     .string()
-    .regex(/^[0-9]{2}:[0-9]{2}$/, { message: "Invalid time format" }),
+    .regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: "Invalid time format" }),
   startTo: z
     .string()
-    .regex(/^[0-9]{2}:[0-9]{2}$/, { message: "Invalid time format" }),
+    .regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: "Invalid time format" }),
   endFrom: z
     .string()
-    .regex(/^[0-9]{2}:[0-9]{2}$/, { message: "Invalid time format" }),
+    .regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: "Invalid time format" }),
   endTo: z
     .string()
-    .regex(/^[0-9]{2}:[0-9]{2}$/, { message: "Invalid time format" }),
+    .regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: "Invalid time format" }),
   minDailyHours: z
     .number()
     .min(1, { message: "Must be at least 1" })
