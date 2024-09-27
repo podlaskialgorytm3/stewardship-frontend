@@ -56,7 +56,10 @@ const ScheduleRuleIdSchema = object({
 
 const DayRestrictionSchema = object({
   dayOfWeek: z.string(),
-  maxFollowingDay: z.number().min(2, { message: "Must be at least 2" }),
+  maxFollowingDay: z
+    .number()
+    .min(2, { message: "Must be at least 2" })
+    .max(4, { message: "Must be at most 4" }),
 });
 
 export type {
