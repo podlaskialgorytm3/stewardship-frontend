@@ -38,7 +38,7 @@ const useFetchDayRestriction = ({
 }) =>
   useQuery({
     queryFn: () => fetchDayRestriction({ scheduleRuleId }),
-    queryKey: ["schedule-rules"],
+    queryKey: ["schedule-rules", scheduleRuleId],
   });
 
 export { useFetchDayRestriction };
