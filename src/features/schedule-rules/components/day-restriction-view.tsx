@@ -16,10 +16,13 @@ const DayRestrictionView: React.FC<{ scheduleRuleId: string }> = ({
         {isLoading && <Loading size={50} />}
         {data?.map(
           (dayRestriction: DayRestrictionInterface & { id: string }) => (
-            <p key={dayRestriction.id}>
-              {dayRestriction.dayOfWeek} for max{" "}
-              {dayRestriction.maxFollowingDay + " "} time in a row
-            </p>
+            <div className="flex justify-between border-primary border-[2px] border-solid mb-4 rounded-lg p-3">
+              <p>
+                <b>{dayRestriction.dayOfWeek}</b> for max{" "}
+                <b>{dayRestriction.maxFollowingDay}</b> time in a row
+              </p>
+              <p className="ml-3 cursor-pointer">{"🗑️"}</p>
+            </div>
           )
         )}
       </div>
