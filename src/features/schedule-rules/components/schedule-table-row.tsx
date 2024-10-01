@@ -125,7 +125,10 @@ const ScheduleTableRow = ({
             groupId={groupId}
             scheduleRuleId={scheduleRule.id}
           />
-          <DayRestrictionView scheduleRuleId={scheduleRule.id} />
+          <DayRestrictionView
+            scheduleRuleId={scheduleRule.id}
+            groupId={groupId}
+          />
         </motion.div>
       </TableCell>
     </>

@@ -4,15 +4,15 @@ import { queryClient } from "../../../../src/api/utils/query-client";
 
 import Swal from "sweetalert2";
 
-const deleteScheduleRule = async ({
-  scheduleRuleId,
+const deleteDayRestriction = async ({
+  dayRestrictionId,
   groupId,
 }: {
-  scheduleRuleId: string;
+  dayRestrictionId: string;
   groupId: string | undefined;
 }) => {
   const response = await fetch(
-    `${API_URL}/stewardship/schedule-rule/${scheduleRuleId}?groupId=${groupId}`,
+    `${API_URL}/stewardship/day-restriction?dayRestrictionId=${dayRestrictionId}&groupId=${groupId}`,
     {
       method: "DELETE",
       headers: {
@@ -35,9 +35,9 @@ const deleteScheduleRule = async ({
   return data;
 };
 
-const useDeleteScheduleRule = () =>
+const useDeleteDayRestirction = () =>
   useMutation({
-    mutationFn: deleteScheduleRule,
+    mutationFn: deleteDayRestriction,
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["schedule-rules"] });
       Swal.fire({
@@ -48,4 +48,4 @@ const useDeleteScheduleRule = () =>
     },
   });
 
-export { useDeleteScheduleRule };
+export { useDeleteDayRestirction };

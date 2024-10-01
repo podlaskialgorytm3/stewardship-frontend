@@ -4,12 +4,17 @@ import { Loading } from "../../../shared/components/loading";
 
 import { DayRestrictionInterface } from "../types/types";
 
+import { useDeleteDayRestirction } from "../api/use-delete-day-restriction";
+
 import Swal from "sweetalert2";
 
-const DayRestrictionView: React.FC<{ scheduleRuleId: string }> = ({
-  scheduleRuleId,
-}) => {
+const DayRestrictionView: React.FC<{
+  scheduleRuleId: string;
+  groupId: string | undefined;
+}> = ({ scheduleRuleId, groupId }) => {
   const { data, isLoading } = useFetchDayRestriction({ scheduleRuleId });
+
+  const { mutate } = useDeleteDayRestirction();
 
   const handleDelete = (dayRestrictionId: string) => {
     Swal.fire({
@@ -21,6 +26,13 @@ const DayRestrictionView: React.FC<{ scheduleRuleId: string }> = ({
       cancelButtonText: "No, cancel!",
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        mutate({
+          dayRestrictionId,
+          groupId,
+        });
+      }
     });
   };
 
