@@ -1,8 +1,9 @@
 import { AuthPage } from "../../../../auth";
+import { EmploymentTypes } from "../../../../../features/employment-types/components/employment-types";
 
 const EmploymentTypePage: React.FC = () => (
   <AuthPage>
-    <h1>Employemnt Types</h1>
+    <EmploymentTypes />
   </AuthPage>
 );
 
