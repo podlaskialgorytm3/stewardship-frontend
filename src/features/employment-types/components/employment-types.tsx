@@ -17,7 +17,11 @@ const EmploymentTypes: React.FC<{}> = () => {
       <Menu handleChangePage={handleChangePage} selectedMenu={selectedPage} />
       <div className="flex w-[90%] justify-center">
         {selectedPage === "employment-types" && <EmploymentTypesContainer />}
-        {selectedPage === "creating" && <CreateEmploymentType />}
+        {selectedPage === "creating" && (
+          <CreateEmploymentType
+            handleChangePage={() => handleChangePage as () => void}
+          />
+        )}
       </div>
     </div>
   );
