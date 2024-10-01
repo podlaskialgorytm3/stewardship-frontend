@@ -43,15 +43,17 @@ const DayRestrictionView: React.FC<{
         {isLoading && <Loading size={50} />}
         {data?.map(
           (dayRestriction: DayRestrictionInterface & { id: string }) => (
-            <div
-              className="flex justify-between border-primary border-[2px] border-solid mb-4 rounded-lg p-3"
-              onClick={() => handleDelete(dayRestriction.id as string)}
-            >
+            <div className="flex justify-between border-primary border-[2px] border-solid mb-4 rounded-lg p-3">
               <p>
                 <b>{dayRestriction.dayOfWeek}</b> for max{" "}
                 <b>{dayRestriction.maxFollowingDay}</b> time in a row
               </p>
-              <p className="ml-3 cursor-pointer">{"🗑️"}</p>
+              <p
+                className="ml-3 cursor-pointer"
+                onClick={() => handleDelete(dayRestriction.id as string)}
+              >
+                {"🗑️"}
+              </p>
             </div>
           )
         )}
