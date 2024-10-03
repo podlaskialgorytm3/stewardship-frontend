@@ -5,18 +5,18 @@ import {
   EmploymentTypeSchema,
 } from "../types/types";
 
-import { useCreateEmploymentType } from "../api/use-create-employment-type";
+import { useEditEmploymentType } from "../api/use-edit-employment-type";
 
-const useHandleCreateEmploymentType = ({
+const useHandleEditEmploymentType = ({
   setEmploymentType,
   groupId,
-  handleChangePage,
+  employmentTypeId,
 }: {
   setEmploymentType: React.Dispatch<
     React.SetStateAction<CreateEmploymentTypeInterface>
   >;
   groupId: string | undefined;
-  handleChangePage: (menu: string) => void;
+  employmentTypeId: string;
 }) => {
   const {
     register,
@@ -25,7 +25,7 @@ const useHandleCreateEmploymentType = ({
     formState: { errors },
   } = useForm();
 
-  const { mutate } = useCreateEmploymentType();
+  const { mutate } = useEditEmploymentType();
 
   const onSubmit = (data: CreateEmploymentTypeInterface) => {
     try {
@@ -34,8 +34,7 @@ const useHandleCreateEmploymentType = ({
         workingHours: Number(data.workingHours),
       });
       setEmploymentType(dataValidate);
-      mutate({ employmentType: dataValidate, groupId });
-      handleChangePage("employment-types");
+      mutate({ employmentType: dataValidate, groupId, employmentTypeId });
     } catch (error: any) {
       const validationError = fromZodError(error);
       validationError.details.forEach((detail: any) => {
@@ -47,4 +46,4 @@ const useHandleCreateEmploymentType = ({
   return { onSubmit, register, errors, handleSubmit };
 };
 
-export { useHandleCreateEmploymentType };
+export { useHandleEditEmploymentType };

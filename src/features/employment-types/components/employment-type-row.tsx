@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 
 import { useDeleteEmploymentType } from "../api/use-delete-employment-type";
 
+import { EditEmploymentType } from "./edit-employment-type";
+
 import Swal from "sweetalert2";
 
 const EmploymentTypeRow = ({
@@ -114,7 +116,10 @@ const EmploymentTypeRow = ({
             width: "100%",
           }}
         >
-          Something will there be soon
+          <EditEmploymentType
+            groupId={groupId}
+            employmentType={employmentType}
+          />
         </motion.div>
       </TableCell>
     </>
