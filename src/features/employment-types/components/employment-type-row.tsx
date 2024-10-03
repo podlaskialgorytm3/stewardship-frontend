@@ -6,6 +6,8 @@ import { EmploymentTypeInterface } from "../types/types";
 
 import { motion } from "framer-motion";
 
+import { useDeleteEmploymentType } from "../api/use-delete-employment-type";
+
 import Swal from "sweetalert2";
 
 const EmploymentTypeRow = ({
@@ -16,6 +18,8 @@ const EmploymentTypeRow = ({
   employmentType: EmploymentTypeInterface;
 }) => {
   const [isClick, setIsClick] = useState<boolean>(false);
+
+  const { mutate } = useDeleteEmploymentType();
 
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -52,7 +56,7 @@ const EmploymentTypeRow = ({
         cancelButtonColor: "#3085d6",
       }).then((result) => {
         if (result.isConfirmed) {
-          //mutate delete
+          mutate({ employmentTypeId: employmentType.id, groupId });
         }
       });
     }

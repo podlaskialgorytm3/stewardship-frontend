@@ -19,7 +19,7 @@ const EmploymentTypes: React.FC<{}> = () => {
         {selectedPage === "employment-types" && <EmploymentTypesContainer />}
         {selectedPage === "creating" && (
           <CreateEmploymentType
-            handleChangePage={() => handleChangePage as () => void}
+            handleChangePage={() => handleChangePage as (menu: string) => void}
           />
         )}
       </div>
