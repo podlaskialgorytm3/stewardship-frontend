@@ -11,9 +11,9 @@ const ShiftPreference: React.FC<{ groupId: string | undefined }> = ({
 }) => {
   return (
     <div
-      className={`border-primary border-[2px] border-solid w-[600px] flex flex-col items-center rounded-lg  `}
+      className={`border-primary border-[2px] border-solid w-[600px] flex flex-col items-center rounded-lg m-5 `}
     >
-      <h1 className="font-bold text-xl mb-5">shift-preference</h1>
+      <h1 className="font-bold text-xl mb-5 mt-5">shift-preference</h1>
       <Table>
         <TableHeader>
           <TableRow>
@@ -29,7 +29,7 @@ const ShiftPreference: React.FC<{ groupId: string | undefined }> = ({
         <TableBody>
           {/* {isLoading && <Loading size={50} />}
           {data?.map((shift: ShiftInterface) => (
-            <ShiftTableRow key={shift.id} shift={shift} groupId={groupId} />
+            <ShiftTableRow key={shift.id} shift={shift} groupId ={groupId} />
           ))} */}
         </TableBody>
       </Table>
