@@ -9,6 +9,7 @@ import { GroupManagement } from "../features/group-management/components/group-m
 import { TaskArea } from "../features/task-card/components/task-area";
 import { GroupElement } from "./group-element";
 import { ScheduleManagement } from "./schedule-management";
+import { SchedulePreferencesManagement } from "./schedule-preferences-management";
 
 export const SingleGroupPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -31,6 +32,9 @@ export const SingleGroupPage = () => {
                 <ScheduleManagement groupId={id} />
               </GroupElement>
             )}
+            <GroupElement size={400}>
+              <SchedulePreferencesManagement groupId={id} />
+            </GroupElement>
           </div>
         </div>
       ) : (
