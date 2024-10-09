@@ -21,6 +21,8 @@ import { ShiftPage } from "../pages/dashboard/group/schedule/shifts";
 import { EmploymentTypePage } from "../pages/dashboard/group/schedule/employment-types";
 import { WorkSchedulePage } from "../pages/dashboard/group/schedule/work-schedules";
 import { PositionPage } from "../pages/dashboard/group/schedule/positions";
+import { PreferencesPage } from "../pages/dashboard/group/user-preferences/preferences";
+import { UnavialableDaysPage } from "../pages/dashboard/group/user-preferences/unavialable-days";
 
 export const routes = createBrowserRouter([
   {
@@ -73,6 +75,14 @@ export const routes = createBrowserRouter([
           {
             path: "/dashboard/groups/positions/:id",
             element: <PositionPage />,
+          },
+          {
+            path: "/dashboard/groups/preferences/:id",
+            element: <PreferencesPage />,
+          },
+          {
+            path: "/dashboard/groups/unavialable-days/:id",
+            element: <UnavialableDaysPage />,
           },
         ],
       },
