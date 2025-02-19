@@ -1,7 +1,7 @@
 export const WorkingSchedule: React.FC<{}> = () => {
   return (
-    <div>
-      <h1>Working Schedule</h1>
+    <div className="flex justify-center items-center h-screen">
+      <h1>This feature will be in future!</h1>
     </div>
   );
 };
